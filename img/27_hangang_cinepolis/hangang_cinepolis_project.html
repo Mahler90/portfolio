@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한강시네폴리스 일반산업단지 주상복합 신축공사</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            margin: 0 auto 30px;
+            padding: 30mm;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        /* Common Styles */
+        .project-header {
+            border-bottom: 3px solid #3498db;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+        }
+        
+        .project-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .project-subtitle {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        
+        .project-location {
+            font-size: 14px;
+            color: #95a5a6;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 15mm;
+            right: 30mm;
+            font-size: 12px;
+            color: #bdc3c7;
+        }
+        
+        /* PAGE 1 STYLES */
+        .page1-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            height: calc(100% - 120px);
+        }
+        
+        .project-info {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .basic-info {
+            flex: 1;
+        }
+        
+        .info-section {
+            margin-bottom: 18px;
+        }
+        
+        .info-label {
+            font-size: 12px;
+            font-weight: bold;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            font-size: 14px;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+        
+        .highlight-value {
+            font-size: 16px;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .my-role {
+            background: #e8f6f3;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .role-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .role-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .role-list li {
+            font-size: 13px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .role-list li::before {
+            content: '•';
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .project-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .main-image {
+            height: 60%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 20px;
+        }
+        
+        .image-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .image-caption {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        .description-box {
+            background: white;
+            border: 1px solid #ecf0f1;
+            border-radius: 8px;
+            padding: 20px;
+            height: 40%;
+        }
+        
+        .description-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+        
+        .description-text {
+            font-size: 13px;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .description-text p {
+            margin-bottom: 12px;
+        }
+        
+        .keyword {
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        /* PAGE 2 STYLES */
+        .page2-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            height: calc(100% - 120px);
+        }
+        
+        .work-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .work-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color, #3498db);
+        }
+        
+        .work-item.primary {
+            --accent-color: #e74c3c;
+        }
+        
+        .work-item.secondary {
+            --accent-color: #3498db;
+        }
+        
+        .work-item.tertiary {
+            --accent-color: #27ae60;
+        }
+        
+        .work-item.full-width {
+            grid-column: 1 / -1;
+            --accent-color: #f39c12;
+        }
+        
+        .work-title {
+            color: var(--accent-color, #3498db);
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .work-content {
+            font-size: 13px;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .work-content p {
+            margin-bottom: 10px;
+        }
+        
+        .work-content strong {
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        
+        .achievement-box {
+            background: #fff;
+            border: 2px solid #3498db;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .achievement-title {
+            color: #2c3e50;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .achievement-content {
+            font-size: 13px;
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+        
+        .achievement-content p {
+            margin-bottom: 12px;
+        }
+        
+        .achievement-content strong {
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1: 프로젝트 개요 -->
+    <div class="page">
+        <div class="project-header">
+            <h1 class="project-title">한강시네폴리스 일반산업단지 주상복합 신축공사</h1>
+            <p class="project-subtitle">Hangang Cinepolis Industrial Complex Mixed-Use Development</p>
+            <p class="project-location">경기도</p>
+        </div>
+        
+        <div class="page1-content">
+            <div class="project-info">
+                <div class="basic-info">
+                    <div class="info-section">
+                        <div class="info-label">Project Type</div>
+                        <div class="info-value">산업단지 주상복합 / 현상설계</div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Client</div>
+                        <div class="info-value">(주)한강시네폴리스개발</div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Total Floor Area</div>
+                        <div class="highlight-value">385,318.15 m²</div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Duration</div>
+                        <div class="info-value">2022.03.01 - 2022.05.02<br><span style="color: #7f8c8d;">(2개월 2일)</span></div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Project Phase</div>
+                        <div class="info-value">현상설계</div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Contract Type</div>
+                        <div class="info-value">당선</div>
+                    </div>
+                </div>
+                
+                <div class="my-role">
+                    <div class="role-title">담당 업무 (My Role)</div>
+                    <ul class="role-list">
+                        <li>입면 디자인 총괄</li>
+                        <li>CG 컨트롤</li>
+                        <li>마스터플랜 외관 디자인</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="project-visual">
+                <div class="main-image">
+                    <div class="image-overlay">
+                        <div class="image-title">한강시네폴리스 주상복합</div>
+                        <div class="image-caption">산업단지 내 최대 규모 주상복합 프로젝트</div>
+                    </div>
+                </div>
+                
+                <div class="description-box">
+                    <h3 class="description-title">프로젝트 개요</h3>
+                    <div class="description-text">
+                        <p>한강시네폴리스 일반산업단지 내 <span class="keyword">주상복합 신축공사</span>로, 총 연면적 385,318.15㎡ 규모의 대형 복합개발 프로젝트입니다.</p>
+                        
+                        <p>마스터플랜 전체에서 <span class="keyword">가장 규모가 큰 주상복합용지</span>의 디자인을 총괄하여 프로젝트의 핵심 랜드마크 역할을 담당했습니다.</p>
+                        
+                        <p><span class="keyword">입면 디자인과 CG 컨트롤</span>을 통해 현상설계 당선에 결정적 기여를 한 프로젝트입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-number">01</div>
+    </div>
+    
+    <!-- PAGE 2: 설계 접근 및 성과 -->
+    <div class="page">
+        <div class="project-header">
+            <h1 class="project-title">설계 접근 방법 및 성과</h1>
+            <p class="project-subtitle">Design Approach & Achievements</p>
+        </div>
+        
+        <div class="page2-content">
+            <div class="work-details">
+                <div class="work-item primary">
+                    <h3 class="work-title">입면 디자인 총괄</h3>
+                    <div class="work-content">
+                        <p><strong>주상복합 파사드 계획</strong><br>385,318㎡ 규모의 대형 주상복합 건물의 전체 입면 디자인 총괄 진행</p>
+                        <p><strong>산업단지 맥락 반영</strong><br>일반산업단지의 특성을 고려한 현대적이면서도 기능적인 외관 디자인</p>
+                        <p><strong>랜드마크 특성 구현</strong><br>마스터플랜 내에서 가장 큰 규모의 건물로서 상징성과 정체성을 부여하는 디자인</p>
+                    </div>
+                </div>
+                
+                <div class="work-item secondary">
+                    <h3 class="work-title">CG 컨트롤 및 시각화</h3>
+                    <div class="work-content">
+                        <p><strong>3D 모델링 관리</strong><br>복잡한 주상복합 건물의 정확한 3D 모델링과 디테일 구현</p>
+                        <p><strong>렌더링 품질 관리</strong><br>현상설계 제출을 위한 고품질 CG 이미지 제작과 품질 관리</p>
+                        <p><strong>디자인 검증</strong><br>CG를 통한 다양한 각도에서의 디자인 검토와 개선사항 도출</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="work-item tertiary full-width">
+                <h3 class="work-title">마스터플랜 통합 디자인</h3>
+                <div class="work-content">
+                    <p><strong>전체 외관 디자인 조율</strong><br>마스터플랜 내 다른 건물들과의 조화를 고려한 통합적 외관 디자인 방향 설정 <strong>주상복합 특성 최적화</strong><br>주거와 상업시설이 복합된 건물의 기능별 특성을 외관에 효과적으로 표현</p>
+                    <p><strong>단기 집중 작업</strong><br>2개월여의 짧은 현상설계 기간 내에서도 완성도 높은 디자인 도출 <strong>당선 기여</strong><br>입면 디자인의 차별화와 시각적 임팩트를 통해 현상설계 당선에 핵심적 역할 수행</p>
+                </div>
+            </div>
+            
+            <div class="achievement-box">
+                <h3 class="achievement-title">프로젝트 성과 및 의미</h3>
+                <div class="achievement-content">
+                    <p>본 프로젝트를 통해 <strong>대규모 주상복합 건물의 입면 디자인을 단독으로 총괄</strong>하는 경험을 쌓으며, 복합용도 건물의 외관 계획 전문성을 배양했습니다.</p>
+                    
+                    <p>특히 <strong>마스터플랜 내 최대 규모 건물의 디자인 책임</strong>을 맡아 프로젝트 전체의 성패에 결정적 영향을 미치는 업무를 성공적으로 완수했습니다.</p>
+                    
+                    <p><strong>CG 컨트롤과 입면 디자인의 통합 관리</strong>를 통해 설계 의도의 정확한 시각화와 품질 관리 능력을 동시에 습득할 수 있었습니다.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-number">02</div>
+    </div>
+</body>
+</html>

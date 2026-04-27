@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>압구정아파트지구 특별계획구역3 재건축정비사업</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            margin: 0 auto 30px;
+            padding: 30mm;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        /* Common Styles */
+        .project-header {
+            border-bottom: 3px solid #3498db;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+        }
+        
+        .project-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .project-subtitle {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        
+        .project-location {
+            font-size: 14px;
+            color: #95a5a6;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 15mm;
+            right: 30mm;
+            font-size: 12px;
+            color: #bdc3c7;
+        }
+        
+        /* PAGE 1 STYLES */
+        .page1-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            height: calc(100% - 120px);
+        }
+        
+        .project-info {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .basic-info {
+            flex: 1;
+        }
+        
+        .info-section {
+            margin-bottom: 18px;
+        }
+        
+        .info-label {
+            font-size: 12px;
+            font-weight: bold;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            font-size: 14px;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+        
+        .highlight-value {
+            font-size: 16px;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .my-role {
+            background: #e8f6f3;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .role-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .role-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .role-list li {
+            font-size: 13px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .role-list li::before {
+            content: '•';
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .project-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .main-image {
+            height: 60%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 20px;
+        }
+        
+        .image-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .image-caption {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        .description-box {
+            background: white;
+            border: 1px solid #ecf0f1;
+            border-radius: 8px;
+            padding: 20px;
+            height: 40%;
+        }
+        
+        .description-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+        
+        .description-text {
+            font-size: 13px;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .description-text p {
+            margin-bottom: 12px;
+        }
+        
+        .keyword {
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        /* PAGE 2 STYLES */
+        .page2-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            height: calc(100% - 120px);
+        }
+        
+        .work-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .work-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color, #3498db);
+        }
+        
+        .work-item.primary {
+            --accent-color: #e74c3c;
+        }
+        
+        .work-item.secondary {
+            --accent-color: #3498db;
+        }
+        
+        .work-item.tertiary {
+            --accent-color: #27ae60;
+        }
+        
+        .work-item.full-width {
+            grid-column: 1 / -1;
+            --accent-color: #f39c12;
+        }
+        
+        .work-title {
+            color: var(--accent-color, #3498db);
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .work-content {
+            font-size: 13px;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .work-content p {
+            margin-bottom: 10px;
+        }
+        
+        .work-content strong {
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        
+        .achievement-box {
+            background: #fff;
+            border: 2px solid #3498db;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .achievement-title {
+            color: #2c3e50;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .achievement-content {
+            font-size: 13px;
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+        
+        .achievement-content p {
+            margin-bottom: 12px;
+        }
+        
+        .achievement-content strong {
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1: 프로젝트 개요 -->
+    <div class="page">
+        <div class="project-header">
+            <h1 class="project-title">압구정아파트지구 특별계획구역3 재건축정비사업</h1>
+            <p class="project-subtitle">Apgujeong Apartment District Special Planning Zone 3 Reconstruction Project</p>
+            <p class="project-location">서울특별시 강남구 압구정동</p>
+        </div>
+        
+        <div class="page1-content">
+            <div class="project-info">
+                <div class="basic-info">
+                    <div class="info-section">
+                        <div class="info-label">Project Type</div>
+                        <div class="info-value">재건축정비사업 / 현상설계</div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Client</div>
+                        <div class="info-value">압구정아파트지구 특별계획구역3 재건축정비사업조합</div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Total Floor Area</div>
+                        <div class="highlight-value">1,327,800.066 m²</div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Duration</div>
+                        <div class="info-value">2023.11.01 - 2023.12.09<br><span style="color: #7f8c8d;">(1개월 9일)</span></div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Project Phase</div>
+                        <div class="info-value">현상설계</div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Contract Type</div>
+                        <div class="info-value">당선</div>
+                    </div>
+                </div>
+                
+                <div class="my-role">
+                    <div class="role-title">담당 업무 (My Role)</div>
+                    <ul class="role-list">
+                        <li>주동평면설계</li>
+                        <li>유엔스튜디오 협업 진행</li>
+                        <li>주동 디자인 참여</li>
+                        <li>법규 검토 및 적용</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="project-visual">
+                <div class="main-image">
+                    <div class="image-overlay">
+                        <div class="image-title">압구정 특별계획구역3 조감도</div>
+                        <div class="image-caption">유엔스튜디오와 협업한 혁신적 재건축 디자인</div>
+                    </div>
+                </div>
+                
+                <div class="description-box">
+                    <h3 class="description-title">프로젝트 개요</h3>
+                    <div class="description-text">
+                        <p>서울 강남구 압구정동의 <span class="keyword">특별계획구역3 재건축정비사업</span>으로, 총 연면적 1,327,800.066㎡ 규모의 대형 재건축 프로젝트입니다.</p>
+                        
+                        <p>네덜란드의 세계적인 건축사무소 <span class="keyword">유엔스튜디오(UNStudio)와의 협업</span>을 통해 국제적 수준의 디자인 품질을 확보한 프로젝트입니다.</p>
+                        
+                        <p>짧은 현상설계 기간 내에 <span class="keyword">주동평면설계와 법규 검토</span>를 담당하여 당선이라는 성과를 달성했습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-number">01</div>
+    </div>
+    
+    <!-- PAGE 2: 설계 접근 및 성과 -->
+    <div class="page">
+        <div class="project-header">
+            <h1 class="project-title">설계 접근 방법 및 성과</h1>
+            <p class="project-subtitle">Design Approach & Achievements</p>
+        </div>
+        
+        <div class="page2-content">
+            <div class="work-details">
+                <div class="work-item primary">
+                    <h3 class="work-title">주동평면설계</h3>
+                    <div class="work-content">
+                        <p><strong>효율적 평면계획</strong><br>압구정 지역의 높은 부가가치를 고려한 최적화된 주동 평면 설계</p>
+                        <p><strong>법규 적합성 검토</strong><br>특별계획구역의 복잡한 법규 조건을 분석하여 설계에 반영</p>
+                        <p><strong>공간 효율성 극대화</strong><br>제한된 부지 조건에서 최대한의 공간 활용도를 달성하는 평면 구성</p>
+                    </div>
+                </div>
+                
+                <div class="work-item secondary">
+                    <h3 class="work-title">국제 협업 관리</h3>
+                    <div class="work-content">
+                        <p><strong>유엔스튜디오 협업 진행</strong><br>해외 유명 건축사와의 원활한 협업을 위한 소통 및 조율 업무</p>
+                        <p><strong>디자인 통합 관리</strong><br>국제적 디자인 언어와 국내 법규 요건의 조화로운 통합</p>
+                        <p><strong>일정 관리</strong><br>짧은 현상설계 기간 내 효율적인 협업 프로세스 구축</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="work-item tertiary full-width">
+                <h3 class="work-title">디자인 개발 및 법규 적용</h3>
+                <div class="work-content">
+                    <p><strong>주동 디자인 참여</strong><br>유엔스튜디오의 디자인 의도를 정확히 구현하면서도 실현 가능한 형태로 발전 <strong>특별계획구역 법규 검토</strong><br>일반적인 재건축과 다른 특별계획구역의 복잡한 법규 조건을 정확히 분석하고 적용</p>
+                    <p><strong>현상설계 최적화</strong><br>제한된 시간 내에서도 완성도 높은 설계안을 도출하기 위한 집중적 업무 진행 <strong>당선 기여</strong><br>전체 설계팀의 일원으로서 당선이라는 성과 달성에 핵심적 역할 수행</p>
+                </div>
+            </div>
+            
+            <div class="achievement-box">
+                <h3 class="achievement-title">프로젝트 성과 및 의미</h3>
+                <div class="achievement-content">
+                    <p>본 프로젝트를 통해 <strong>세계적 수준의 건축사무소와의 국제 협업 경험</strong>을 쌓으며, 글로벌 디자인 프로세스와 소통 방법을 습득할 수 있었습니다.</p>
+                    
+                    <p>특히 <strong>압구정 특별계획구역의 복잡한 법규 조건</strong>을 분석하고 적용하는 과정에서 고도화된 법규 검토 능력을 배양했습니다.</p>
+                    
+                    <p><strong>1개월여의 짧은 기간 내 당선이라는 성과</strong>는 향후 긴밀한 협업이 요구되는 프로젝트에서 효율적인 업무 수행 능력의 바탕이 되었습니다.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-number">02</div>
+    </div>
+</body>
+</html>

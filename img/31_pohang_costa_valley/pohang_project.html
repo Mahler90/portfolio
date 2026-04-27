@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포항 코스타밸리 마스터플랜</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            margin: 0 auto 30px;
+            padding: 30mm;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        /* Common Styles */
+        .project-header {
+            border-bottom: 3px solid #3498db;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+        }
+        
+        .project-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .project-subtitle {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        
+        .project-location {
+            font-size: 14px;
+            color: #95a5a6;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 15mm;
+            right: 30mm;
+            font-size: 12px;
+            color: #bdc3c7;
+        }
+        
+        /* PAGE 1 STYLES */
+        .page1-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            height: calc(100% - 120px);
+        }
+        
+        .project-info {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .basic-info {
+            flex: 1;
+        }
+        
+        .info-section {
+            margin-bottom: 18px;
+        }
+        
+        .info-label {
+            font-size: 12px;
+            font-weight: bold;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            font-size: 14px;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+        
+        .highlight-value {
+            font-size: 16px;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .my-role {
+            background: #e8f6f3;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .role-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .role-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .role-list li {
+            font-size: 13px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .role-list li::before {
+            content: '•';
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .project-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .main-image {
+            height: 60%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 20px;
+        }
+        
+        .image-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .image-caption {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        .description-box {
+            background: white;
+            border: 1px solid #ecf0f1;
+            border-radius: 8px;
+            padding: 20px;
+            height: 40%;
+        }
+        
+        .description-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+        
+        .description-text {
+            font-size: 13px;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .description-text p {
+            margin-bottom: 12px;
+        }
+        
+        .keyword {
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        /* PAGE 2 STYLES */
+        .page2-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            height: calc(100% - 120px);
+        }
+        
+        .work-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .work-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color, #3498db);
+        }
+        
+        .work-item.primary {
+            --accent-color: #e74c3c;
+        }
+        
+        .work-item.secondary {
+            --accent-color: #3498db;
+        }
+        
+        .work-item.tertiary {
+            --accent-color: #27ae60;
+        }
+        
+        .work-item.full-width {
+            grid-column: 1 / -1;
+            --accent-color: #f39c12;
+        }
+        
+        .work-title {
+            color: var(--accent-color, #3498db);
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .work-content {
+            font-size: 13px;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .work-content p {
+            margin-bottom: 10px;
+        }
+        
+        .work-content strong {
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        
+        .achievement-box {
+            background: #fff;
+            border: 2px solid #3498db;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .achievement-title {
+            color: #2c3e50;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .achievement-content {
+            font-size: 13px;
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+        
+        .achievement-content p {
+            margin-bottom: 12px;
+        }
+        
+        .achievement-content strong {
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1: 프로젝트 개요 -->
+    <div class="page">
+        <div class="project-header">
+            <h1 class="project-title">포항 코스타밸리 마스터플랜</h1>
+            <p class="project-subtitle">Pohang Costa Valley Masterplan</p>
+            <p class="project-location">경상북도 포항시</p>
+        </div>
+        
+        <div class="page1-content">
+            <div class="project-info">
+                <div class="basic-info">
+                    <div class="info-section">
+                        <div class="info-label">Project Type</div>
+                        <div class="info-value">마스터플랜 / PM</div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Client</div>
+                        <div class="info-value">모나용평(주)</div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Total Floor Area</div>
+                        <div class="highlight-value">204,521.555 m²</div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Duration</div>
+                        <div class="info-value">2025.01.02 - 2025.04.30<br><span style="color: #7f8c8d;">(4개월)</span></div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Project Phase</div>
+                        <div class="info-value">마스터플랜 / 심의</div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Contract Type</div>
+                        <div class="info-value">수의계약</div>
+                    </div>
+                </div>
+                
+                <div class="my-role">
+                    <div class="role-title">담당 업무 (My Role)</div>
+                    <ul class="role-list">
+                        <li>PM (Project Manager)</li>
+                        <li>마스터플랜 계획 수립</li>
+                        <li>발주처 협의 진행</li>
+                        <li>포항시 심의 참여</li>
+                        <li>기계분야 업체 협력 관리</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="project-visual">
+                <div class="main-image">
+                    <div class="image-overlay">
+                        <div class="image-title">포항 코스타밸리 마스터플랜</div>
+                        <div class="image-caption">미래 가능성이 큰 포항 지역 개발사업</div>
+                    </div>
+                </div>
+                
+                <div class="description-box">
+                    <h3 class="description-title">프로젝트 개요</h3>
+                    <div class="description-text">
+                        <p>포항시에 위치한 <span class="keyword">코스타밸리 마스터플랜 프로젝트</span>로, 총 연면적 204,521.555㎡ 규모의 종합개발사업입니다.</p>
+                        
+                        <p>계약금 5억원의 작은 규모였지만 <span class="keyword">추후 미래 가능성이 큰 사업</span>으로 평가되는 전략적 중요성을 가진 프로젝트입니다.</p>
+                        
+                        <p>프로젝트 매니저로서 <span class="keyword">마스터플랜 계획부터 포항시 심의</span>까지 전 과정을 직접 주도하며 완료한 프로젝트입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-number">01</div>
+    </div>
+    
+    <!-- PAGE 2: 설계 접근 및 성과 -->
+    <div class="page">
+        <div class="project-header">
+            <h1 class="project-title">설계 접근 방법 및 성과</h1>
+            <p class="project-subtitle">Design Approach & Achievements</p>
+        </div>
+        
+        <div class="page2-content">
+            <div class="work-details">
+                <div class="work-item primary">
+                    <h3 class="work-title">프로젝트 매니지먼트</h3>
+                    <div class="work-content">
+                        <p><strong>PM 역할 수행</strong><br>프로젝트 전체의 기획, 일정 관리, 품질 관리를 총괄하는 PM 업무 직접 수행</p>
+                        <p><strong>마스터플랜 수립</strong><br>포항 지역 특성을 반영한 종합적인 마스터플랜 계획 수립</p>
+                        <p><strong>개요 작성</strong><br>프로젝트의 전체적인 방향성과 세부 계획을 담은 개요서 작성</p>
+                    </div>
+                </div>
+                
+                <div class="work-item secondary">
+                    <h3 class="work-title">발주처 및 행정 협의</h3>
+                    <div class="work-content">
+                        <p><strong>모나용평 협의</strong><br>발주처인 모나용평(주)과의 지속적인 협의를 통한 프로젝트 방향 조율</p>
+                        <p><strong>포항 현지 협의</strong><br>2달여간 매주 포항을 방문하여 현지 협의 진행</p>
+                        <p><strong>포항시 심의 참여</strong><br>포항시 도시계획심의에 직접 참여하여 프로젝트 승인 획득</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="work-item tertiary full-width">
+                <h3 class="work-title">다분야 협력 및 통합 관리</h3>
+                <div class="work-content">
+                    <p><strong>건축계획 총괄</strong><br>전체 마스터플랜의 건축계획을 수립하고 세부 설계 방향성 제시 <strong>토목 연관 업무</strong><br>건축뿐만 아니라 토목과 연관된 기반시설 계획도 통합적으로 검토</p>
+                    <p><strong>기계분야 협력</strong><br>기계업체와의 협력을 통해 설비 관련 기술적 검토사항 직접 컨트롤 <strong>다분야 통합 조율</strong><br>건축, 토목, 기계 등 여러 전문 분야를 아우르는 통합적 프로젝트 관리</p>
+                </div>
+            </div>
+            
+            <div class="achievement-box">
+                <h3 class="achievement-title">프로젝트 성과 및 의미</h3>
+                <div class="achievement-content">
+                    <p>본 프로젝트를 통해 <strong>소규모이지만 완전한 PM 역할</strong>을 경험하며, 프로젝트의 기획부터 행정 승인까지 전 과정을 독립적으로 관리하는 능력을 배양했습니다.</p>
+                    
+                    <p>특히 <strong>2달여간의 현지 협의와 포항시 심의 참여</strong>를 통해 지방 프로젝트의 특성과 지역 행정 프로세스에 대한 실무 경험을 습득했습니다.</p>
+                    
+                    <p><strong>다분야 통합 관리 경험</strong>은 향후 복합적 성격의 대규모 개발사업에서 여러 전문 분야를 조율할 수 있는 역량의 바탕이 되었습니다.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-number">02</div>
+    </div>
+</body>
+</html>

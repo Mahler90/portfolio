@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>평택 브레인시티 주상2BL 주거복합 신축공사</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            margin: 0 auto 30px;
+            padding: 30mm;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        /* Common Styles */
+        .project-header {
+            border-bottom: 3px solid #3498db;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+        }
+        
+        .project-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .project-subtitle {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        
+        .project-location {
+            font-size: 14px;
+            color: #95a5a6;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 15mm;
+            right: 30mm;
+            font-size: 12px;
+            color: #bdc3c7;
+        }
+        
+        /* PAGE 1 STYLES */
+        .page1-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            height: calc(100% - 120px);
+        }
+        
+        .project-info {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .basic-info {
+            flex: 1;
+        }
+        
+        .info-section {
+            margin-bottom: 18px;
+        }
+        
+        .info-label {
+            font-size: 12px;
+            font-weight: bold;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            font-size: 14px;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+        
+        .highlight-value {
+            font-size: 16px;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .my-role {
+            background: #e8f6f3;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .role-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .role-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .role-list li {
+            font-size: 13px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .role-list li::before {
+            content: '•';
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .project-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .main-image {
+            height: 60%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 20px;
+        }
+        
+        .image-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .image-caption {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        .description-box {
+            background: white;
+            border: 1px solid #ecf0f1;
+            border-radius: 8px;
+            padding: 20px;
+            height: 40%;
+        }
+        
+        .description-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+        
+        .description-text {
+            font-size: 13px;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .description-text p {
+            margin-bottom: 12px;
+        }
+        
+        .keyword {
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        /* PAGE 2 STYLES */
+        .page2-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            height: calc(100% - 120px);
+        }
+        
+        .work-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .work-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color, #3498db);
+        }
+        
+        .work-item.primary {
+            --accent-color: #e74c3c;
+        }
+        
+        .work-item.secondary {
+            --accent-color: #3498db;
+        }
+        
+        .work-item.tertiary {
+            --accent-color: #27ae60;
+        }
+        
+        .work-item.full-width {
+            grid-column: 1 / -1;
+            --accent-color: #f39c12;
+        }
+        
+        .work-title {
+            color: var(--accent-color, #3498db);
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .work-content {
+            font-size: 13px;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .work-content p {
+            margin-bottom: 10px;
+        }
+        
+        .work-content strong {
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        
+        .achievement-box {
+            background: #fff;
+            border: 2px solid #3498db;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .achievement-title {
+            color: #2c3e50;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .achievement-content {
+            font-size: 13px;
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+        
+        .achievement-content p {
+            margin-bottom: 12px;
+        }
+        
+        .achievement-content strong {
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1: 프로젝트 개요 -->
+    <div class="page">
+        <div class="project-header">
+            <h1 class="project-title">평택 브레인시티 주상2BL 주거복합 신축공사</h1>
+            <p class="project-subtitle">Pyeongtaek Brain City Mixed-Use Development 2BL</p>
+            <p class="project-location">경기도 평택시 브레인시티</p>
+        </div>
+        
+        <div class="page1-content">
+            <div class="project-info">
+                <div class="basic-info">
+                    <div class="info-section">
+                        <div class="info-label">Project Type</div>
+                        <div class="info-value">주거복합 신축 / 인허가</div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Client</div>
+                        <div class="info-value">DS네트웍스(주)</div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Total Floor Area</div>
+                        <div class="highlight-value">161,145.87 m²</div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Duration</div>
+                        <div class="info-value">2023.01.02 - 2023.11.30<br><span style="color: #7f8c8d;">(11개월)</span></div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Project Phase</div>
+                        <div class="info-value">인허가 / 각종 심의</div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-label">Contract Type</div>
+                        <div class="info-value">당선</div>
+                    </div>
+                </div>
+                
+                <div class="my-role">
+                    <div class="role-title">담당 업무 (My Role)</div>
+                    <ul class="role-list">
+                        <li>경관심의 진행</li>
+                        <li>소방성능위주심의 진행</li>
+                        <li>교통영향평가 진행</li>
+                        <li>건축심의 진행</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="project-visual">
+                <div class="main-image">
+                    <div class="image-overlay">
+                        <div class="image-title">평택 브레인시티 주상2BL</div>
+                        <div class="image-caption">첨단산업도시 내 복합개발 프로젝트</div>
+                    </div>
+                </div>
+                
+                <div class="description-box">
+                    <h3 class="description-title">프로젝트 개요</h3>
+                    <div class="description-text">
+                        <p>평택 브레인시티 내 <span class="keyword">주상복합 2BL 블록</span>의 신축공사로, 총 연면적 161,145.87㎡ 규모의 복합개발 프로젝트입니다.</p>
+                        
+                        <p>현상설계 당선 후 <span class="keyword">1년간의 인허가 과정</span>을 직접 담당하여 프로젝트의 실현을 위한 제반 업무를 전담했습니다.</p>
+                        
+                        <p>경관, 소방, 교통, 건축심의 등 <span class="keyword">4개 분야의 전문 심의</span>를 성공적으로 완료하여 프로젝트 실현의 기반을 마련했습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-number">01</div>
+    </div>
+    
+    <!-- PAGE 2: 설계 접근 및 성과 -->
+    <div class="page">
+        <div class="project-header">
+            <h1 class="project-title">설계 접근 방법 및 성과</h1>
+            <p class="project-subtitle">Design Approach & Achievements</p>
+        </div>
+        
+        <div class="page2-content">
+            <div class="work-details">
+                <div class="work-item primary">
+                    <h3 class="work-title">경관심의</h3>
+                    <div class="work-content">
+                        <p><strong>도시경관 분석</strong><br>브레인시티의 전체적인 도시경관 맥락과 조화를 이루는 건축물 디자인 검토</p>
+                        <p><strong>경관계획 수립</strong><br>주변 환경과의 조화로운 통합을 위한 경관 가이드라인 적용</p>
+                        <p><strong>심의 대응</strong><br>경관심의위원회의 검토 의견에 대한 체계적 대응 및 승인 획득</p>
+                    </div>
+                </div>
+                
+                <div class="work-item secondary">
+                    <h3 class="work-title">소방성능위주심의</h3>
+                    <div class="work-content">
+                        <p><strong>성능기반 소방설계</strong><br>복합용도 건물의 특성을 고려한 화재안전성능 검증 및 설계</p>
+                        <p><strong>피난계획 수립</strong><br>거주자 안전을 위한 최적화된 피난시설 및 경로 계획</p>
+                        <p><strong>소방시스템 검토</strong><br>건물 규모와 용도에 적합한 소방시설 계획 및 성능 검증</p>
+                    </div>
+                </div>
+                
+                <div class="work-item tertiary">
+                    <h3 class="work-title">교통영향평가</h3>
+                    <div class="work-content">
+                        <p><strong>교통량 분석</strong><br>대규모 주거복합시설이 지역 교통에 미치는 영향 정량적 분석</p>
+                        <p><strong>교통개선방안</strong><br>교통 혼잡 최소화를 위한 진입로 및 주차시설 개선방안 제시</p>
+                        <p><strong>대중교통 연계</strong><br>브레인시티 내 대중교통 체계와의 효율적 연계방안 수립</p>
+                    </div>
+                </div>
+                
+                <div class="work-item full-width" style="--accent-color: #9b59b6;">
+                    <h3 class="work-title">건축심의</h3>
+                    <div class="work-content">
+                        <p><strong>건축계획 적정성 검토</strong><br>전체 건축계획의 합리성과 기능적 효율성에 대한 전문가 검토 진행 <strong>법규 적합성 확인</strong><br>건축법규 및 관련 조례에 대한 세부적 검토와 적합성 확인</p>
+                        <p><strong>설계 완성도 제고</strong><br>심의 과정에서 제기된 개선사항을 반영하여 설계 품질 향상 <strong>최종 승인 획득</strong><br>모든 검토 과정을 거쳐 건축심의 최종 승인 완료</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="work-item full-width">
+                <h3 class="work-title">종합 인허가 프로젝트 관리</h3>
+                <div class="work-content">
+                    <p><strong>순차적 심의 진행</strong><br>경관-소방-교통-건축심의의 체계적 순서와 연관성을 고려한 전략적 진행 관리 <strong>전문 분야 간 조율</strong><br>각기 다른 전문 영역의 요구사항들을 통합적으로 검토하고 상호 모순되지 않도록 조율</p>
+                    <p><strong>11개월 지속 관리</strong><br>장기간에 걸친 복잡한 인허가 과정의 일정 관리와 지속적 품질 유지 <strong>프로젝트 실현 완료</strong><br>모든 법정 심의를 성공적으로 완료하여 실제 시공이 가능한 단계까지 프로젝트 발전</p>
+                </div>
+            </div>
+            
+            <div class="achievement-box">
+                <h3 class="achievement-title">프로젝트 성과 및 의미</h3>
+                <div class="achievement-content">
+                    <p>본 프로젝트를 통해 <strong>4개 분야의 전문 심의를 각각 독립적으로 진행</strong>하면서 경관, 소방, 교통, 건축 등 서로 다른 전문 영역에 대한 깊이 있는 이해와 실무 경험을 쌓을 수 있었습니다.</p>
+                    
+                    <p>특히 <strong>각 심의별 고유한 검토 기준과 절차</strong>를 체계적으로 학습하면서 대규모 개발사업의 복잡한 인허가 프로세스를 전담할 수 있는 전문성을 배양했습니다.</p>
+                    
+                    <p><strong>현상설계 당선작의 완전한 실현</strong>을 위해 11개월간 지속적으로 관리한 경험은 향후 설계와 시공을 연결하는 핵심 업무 능력의 바탕이 되었습니다.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-number">02</div>
+    </div>
+</body>
+</html>
