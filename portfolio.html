@@ -474,14 +474,13 @@
         }
         .cover-bottom {
             padding: 15mm 20mm;
-            border-top: 2px solid var(--border-dark);
             display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+            flex-direction: column;
+            gap: 18px;
         }
         .cover-info {
             display: flex;
-            gap: 25px;
+            gap: 50px;
         }
         .cover-info-item {
             display: flex;
@@ -500,10 +499,12 @@
         }
         .cover-stats {
             display: flex;
-            gap: 25px;
+            justify-content: space-between;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-light);
         }
         .cover-stat {
-            text-align: right;
+            text-align: left;
         }
         .cover-stat-num {
             font-size: 28px;
@@ -700,7 +701,7 @@
             border-radius: 2px;
             flex-shrink: 0;
         }
-        .toc-item-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); }
+        .toc-item-img img { width: 100%; height: 100%; object-fit: cover; }
 
         .toc-item-page {
             width: 30px;
@@ -749,7 +750,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(15%);
         }
         .minimal-info {
             display: flex;
@@ -767,6 +767,352 @@
             color: var(--text-primary);
             line-height: 1.3;
             word-break: keep-all;
+        }
+
+        /* ══════════════════════════════════════
+           MONOGRAPH STYLE — Selected Project Pages v2
+           ══════════════════════════════════════ */
+        .mono-page { /* uses .page base; marker only */ }
+
+        /* === Identity Page (P1) === */
+        .mono-hero {
+            width: 100%;
+            height: 50%;
+            position: relative;
+            background: var(--bg-surface);
+            overflow: hidden;
+        }
+        .mono-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .mono-hero img.fit-contain {
+            object-fit: contain;
+            background: var(--bg-surface);
+        }
+        .mono-hero-tag {
+            position: absolute;
+            top: 11mm;
+            left: 12mm;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
+        }
+
+        .mono-title-block {
+            padding: 11mm 20mm 7mm 20mm;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .mono-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1.0;
+            letter-spacing: -1.5px;
+            text-transform: uppercase;
+        }
+        .mono-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10.5px;
+            color: var(--text-secondary);
+            margin-top: 9px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .mono-subtitle-kr {
+            font-size: 11px;
+            color: var(--text-tertiary);
+            margin-top: 4px;
+            font-weight: 400;
+        }
+
+        .mono-body {
+            flex: 1;
+            display: flex;
+            padding: 8mm 20mm;
+            gap: 28px;
+            min-height: 0;
+        }
+        .mono-body-overview {
+            flex: 0 0 60%;
+            font-size: 10.5px;
+            line-height: 1.75;
+            color: var(--text-secondary);
+            word-break: keep-all;
+        }
+        .mono-body-overview .col-title,
+        .mono-body-meta .col-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8.5px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .mono-body-overview p strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        .mono-body-meta {
+            flex: 1;
+            border-left: 1px solid var(--border-light);
+            padding-left: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .mono-meta-row {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .mono-meta-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+        }
+        .mono-meta-value {
+            font-size: 10.5px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+        .mono-meta-value-big {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 1;
+            color: var(--text-primary);
+        }
+        .mono-meta-value-big .unit {
+            font-size: 9px;
+            margin-left: 4px;
+            color: var(--text-secondary);
+        }
+
+        .mono-foot-band {
+            border-top: 1px solid var(--border-dark);
+            padding: 4mm 20mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8px;
+            letter-spacing: 2.5px;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            background: white;
+        }
+        .mono-foot-band .meta-left {
+            display: flex;
+            gap: 26px;
+        }
+        .mono-foot-band .meta-left span {
+            position: relative;
+        }
+        .mono-foot-band .meta-left span + span::before {
+            content: '·';
+            position: absolute;
+            left: -16px;
+            color: var(--border-light);
+        }
+
+        /* === Process Page (P2) === */
+        .mono-process-header {
+            padding: 13mm 20mm 6mm 20mm;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .mono-process-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 30px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        .mono-process-title strong { font-weight: 700; }
+        .mono-process-projname {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+        }
+
+        .mono-process-body {
+            flex: 1;
+            display: flex;
+            padding: 8mm 20mm 6mm 20mm;
+            gap: 26px;
+            min-height: 0;
+        }
+        .mono-timeline {
+            flex: 0 0 22%;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            border-right: 1px solid var(--border-light);
+            padding-right: 18px;
+        }
+        .mono-timeline-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .mono-timeline-item {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .mono-timeline-item::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border: 1px solid var(--text-primary);
+            border-radius: 50%;
+            margin-top: 3px;
+            background: white;
+            flex-shrink: 0;
+        }
+        .mono-timeline-item.is-key::before {
+            background: var(--text-primary);
+        }
+        .mono-timeline-item-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .mono-timeline-date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+        }
+        .mono-timeline-desc {
+            font-size: 9px;
+            color: var(--text-secondary);
+            line-height: 1.45;
+            word-break: keep-all;
+        }
+        .mono-timeline-item.is-key .mono-timeline-desc {
+            color: var(--text-primary);
+        }
+        .mono-timeline-desc strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .mono-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            min-height: 0;
+        }
+        .mono-section-desc {
+            font-size: 10.5px;
+            line-height: 1.75;
+            color: var(--text-secondary);
+            word-break: keep-all;
+        }
+        .mono-achievements {
+            list-style: none;
+            counter-reset: achv;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .mono-achievements li {
+            counter-increment: achv;
+            padding-left: 32px;
+            position: relative;
+            font-size: 10px;
+            line-height: 1.55;
+            color: var(--text-secondary);
+            word-break: keep-all;
+        }
+        .mono-achievements li::before {
+            content: counter(achv, decimal-leading-zero);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 1px;
+        }
+        .mono-achievements li strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .mono-gallery {
+            margin-top: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 6px;
+            height: 90mm;
+        }
+        .mono-gallery.two-up {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+        }
+        .mono-gallery .img-wrap {
+            overflow: hidden;
+            background: var(--bg-surface);
+            position: relative;
+            margin: 0;
+        }
+        .mono-gallery .img-wrap.span-rows {
+            grid-row: 1 / span 2;
+        }
+        .mono-gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .mono-gallery img.fit-contain {
+            object-fit: contain;
+            background: var(--bg-surface);
+        }
+        .mono-gallery .img-tag {
+            position: absolute;
+            top: 6px;
+            left: 8px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.45);
+        }
+        .mono-gallery .img-tag.dark {
+            color: var(--text-primary);
+            text-shadow: none;
         }
 
         /* ══════════════════════════════════════
@@ -808,7 +1154,7 @@
             <div class="cover-info font-eng">
                 <div class="cover-info-item">
                     <span class="cover-info-label uppercase">Name</span>
-                    <span class="cover-info-value">Park JunSeong</span>
+                    <span class="cover-info-value">JunSeong Park</span>
                 </div>
                 <div class="cover-info-item">
                     <span class="cover-info-label uppercase">Position</span>
@@ -816,25 +1162,32 @@
                 </div>
                 <div class="cover-info-item">
                     <span class="cover-info-label uppercase">Contact</span>
-                    <span class="cover-info-value">blusb9@gmail.com</span>
+                    <span class="cover-info-value">blusb41@gmail.com</span>
                 </div>
             </div>
             <div class="cover-stats font-eng">
                 <div class="cover-stat">
-                    <div class="cover-stat-num">10+</div>
+                    <div class="cover-stat-num">11</div>
                     <div class="cover-stat-label uppercase">Years</div>
                 </div>
                 <div class="cover-stat">
-                    <div class="cover-stat-num">50+</div>
+                    <div class="cover-stat-num">33</div>
                     <div class="cover-stat-label uppercase">Projects</div>
                 </div>
                 <div class="cover-stat">
-                    <div class="cover-stat-num">20+</div>
-                    <div class="cover-stat-label uppercase">Wins</div>
+                    <div class="cover-stat-num">5</div>
+                    <div class="cover-stat-label uppercase">Major Wins</div>
                 </div>
             </div>
         </footer>
-        <div class="page-num">PORTFOLIO 2026</div>
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>JunSeong Park</span>
+                <span>Architectural Portfolio</span>
+                <span>2026</span>
+            </div>
+            <div>Page 01</div>
+        </footer>
     </article>
 
     <!-- ════════════════════════════════════════════
@@ -858,7 +1211,7 @@
                     <h3 class="section-title-cv font-eng uppercase">Contact</h3>
                     <ul class="contact-list font-eng">
                         <li><strong class="uppercase">Phone</strong> +82 10-7724-0170</li>
-                        <li><strong class="uppercase">Email</strong> blusb9@gmail.com</li>
+                        <li><strong class="uppercase">Email</strong> blusb41@gmail.com</li>
                         <li><strong class="uppercase">Address</strong> Namyangju, Gyeonggi-do</li>
                     </ul>
                 </div>
@@ -872,11 +1225,11 @@
                         </li>
                         <li>
                             <div class="skill-bar-wrap"><span>Rhinoceros</span><span>10yr</span></div>
-                            <div class="skill-bar"><div class="skill-level" style="width: 95%;"></div></div>
+                            <div class="skill-bar"><div class="skill-level" style="width: 92%;"></div></div>
                         </li>
                         <li>
                             <div class="skill-bar-wrap"><span>SketchUp</span><span>10yr</span></div>
-                            <div class="skill-bar"><div class="skill-level" style="width: 95%;"></div></div>
+                            <div class="skill-bar"><div class="skill-level" style="width: 88%;"></div></div>
                         </li>
                         <li>
                             <div class="skill-bar-wrap"><span>D5 Render</span><span>3yr</span></div>
@@ -972,7 +1325,14 @@
                 </section>
             </main>
         </div>
-        <div class="page-num">PAGE 02</div>
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>JunSeong Park</span>
+                <span>Curriculum Vitae</span>
+                <span>Heerim Architecture</span>
+            </div>
+            <div>Page 02</div>
+        </footer>
     </article>
 
     <!-- ════════════════════════════════════════════
@@ -991,7 +1351,7 @@
                     <div class="toc-item-title font-eng">Banpo Mido 1st</div>
                     <div class="toc-item-sub">반포미도1차 재건축 — 1,750세대 / Design Director</div>
                 </div>
-                <div class="toc-item-img"><img src="img/32_banpo_mido_1/@메인조감 야경_최종.jpg" alt="Banpo Mido"></div>
+                <div class="toc-item-img"><img src="img/32_banpo_mido_1/@메인조감 야경_최종.png" alt="Banpo Mido"></div>
                 <div class="toc-item-page font-eng">P.06</div>
             </div>
 
@@ -1001,7 +1361,7 @@
                     <div class="toc-item-title font-eng">Apgujeong Dist. 3</div>
                     <div class="toc-item-sub">압구정3구역 재건축 — 4,300세대 / UN Studio 협업</div>
                 </div>
-                <div class="toc-item-img"><img src="img/29_apgujeong_3/01-조감crop.jpg" alt="Apgujeong"></div>
+                <div class="toc-item-img"><img src="img/29_apgujeong_3/01-조감crop.png" alt="Apgujeong"></div>
                 <div class="toc-item-page font-eng">P.08</div>
             </div>
 
@@ -1009,7 +1369,7 @@
                 <div class="toc-item-num font-eng">03</div>
                 <div class="toc-item-info">
                     <div class="toc-item-title font-eng">Yeongjong Midan City</div>
-                    <div class="toc-item-sub">영종 미단시티 — 2,150세대 / 2개 프로젝트 연속</div>
+                    <div class="toc-item-sub">영종 미단시티 — 2,150세대 / 2개 프로젝트, 5개 블럭</div>
                 </div>
                 <div class="toc-item-img"><img src="img/25_midan_a1_a2/스크린샷 2025-07-17 163650.png" alt="Midan City"></div>
                 <div class="toc-item-page font-eng">P.10</div>
@@ -1031,7 +1391,7 @@
                     <div class="toc-item-title font-eng">Pyeongtaek Brain City</div>
                     <div class="toc-item-sub">평택 브레인시티 주상복합 — 인허가 Full-Cycle</div>
                 </div>
-                <div class="toc-item-img"><img src="img/28_pyeongtaek_braincity_2bl/p22-1215-희림 평택 브레인시티 주상2BL 경관심의_조감도_230120.jpg" alt="Brain City"></div>
+                <div class="toc-item-img"><img src="img/28_pyeongtaek_braincity_2bl/p22-1215-희림 평택 브레인시티 주상2BL 경관심의_조감도_230120.png" alt="Brain City"></div>
                 <div class="toc-item-page font-eng">P.14</div>
             </div>
 
@@ -1049,13 +1409,20 @@
                 <div class="toc-item-num font-eng">07</div>
                 <div class="toc-item-info">
                     <div class="toc-item-title font-eng">Eunma Apartment</div>
-                    <div class="toc-item-sub">은마아파트 재건축 — 4,424세대 프리미엄 단지</div>
+                    <div class="toc-item-sub">은마아파트 재건축 — 4,424세대 / 첫 대형 프로젝트</div>
                 </div>
                 <div class="toc-item-img"><img src="img/03_daechi_eunma/앞페이지.jpg" alt="Eunma"></div>
                 <div class="toc-item-page font-eng">P.18</div>
             </div>
         </main>
-        <div class="page-num">PAGE 03</div>
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>JunSeong Park</span>
+                <span>Selected Projects (7)</span>
+                <span>Index</span>
+            </div>
+            <div>Page 03</div>
+        </footer>
     </article>
 
     <!-- ════════════════════════════════════════════
@@ -1071,12 +1438,12 @@
         </header>
 
         <div class="works-minimal-grid">
-            <div class="minimal-card"><div class="minimal-card-img"><img src="img/32_banpo_mido_1/@메인조감 야경_최종.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 33</span><span class="minimal-name">반포미도1차 재건축</span></div></div>
-            <div class="minimal-card"><div class="minimal-card-img"><img src="img/29_apgujeong_3/01-조감crop.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 30</span><span class="minimal-name">압구정3구역 재건축</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/32_banpo_mido_1/@메인조감 야경_최종.png" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 33</span><span class="minimal-name">반포미도1차 재건축</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/29_apgujeong_3/01-조감crop.png" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 30</span><span class="minimal-name">압구정3구역 재건축</span></div></div>
             <div class="minimal-card"><div class="minimal-card-img"><img src="img/30_seoul_ferris_wheel/서울+링+프로젝트_메인조감도 (1).jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 31</span><span class="minimal-name">서울 대관람차</span></div></div>
-            <div class="minimal-card"><div class="minimal-card-img"><img src="img/31_pohang_costa_valley/메인조감도.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 32</span><span class="minimal-name">포항 코스타밸리</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/31_pohang_costa_valley/메인조감도.png" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 32</span><span class="minimal-name">포항 코스타밸리</span></div></div>
 
-            <div class="minimal-card"><div class="minimal-card-img"><img src="img/28_pyeongtaek_braincity_2bl/p22-1215-희림 평택 브레인시티 주상2BL 경관심의_조감도_230120.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 29</span><span class="minimal-name">평택 브레인시티</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/28_pyeongtaek_braincity_2bl/p22-1215-희림 평택 브레인시티 주상2BL 경관심의_조감도_230120.png" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 29</span><span class="minimal-name">평택 브레인시티</span></div></div>
             <div class="minimal-card"><div class="minimal-card-img"><img src="img/27_hangang_cinepolis/그림27.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 28</span><span class="minimal-name">한강시네폴리스</span></div></div>
             <div class="minimal-card"><div class="minimal-card-img"><img src="img/26_midan_4_5_6/그림18.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 27</span><span class="minimal-name">미단시티 공동4,5</span></div></div>
             <div class="minimal-card"><div class="minimal-card-img"><img src="img/25_midan_a1_a2/스크린샷 2025-07-17 163650.png" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 26</span><span class="minimal-name">미단시티 A1,A2</span></div></div>
@@ -1091,7 +1458,14 @@
             <div class="minimal-card"><div class="minimal-card-img"><img src="img/18_daejeon_station/01 대전 주상복합_조감도_0628_04_CROP.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 19</span><span class="minimal-name">대전역세권 복합</span></div></div>
             <div class="minimal-card"><div class="minimal-card-img"><img src="img/17_banpo_3/03.정면투시_(주경)0407.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 18</span><span class="minimal-name">반포 3주구</span></div></div>
         </div>
-        <div class="page-num">PAGE 04</div>
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>JunSeong Park</span>
+                <span>All Works (33)</span>
+                <span>Part 01</span>
+            </div>
+            <div>Page 04</div>
+        </footer>
     </article>
 
     <!-- ════════════════════════════════════════════
@@ -1101,7 +1475,7 @@
         <header class="works-header">
             <div class="works-title-area">
                 <h2 class="works-title font-eng uppercase">All <strong>Works</strong></h2>
-                <div class="works-tag font-eng uppercase">Continued</div>
+                <div class="works-tag font-eng uppercase">33 Projects — Heerim Architecture (2016 — 2026)</div>
             </div>
             <div class="works-tag font-eng uppercase">Part 2</div>
         </header>
@@ -1129,7 +1503,14 @@
 
             <div class="minimal-card"><div class="minimal-card-img"><img src="img/00_sejong_2-1_apt/그림1.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 01</span><span class="minimal-name">세종시 2-1생활권</span></div></div>
         </div>
-        <div class="page-num">PAGE 05</div>
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>JunSeong Park</span>
+                <span>All Works (33)</span>
+                <span>Part 02</span>
+            </div>
+            <div>Page 05</div>
+        </footer>
     </article>
 
 
@@ -1137,152 +1518,152 @@
          PROJECT 01 — 반포미도1차
          ════════════════════════════════════════════ -->
 
-    <!-- PAGE 01 -->
-    <article class="page">
-        <header class="hero-image">
-            <img src="img/32_banpo_mido_1/@메인조감 야경_최종.jpg" alt="반포미도1차 조감도" style="object-position: center 30%;">
+    <!-- PAGE 06 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
+            <img src="img/32_banpo_mido_1/@메인조감 야경_최종.png" alt="반포미도1차 조감도" style="object-position: center 30%;">
+            <span class="mono-hero-tag">Project 01 / 07</span>
         </header>
 
-        <section class="hero-title-area">
-            <h1 class="hero-title font-eng uppercase">Banpo Mido <strong>1st</strong></h1>
-            <div class="hero-subtitle font-eng uppercase">Redevelopment Competition / Winning Proposal — Design Director</div>
+        <section class="mono-title-block">
+            <h1 class="mono-title">Banpo Mido <strong>1st</strong></h1>
+            <div class="mono-subtitle">Redevelopment Competition / Winning Proposal — Design Director</div>
+            <div class="mono-subtitle-kr">반포미도1차 재건축 — 1,750세대 / 2025</div>
         </section>
 
-        <section class="data-grid">
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Project Overview</h3>
-                <p class="overview-text">
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
                     반포 프리미엄 입지의 <strong>1,750세대 대규모 재건축</strong> 설계공모 프로젝트입니다.<br><br>
                     프로젝트 초기부터 PM과 함께 <strong>배치대안을 작성</strong>하고, 제안한 배치안과 주동평면으로 계획을 진행했습니다. <strong>스카이커뮤니티를 직접 설계</strong>하여 최종 컨펌을 받았으며, DA+해안건축과의 경쟁에서 상대안 분석 및 홍보관 운영에 참여하여 <strong>희림안 최종 당선</strong>에 기여했습니다.
                 </p>
             </div>
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Specifications</h3>
-                <ul class="info-list">
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Total Units</span>
-                        <div class="kpi-big font-eng">1,750</div>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Gross Floor Area</span>
-                        <div class="kpi-big font-eng">361K <span class="kpi-unit">m²</span></div>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Location</span>
-                        <span class="info-value">서울특별시 서초구 반포동</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Period</span>
-                        <span class="info-value font-eng">2025.03 — 2025.06</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Competitor</span>
-                        <span class="info-value">DA + 해안건축</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Responsibility</h3>
-                <ul class="info-list">
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 01</span>
-                        <span class="info-value"><strong>배치계획</strong> — PM과 대안 작성 및 계획안 선정</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 02</span>
-                        <span class="info-value"><strong>주동평면</strong> — 평면 구상 및 계획 진행</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 03</span>
-                        <span class="info-value"><strong>스카이커뮤니티</strong> 직접 설계 및 컨펌</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 04</span>
-                        <span class="info-value"><strong>CG·홍보물</strong> 제작 및 홍보관 운영</span>
-                    </li>
-                </ul>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Total Units</span>
+                    <span class="mono-meta-value-big">1,750</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Gross Floor Area</span>
+                    <span class="mono-meta-value-big">361K <span class="unit">m²</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Location</span>
+                    <span class="mono-meta-value">서울 서초구 반포동</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2025.03 — 2025.06</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Competitor</span>
+                    <span class="mono-meta-value">DA + 해안건축</span>
+                </div>
             </div>
         </section>
-        <div class="page-index">PROJECT 01 / 07</div>
-        <div class="page-num">PAGE 06</div>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Banpo Mido 1st</span>
+                <span>Banpo · Seoul</span>
+                <span>2025</span>
+            </div>
+            <div>Project 01 / 07 — Page 06</div>
+        </footer>
     </article>
 
-    <!-- PAGE 05 -->
-    <article class="page">
-        <header class="page-header-simple">
-            <h2 class="page2-title font-eng uppercase">Design <strong>Process</strong></h2>
-            <span class="page2-tag font-eng uppercase">Banpo Mido 1st — Design Leadership</span>
+    <!-- PAGE 07 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Design <strong>Process</strong></h2>
+            <span class="mono-process-projname">Banpo Mido 1st — Design Leadership</span>
         </header>
-        <section class="page2-layout">
-            <aside class="timeline-sidebar">
-                <div class="sidebar-title font-eng uppercase">Timeline</div>
-                <div class="v-timeline">
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">25. 03. 07</div>
-                        <div class="v-desc">현장설명회<br>프로젝트 시작</div>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 03. 07</span>
+                        <span class="mono-timeline-desc">현장설명회 — 프로젝트 시작</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">25. 03. 10~</div>
-                        <div class="v-desc">배치대안 작성<br>계획안 선정</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 03. 10~</span>
+                        <span class="mono-timeline-desc">배치대안 작성 — 계획안 선정</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">25. 04</div>
-                        <div class="v-desc">매주 회장 보고<br>계획안 디벨럽</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 04</span>
+                        <span class="mono-timeline-desc">매주 회장 보고 — 계획안 디벨럽</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">25. 04. 20~</div>
-                        <div class="v-desc">스카이커뮤니티<br>직접 설계</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 04. 20~</span>
+                        <span class="mono-timeline-desc">스카이커뮤니티 직접 설계</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot active"></div>
-                        <div class="v-date">25. 05. 08</div>
-                        <div class="v-desc" style="color: var(--text-primary);"><strong>최종 제출</strong><br>CG·홍보물</div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 05. 08</span>
+                        <span class="mono-timeline-desc"><strong>최종 제출</strong> — CG·홍보물</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">25. 05~06</div>
-                        <div class="v-desc">상대안 분석<br>홍보관 운영</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 05~06</span>
+                        <span class="mono-timeline-desc">상대안 분석 — 홍보관 운영</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot active"></div>
-                        <div class="v-date">25. 06. 20</div>
-                        <div class="v-desc" style="color: var(--text-primary);"><strong>최종 당선</strong><br>인허가 진행중</div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 06. 20</span>
+                        <span class="mono-timeline-desc"><strong>최종 당선</strong> — 인허가 진행중</span>
                     </div>
                 </div>
             </aside>
-            <main class="content-main">
-                <p class="section-desc">
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
                     가장 큰 의사결정은 배치 방향이었습니다. 한강 조망권 극대화와 일조권 확보라는 상충 조건 속에서 8개 배치대안을 직접 작성하고, 매주 회장님 보고를 통해 최적안을 도출했습니다. 스카이커뮤니티는 한강 조망을 입주민 일상으로 끌어오겠다는 컨셉으로, 옥상층에 루프탑 라운지·피트니스·스카이가든을 배치하여 경쟁사 대비 명확한 차별점을 만들었습니다.
                 </p>
-                <ul class="achievements">
+                <ul class="mono-achievements">
                     <li><strong>1,750세대</strong> 대규모 재건축 설계공모 <strong>당선</strong></li>
                     <li>한강 조망 극대화를 위한 <strong>8개 배치대안</strong> 직접 작성 및 최적안 도출</li>
                     <li><strong>스카이커뮤니티</strong> 컨셉 수립부터 설계·최종 컨펌까지 주도</li>
                     <li>DA+해안건축 경쟁에서 상대안 분석 기반 <strong>희림안 최종 선정</strong></li>
                     <li><strong>2025.06 당선</strong>, 인허가 착수</li>
                 </ul>
-                <div class="print-gallery">
-                    <figure class="img-wrap span-2">
-                        <img src="img/32_banpo_mido_1/반포미도1차아파트_홍보물_인쇄_페이지_01.jpg" alt="투시도">
-                        <figcaption class="img-label">01. PERSPECTIVE VIEW</figcaption>
+                <div class="mono-gallery">
+                    <figure class="img-wrap span-rows">
+                        <img src="img/32_banpo_mido_1/반포미도1차아파트_홍보물_인쇄_페이지_01.png" alt="투시도">
+                        <span class="img-tag">01 — Perspective</span>
                     </figure>
                     <figure class="img-wrap">
-                        <img src="img/32_banpo_mido_1/반포 미도 아파트 재건축_배치도_동딱지1.jpg" alt="배치도" class="fit-contain">
-                        <figcaption class="img-label">02. SITE PLAN</figcaption>
+                        <img src="img/32_banpo_mido_1/반포 미도 아파트 재건축_배치도_동딱지1.png" alt="배치도" class="fit-contain">
+                        <span class="img-tag dark">02 — Site Plan</span>
                     </figure>
                     <figure class="img-wrap">
                         <img src="img/32_banpo_mido_1/스카이커뮤니티_최종0620+22h.png" alt="스카이커뮤니티">
-                        <figcaption class="img-label">03. SKY COMMUNITY</figcaption>
+                        <span class="img-tag">03 — Sky Community</span>
                     </figure>
                 </div>
             </main>
         </section>
-        <div class="page-index">PROJECT 01 / 07</div>
-        <div class="page-num">PAGE 07</div>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Banpo Mido 1st</span>
+                <span>Process · Outputs</span>
+                <span>2025</span>
+            </div>
+            <div>Project 01 / 07 — Page 07</div>
+        </footer>
     </article>
 
 
@@ -1290,143 +1671,142 @@
          PROJECT 02 — 압구정3구역
          ════════════════════════════════════════════ -->
 
-    <!-- PAGE 03 -->
-    <article class="page">
-        <header class="hero-image">
-            <img src="img/29_apgujeong_3/01-조감crop.jpg" alt="압구정3구역 조감도" style="object-position: center 30%;">
+    <!-- PAGE 08 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
+            <img src="img/29_apgujeong_3/01-조감crop.png" alt="압구정3구역 조감도" style="object-position: center 30%;">
+            <span class="mono-hero-tag">Project 02 / 07</span>
         </header>
 
-        <section class="hero-title-area">
-            <h1 class="hero-title font-eng uppercase">Apgujeong <strong>Dist. 3</strong></h1>
-            <div class="hero-subtitle font-eng uppercase">Reconstruction Project / Winning Proposal — UN Studio Collaboration</div>
+        <section class="mono-title-block">
+            <h1 class="mono-title">Apgujeong <strong>Dist. 3</strong></h1>
+            <div class="mono-subtitle">Reconstruction Project / Winning Proposal — UN Studio Collaboration</div>
+            <div class="mono-subtitle-kr">압구정3구역 재건축 — 4,300세대 / 2023</div>
         </section>
 
-        <section class="data-grid">
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Project Overview</h3>
-                <p class="overview-text">
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
                     압구정 일대 <strong>최대 규모(4,300세대)</strong>의 재건축 설계경쟁 프로젝트입니다.<br><br>
-                    <strong>UN Studio</strong>와 협업하여 주동평면 개발 및 CG 작업을 담당했습니다. 1차 ��출 시 기존 용적률 250%에서 <strong>300%로 상향</strong>하는 파격적 제안을 하였으며, 상대사 이의제기로 인한 입찰 재공고의 ��기를 거쳐 2차 제출 시 ��도화된 성과물로 <strong>최종 당선</strong>을 이뤄냈습니다.
+                    <strong>UN Studio</strong>와 협업하여 주동평면 개발 및 CG 작업을 담당했습니다. 1차 제출 시 기존 용적률 250%에서 <strong>300%로 상향</strong>하는 파격적 제안을 하였으며, 상대사 이의제기로 인한 입찰 재공고의 위기를 거쳐 2차 제출 시 고도화된 성과물로 <strong>최종 당선</strong>을 이뤄냈습니다.
                 </p>
             </div>
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Specifications</h3>
-                <ul class="info-list">
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Total Units</span>
-                        <div class="kpi-big font-eng">4,300</div>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Gross Floor Area</span>
-                        <div class="kpi-big font-eng">1.32M <span class="kpi-unit">m²</span></div>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Location</span>
-                        <span class="info-value">서울특별시 강남구 압구정동</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Period</span>
-                        <span class="info-value font-eng">2023.03 — 2023.12</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Partner</span>
-                        <span class="info-value font-eng">UN Studio</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Responsibility</h3>
-                <ul class="info-list">
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 01</span>
-                        <span class="info-value"><strong>주동평면도</strong> 개발 참여 및 대안 검토</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 02</span>
-                        <span class="info-value"><strong>CG 코디네이팅</strong> 및 퀄리티 컨트롤</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 03</span>
-                        <span class="info-value"><strong>UN Studio</strong> 디자인 조율 및 협업</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 04</span>
-                        <span class="info-value">2차 제출용 도면/CG 고도화 업데이트</span>
-                    </li>
-                </ul>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Total Units</span>
+                    <span class="mono-meta-value-big">4,300</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Gross Floor Area</span>
+                    <span class="mono-meta-value-big">1.32M <span class="unit">m²</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Location</span>
+                    <span class="mono-meta-value">서울 강남구 압구정동</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2023.03 — 2023.12</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Partner</span>
+                    <span class="mono-meta-value">UN Studio</span>
+                </div>
             </div>
         </section>
-        <div class="page-index">PROJECT 02 / 07</div>
-        <div class="page-num">PAGE 08</div>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Apgujeong Dist. 3</span>
+                <span>Apgujeong · Seoul</span>
+                <span>2023</span>
+            </div>
+            <div>Project 02 / 07 — Page 08</div>
+        </footer>
     </article>
 
-    <!-- PAGE 04 -->
-    <article class="page">
-        <header class="page-header-simple">
-            <h2 class="page2-title font-eng uppercase">Design <strong>Process</strong></h2>
-            <span class="page2-tag font-eng uppercase">Apgujeong Dist. 3 — Winning Strategy</span>
+    <!-- PAGE 09 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Design <strong>Process</strong></h2>
+            <span class="mono-process-projname">Apgujeong Dist. 3 — Winning Strategy</span>
         </header>
-        <section class="page2-layout">
-            <aside class="timeline-sidebar">
-                <div class="sidebar-title font-eng uppercase">Timeline</div>
-                <div class="v-timeline">
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">23. 03</div>
-                        <div class="v-desc">프로젝트 착수<br>배치대안 정리</div>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 03</span>
+                        <span class="mono-timeline-desc">프로젝트 착수 — 배치대안 정리</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">23. 04</div>
-                        <div class="v-desc">주동계획 / 입단면<br>평면도 개발 참여</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 04</span>
+                        <span class="mono-timeline-desc">주동계획·입단면 — 평면도 개발 참여</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot active"></div>
-                        <div class="v-date">23. 05. 26</div>
-                        <div class="v-desc" style="color: var(--text-primary);"><strong>1차 최종 제출</strong><br>용적률 300% 제안</div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 05. 26</span>
+                        <span class="mono-timeline-desc"><strong>1차 최종 제출</strong> — 용적률 300% 제안</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">23. 06 — 07</div>
-                        <div class="v-desc">홍보관 운영 및<br>상대사 이의제기<br>(입찰 재공고)</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 06 — 07</span>
+                        <span class="mono-timeline-desc">홍보관 운영 — 상대사 이의제기로 입찰 재공고</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">23. 08 — 10</div>
-                        <div class="v-desc">단위세대 고도화<br>CG 업데이트</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 08 — 10</span>
+                        <span class="mono-timeline-desc">단위세대 고도화 — CG 업데이트</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot active"></div>
-                        <div class="v-date">23. 12</div>
-                        <div class="v-desc" style="color: var(--text-primary);"><strong>총회 통과 및 당선</strong><br>최종 선정 완료</div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 12</span>
+                        <span class="mono-timeline-desc"><strong>총회 통과 및 당선</strong> — 최종 선정</span>
                     </div>
                 </div>
             </aside>
-            <main class="content-main">
-                <p class="section-desc">
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
                     위기를 기회로 바꾼 10개월간의 기록입니다. 1차 제출의 파격적인 용적률 300% 제안이 재공고라는 변수를 만들었지만, 이를 통해 디자인 논리를 더욱 견고히 다지고 렌더링 퀄리티를 실사 수준으로 끌어올려 조합원들의 최종 선택을 받을 수 있었습니다.
                 </p>
-                <ul class="achievements">
+                <ul class="mono-achievements">
                     <li>압구정 일대 <strong>최대 규모(4,300세대)</strong> 재건축 당선</li>
                     <li><strong>UN Studio</strong> 해외 건축사 협업 경험</li>
                     <li>입찰 재공고 후 2차 제출 <strong>최종 당선</strong></li>
                     <li><strong>용적률 300%</strong> 상향 제안 경험</li>
                     <li>주동평면도 개발 및 <strong>CG 성과물</strong> 제작</li>
                 </ul>
-                <div class="print-gallery">
-                    <figure class="img-wrap span-2">
-                        <img src="img/29_apgujeong_3/03-투시_낮버전.jpg" alt="투시도">
-                        <figcaption class="img-label">01. PERSPECTIVE VIEW</figcaption>
+                <div class="mono-gallery two-up">
+                    <figure class="img-wrap">
+                        <img src="img/29_apgujeong_3/03-투시_낮버전.png" alt="투시도">
+                        <span class="img-tag">01 — Perspective</span>
                     </figure>
-                    <figure class="img-wrap span-2">
-                        <img src="img/29_apgujeong_3/08-스카이커뮤니티.jpg" alt="스카이커뮤니티">
-                        <figcaption class="img-label">02. SKY COMMUNITY</figcaption>
+                    <figure class="img-wrap">
+                        <img src="img/29_apgujeong_3/08-스카이커뮤니티.png" alt="스카이커뮤니티">
+                        <span class="img-tag">02 — Sky Community</span>
                     </figure>
                 </div>
             </main>
         </section>
-        <div class="page-index">PROJECT 02 / 07</div>
-        <div class="page-num">PAGE 09</div>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Apgujeong Dist. 3</span>
+                <span>Process · Outputs</span>
+                <span>2023</span>
+            </div>
+            <div>Project 02 / 07 — Page 09</div>
+        </footer>
     </article>
 
 
@@ -1434,147 +1814,146 @@
          PROJECT 03 — 영종 미단시티
          ════════════════════════════════════════════ -->
 
-    <!-- PAGE 05 -->
-    <article class="page">
-        <header class="hero-image">
+    <!-- PAGE 10 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
             <img src="img/26_midan_4_5_6/그림18.jpg" alt="미단시티 조감도">
+            <span class="mono-hero-tag">Project 03 / 07</span>
         </header>
 
-        <section class="hero-title-area">
-            <h1 class="hero-title font-eng uppercase">Yeongjong <strong>Midan City</strong></h1>
-            <div class="hero-subtitle font-eng uppercase">Private Developer Solicitation — 2 Projects, 5 Blocks, Full-Cycle</div>
+        <section class="mono-title-block">
+            <h1 class="mono-title">Yeongjong <strong>Midan City</strong></h1>
+            <div class="mono-subtitle">Private Developer Solicitation — 2 Projects, 5 Blocks, Full-Cycle</div>
+            <div class="mono-subtitle-kr">영종 미단시티 — 2,150세대 / 2021—2023</div>
         </section>
 
-        <section class="data-grid">
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Project Overview</h3>
-                <p class="overview-text">
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
                     영종 미단시티 내 <strong>2개 프로젝트, 5개 블럭</strong>을 연속 수행한 대규모 주거단지 개발입니다.<br><br>
                     공동4·5+단독6블록(750세대)과 A1·A2블록(1,400세대)의 <strong>디자인을 총괄</strong>하며 배치 대안검토부터 외관 디자인까지 전 과정을 주도했습니다. 두 프로젝트 모두 당선 후 <strong>건축심의, 교통영향평가까지 인허가 전 과정</strong>에 참여했습니다.
                 </p>
             </div>
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Specifications</h3>
-                <ul class="info-list">
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Total Units</span>
-                        <div class="kpi-big font-eng">2,150</div>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Gross Floor Area</span>
-                        <div class="kpi-big font-eng">375K <span class="kpi-unit">m²</span></div>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Location</span>
-                        <span class="info-value">인천광역시 중구 영종도 미단시티</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Period</span>
-                        <span class="info-value font-eng">2021.11 — 2023.01</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Constructor</span>
-                        <span class="info-value font-eng">DL E&C</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Responsibility</h3>
-                <ul class="info-list">
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 01</span>
-                        <span class="info-value"><strong>디자인 총괄</strong> — 5개 블럭 배치 및 외관</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 02</span>
-                        <span class="info-value"><strong>배치 대안검토</strong> 및 최적안 도출</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 03</span>
-                        <span class="info-value"><strong>인허가</strong> — 경관·건축심의, 교통영향평가</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 04</span>
-                        <span class="info-value"><strong>DL E&C</strong> 시공사 협업 및 실시설계</span>
-                    </li>
-                </ul>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Total Units</span>
+                    <span class="mono-meta-value-big">2,150</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Gross Floor Area</span>
+                    <span class="mono-meta-value-big">375K <span class="unit">m²</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Location</span>
+                    <span class="mono-meta-value">인천 중구 영종도 미단시티</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2021.11 — 2023.01</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Constructor</span>
+                    <span class="mono-meta-value">DL E&C</span>
+                </div>
             </div>
         </section>
-        <div class="page-index">PROJECT 03 / 07</div>
-        <div class="page-num">PAGE 10</div>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Yeongjong Midan City</span>
+                <span>Yeongjong · Incheon</span>
+                <span>2021—2023</span>
+            </div>
+            <div>Project 03 / 07 — Page 10</div>
+        </footer>
     </article>
 
-    <!-- PAGE 06 -->
-    <article class="page">
-        <header class="page-header-simple">
-            <h2 class="page2-title font-eng uppercase">Design <strong>Process</strong></h2>
-            <span class="page2-tag font-eng uppercase">Midan City — Multi-Block Development</span>
+    <!-- PAGE 11 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Design <strong>Process</strong></h2>
+            <span class="mono-process-projname">Midan City — Multi-Block Development</span>
         </header>
-        <section class="page2-layout">
-            <aside class="timeline-sidebar">
-                <div class="sidebar-title font-eng uppercase">Timeline</div>
-                <div class="v-timeline">
-                    <div class="v-item">
-                        <div class="v-dot active"></div>
-                        <div class="v-date">21. 11</div>
-                        <div class="v-desc" style="color: var(--text-primary);"><strong>A1·A2블록</strong><br>현상설계 당선</div>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">21. 11</span>
+                        <span class="mono-timeline-desc"><strong>A1·A2블록</strong> — 현상설계 당선</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">22. 06</div>
-                        <div class="v-desc">건축심의 접수<br>교평 사전검토</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">22. 06</span>
+                        <span class="mono-timeline-desc">건축심의 접수 — 교평 사전검토</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot active"></div>
-                        <div class="v-date">22. 07</div>
-                        <div class="v-desc" style="color: var(--text-primary);"><strong>공동4·5+단독6</strong><br>현상설계 당선</div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">22. 07</span>
+                        <span class="mono-timeline-desc"><strong>공동4·5+단독6</strong> — 현상설계 당선</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">22. 08</div>
-                        <div class="v-desc">경관심의 완료<br>건축심의 조치계획</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">22. 08</span>
+                        <span class="mono-timeline-desc">경관심의 완료 — 건축심의 조치계획</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">22. 11</div>
-                        <div class="v-desc">A1·A2 건축심의<br>교통영향평가 완료</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">22. 11</span>
+                        <span class="mono-timeline-desc">A1·A2 건축심의 — 교통영향평가 완료</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot active"></div>
-                        <div class="v-date">23. 01</div>
-                        <div class="v-desc" style="color: var(--text-primary);"><strong>전체 인허가 완료</strong><br>건축심의 통과</div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 01</span>
+                        <span class="mono-timeline-desc"><strong>전체 인허가 완료</strong> — 건축심의 통과</span>
                     </div>
                 </div>
             </aside>
-            <main class="content-main">
-                <p class="section-desc">
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
                     A1·A2블록(1,400세대) 당선으로 시작해, 8개월 뒤 공동4·5+단독6블록(750세대)을 추가 수주하며 역할이 개별 블럭 설계에서 5개 블럭 동시 총괄로 확장되었습니다. 블럭별로 세대 규모와 향, 도로 접근성이 달라 각각 다른 배치 전략이 필요했고, 이를 하나의 통합 경관으로 정리한 것이 핵심 과제였습니다.
                 </p>
-                <ul class="achievements">
+                <ul class="mono-achievements">
                     <li><strong>2개 프로젝트 연속 수주</strong> — 8개월 간격으로 역할 확장</li>
                     <li>총 <strong>5개 블럭</strong> 동시 진행, 통합 경관 디자인 총괄</li>
-                    <li>경관심의·건축심의·교통영향평가 <strong>인허가 전 과정</strong> 완���</li>
-                    <li><strong>DL E&C</strong> 시공 연계 및 실시설계 협���</li>
+                    <li>경관심의·건축심의·교통영향평가 <strong>인허가 전 과정</strong> 완료</li>
+                    <li><strong>DL E&C</strong> 시공 연계 및 실시설계 협력</li>
                     <li>총 <strong>2,150세대</strong> 규모 디자인 총괄 달성</li>
                 </ul>
-                <div class="print-gallery">
-                    <figure class="img-wrap span-2">
+                <div class="mono-gallery">
+                    <figure class="img-wrap span-rows">
                         <img src="img/26_midan_4_5_6/그림19.jpg" alt="미단시티 전경">
-                        <figcaption class="img-label">01. BIRD'S EYE VIEW</figcaption>
+                        <span class="img-tag">01 — Bird's Eye View</span>
                     </figure>
                     <figure class="img-wrap">
                         <img src="img/25_midan_a1_a2/스크린샷 2025-07-17 163650.png" alt="A1·A2블록">
-                        <figcaption class="img-label">02. BLOCK A1·A2</figcaption>
+                        <span class="img-tag">02 — Block A1·A2</span>
                     </figure>
                     <figure class="img-wrap">
                         <img src="img/26_midan_4_5_6/그림20.jpg" alt="공동4,5+단독6">
-                        <figcaption class="img-label">03. BLOCK 4·5·6</figcaption>
+                        <span class="img-tag">03 — Block 4·5·6</span>
                     </figure>
                 </div>
             </main>
         </section>
-        <div class="page-index">PROJECT 03 / 07</div>
-        <div class="page-num">PAGE 11</div>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Yeongjong Midan City</span>
+                <span>Process · Outputs</span>
+                <span>2021—2023</span>
+            </div>
+            <div>Project 03 / 07 — Page 11</div>
+        </footer>
     </article>
 
 
@@ -1582,148 +1961,148 @@
          PROJECT 04 — 반포 3주구
          ════════════════════════════════════════════ -->
 
-    <!-- PAGE 07 -->
-    <article class="page">
-        <header class="hero-image">
+    <!-- PAGE 12 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
             <img src="img/17_banpo_3/03.정면투시_(주경)0407.jpg" alt="반포3주구 투시도" class="fit-contain">
+            <span class="mono-hero-tag" style="color: var(--text-primary); text-shadow: none;">Project 04 / 07</span>
         </header>
 
-        <section class="hero-title-area">
-            <h1 class="hero-title font-eng uppercase">Banpo <strong>3rd Dist.</strong></h1>
-            <div class="hero-subtitle font-eng uppercase">Constructor Selection Alternative Bid — Samsung C&T + Perkins Eastman</div>
+        <section class="mono-title-block">
+            <h1 class="mono-title">Banpo <strong>3rd Dist.</strong></h1>
+            <div class="mono-subtitle">Constructor Selection Alternative Bid — Samsung C&T + Perkins Eastman</div>
+            <div class="mono-subtitle-kr">반포3주구 시공자 선정 대안입찰 — 2020</div>
         </section>
 
-        <section class="data-grid">
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Project Overview</h3>
-                <p class="overview-text">
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
                     반포 프리미엄 입지의 <strong>시공자 선정 대안입찰</strong> 프로젝트로, <strong>삼성물산</strong>과 희림건축이 협업하여 당선했습니다.<br><br>
-                    희림이 <strong>전체 설계 방향과 디자인 가이드라인을 수립</strong>하고, <strong>Perkins Eastman</strong>이 이를 바탕으로 외관 디자인을 전개하는 구조로 협업했습니다. 삼성물산 <strong>VE팀과 공사비 절감</strong> 방안도 함께 도���했습니다.
+                    희림이 <strong>전체 설계 방향과 디자인 가이드라인을 수립</strong>하고, <strong>Perkins Eastman</strong>이 이를 바탕으로 외관 디자인을 전개하는 구조로 협업했습니다. 삼성물산 <strong>VE팀과 공사비 절감</strong> 방안도 함께 도출했습니다.
                 </p>
             </div>
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Specifications</h3>
-                <ul class="info-list">
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Gross Floor Area</span>
-                        <div class="kpi-big font-eng">439K <span class="kpi-unit">m²</span></div>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Location</span>
-                        <span class="info-value">서울특별시 서초구 반포동</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Period</span>
-                        <span class="info-value font-eng">2020.02 — 2020.05</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Collaboration</span>
-                        <span class="info-value">삼성물산 + Perkins Eastman</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Result</span>
-                        <span class="info-value"><strong>당선</strong></span>
-                    </li>
-                </ul>
-            </div>
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Responsibility</h3>
-                <ul class="info-list">
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 01</span>
-                        <span class="info-value"><strong>디자인 가이드라인</strong> — 배치, 방향 설정</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 02</span>
-                        <span class="info-value"><strong>Perkins 협업</strong> — 가이드라인 보완 조율</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 03</span>
-                        <span class="info-value"><strong>지하주차장</strong> 전층 도면 작성</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 04</span>
-                        <span class="info-value"><strong>VE 협업</strong> — 물량절감, 트랜스퍼 최소화</span>
-                    </li>
-                </ul>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Gross Floor Area</span>
+                    <span class="mono-meta-value-big">439K <span class="unit">m²</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Location</span>
+                    <span class="mono-meta-value">서울 서초구 반포동</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2020.02 — 2020.05</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Collaboration</span>
+                    <span class="mono-meta-value">삼성물산 + Perkins Eastman</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Result</span>
+                    <span class="mono-meta-value"><strong>당선</strong></span>
+                </div>
             </div>
         </section>
-        <div class="page-index">PROJECT 04 / 07</div>
-        <div class="page-num">PAGE 12</div>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Banpo 3rd Dist.</span>
+                <span>Banpo · Seoul</span>
+                <span>2020</span>
+            </div>
+            <div>Project 04 / 07 — Page 12</div>
+        </footer>
     </article>
 
-    <!-- PAGE 08 -->
-    <article class="page">
-        <header class="page-header-simple">
-            <h2 class="page2-title font-eng uppercase">Design <strong>Process</strong></h2>
-            <span class="page2-tag font-eng uppercase">Banpo 3rd — Global Collaboration</span>
+    <!-- PAGE 13 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Design <strong>Process</strong></h2>
+            <span class="mono-process-projname">Banpo 3rd — Global Collaboration</span>
         </header>
-        <section class="page2-layout">
-            <aside class="timeline-sidebar">
-                <div class="sidebar-title font-eng uppercase">Timeline</div>
-                <div class="v-timeline">
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">20. 02. 10</div>
-                        <div class="v-desc">현장설명회<br>프로젝트 시작</div>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">20. 02. 10</span>
+                        <span class="mono-timeline-desc">현장설명회 — 프로젝트 시작</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">20. 02. 15~</div>
-                        <div class="v-desc">디자인 가이드<br>배치·방향 설정</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">20. 02. 15~</span>
+                        <span class="mono-timeline-desc">디자인 가이드 — 배치·방향 설정</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">20. 03</div>
-                        <div class="v-desc">Perkins 협업<br>디자인 진행</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">20. 03</span>
+                        <span class="mono-timeline-desc">Perkins 협업 — 디자인 진행</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">20. 03. 15~</div>
-                        <div class="v-desc">물량산출<br>주차장·부대시설</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">20. 03. 15~</span>
+                        <span class="mono-timeline-desc">물량산출 — 주차장·부대시설</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">20. 04</div>
-                        <div class="v-desc">VE팀 협업<br>공사비 절감</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">20. 04</span>
+                        <span class="mono-timeline-desc">VE팀 협업 — 공사비 절감</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot active"></div>
-                        <div class="v-date">20. 04. 30</div>
-                        <div class="v-desc" style="color: var(--text-primary);"><strong>도면 완료</strong><br>최종 제출</div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">20. 04. 30</span>
+                        <span class="mono-timeline-desc"><strong>도면 완료</strong> — 최종 제출</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot active"></div>
-                        <div class="v-date">20. 05</div>
-                        <div class="v-desc" style="color: var(--text-primary);"><strong>당선</strong><br>상대사 분석 완료</div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">20. 05</span>
+                        <span class="mono-timeline-desc"><strong>당선</strong> — 상대사 분석 완료</span>
                     </div>
                 </div>
             </aside>
-            <main class="content-main">
-                <p class="section-desc">
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
                     희림건축·Perkins Eastman·삼성물산 VE팀의 3자간 협업 프로젝트입니다. 디자인 가이드라인을 선제적으로 수립하여 방향을 명확히 하고, 물량산출과 지하주차장 전층 도면을 직접 작성했습니다. VE팀과 협업하여 트랜스퍼 최소화 및 주차장 물량 절감으로 품질 저하 없는 원가 절감을 달성했습니다.
                 </p>
-                <ul class="achievements">
+                <ul class="mono-achievements">
                     <li>반포 프리미엄 입지 시공자 선정 대안입찰 <strong>당선</strong></li>
                     <li><strong>Perkins Eastman</strong> 해외 건축사 협업</li>
                     <li>삼성물산 VE팀과 <strong>공사비 절감</strong> 방안 도출</li>
                     <li>지하주차장 <strong>전층 도면</strong> 직접 작성</li>
                     <li>디자인 가이드라인 수립으로 <strong>다자간 협업</strong> 조율</li>
                 </ul>
-                <div class="print-gallery">
-                    <figure class="img-wrap span-2">
-                        <img src="img/17_banpo_3/그림7.jpg" alt="조감도" style="object-fit: cover;">
-                        <figcaption class="img-label">01. BIRD'S EYE VIEW</figcaption>
+                <div class="mono-gallery two-up">
+                    <figure class="img-wrap">
+                        <img src="img/17_banpo_3/그림7.jpg" alt="조감도">
+                        <span class="img-tag">01 — Bird's Eye View</span>
                     </figure>
-                    <figure class="img-wrap span-2">
+                    <figure class="img-wrap">
                         <img src="img/17_banpo_3/페이지_ 0227_지하주차장 검토_15h.jpg" alt="지하주차장">
-                        <figcaption class="img-label">02. PARKING PLAN</figcaption>
+                        <span class="img-tag">02 — Parking Plan</span>
                     </figure>
                 </div>
             </main>
         </section>
-        <div class="page-index">PROJECT 04 / 07</div>
-        <div class="page-num">PAGE 13</div>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Banpo 3rd Dist.</span>
+                <span>Process · Outputs</span>
+                <span>2020</span>
+            </div>
+            <div>Project 04 / 07 — Page 13</div>
+        </footer>
     </article>
 
 
@@ -1731,147 +2110,146 @@
          PROJECT 05 — 평택 브레인시티
          ════════════════════════════════════════════ -->
 
-    <!-- PAGE 09 -->
-    <article class="page">
-        <header class="hero-image">
-            <img src="img/28_pyeongtaek_braincity_2bl/p22-1215-희림 평택 브레인시티 주상2BL 경관심의_조감도_230120.jpg" alt="평택 브레인시티 조감도">
+    <!-- PAGE 14 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
+            <img src="img/28_pyeongtaek_braincity_2bl/p22-1215-희림 평택 브레인시티 주상2BL 경관심의_조감도_230120.png" alt="평택 브레인시티 조감도">
+            <span class="mono-hero-tag">Project 05 / 07</span>
         </header>
 
-        <section class="hero-title-area">
-            <h1 class="hero-title font-eng uppercase">Pyeongtaek <strong>Brain City</strong></h1>
-            <div class="hero-subtitle font-eng uppercase">Mixed-Use Residential Complex — Full Approval Process</div>
+        <section class="mono-title-block">
+            <h1 class="mono-title">Pyeongtaek <strong>Brain City</strong></h1>
+            <div class="mono-subtitle">Mixed-Use Residential Complex — Full Approval Process</div>
+            <div class="mono-subtitle-kr">평택 브레인시티 주상2BL — 161K m² / 2022—2023</div>
         </section>
 
-        <section class="data-grid">
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Project Overview</h3>
-                <p class="overview-text">
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
                     평택 브레인시티 <strong>161,146 m² 규모의 주거복합</strong> 프로젝트입니다.<br><br>
                     현상설계 당선 후 실시설계팀으로 전환하여 <strong>1년 6개월간 인허가 전 과정</strong>을 직접 담당했습니다. 경관심의, 소방성능위주심의, 교통영향평가, 건축심의를 <strong>모두 직접 진행</strong>하며 설계-인허가 전 과정을 주도했습니다.
                 </p>
             </div>
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Specifications</h3>
-                <ul class="info-list">
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Gross Floor Area</span>
-                        <div class="kpi-big font-eng">161K <span class="kpi-unit">m²</span></div>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Location</span>
-                        <span class="info-value">경기도 평택시 브레인시티</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Period</span>
-                        <span class="info-value font-eng">2022.07 — 2023.11</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Type</span>
-                        <span class="info-value">주거복합 (Mixed-Use)</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Approvals</span>
-                        <span class="info-value"><strong>4개 심의</strong> 전체 통과</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Responsibility</h3>
-                <ul class="info-list">
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 01</span>
-                        <span class="info-value"><strong>경관심의</strong> — 자료 작성, 발표, 통과</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 02</span>
-                        <span class="info-value"><strong>소방심의</strong> — 소방계획 검토 및 대응</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 03</span>
-                        <span class="info-value"><strong>교통영향평가</strong> — 협의 및 승인</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 04</span>
-                        <span class="info-value"><strong>건축심의</strong> — 최종 심의 통과</span>
-                    </li>
-                </ul>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Gross Floor Area</span>
+                    <span class="mono-meta-value-big">161K <span class="unit">m²</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Location</span>
+                    <span class="mono-meta-value">경기 평택시 브레인시티</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2022.07 — 2023.11</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Type</span>
+                    <span class="mono-meta-value">주거복합 (Mixed-Use)</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Approvals</span>
+                    <span class="mono-meta-value"><strong>4개 심의</strong> 전체 통과</span>
+                </div>
             </div>
         </section>
-        <div class="page-index">PROJECT 05 / 07</div>
-        <div class="page-num">PAGE 14</div>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Pyeongtaek Brain City</span>
+                <span>Pyeongtaek · Gyeonggi</span>
+                <span>2022—2023</span>
+            </div>
+            <div>Project 05 / 07 — Page 14</div>
+        </footer>
     </article>
 
-    <!-- PAGE 10 -->
-    <article class="page">
-        <header class="page-header-simple">
-            <h2 class="page2-title font-eng uppercase">Approval <strong>Process</strong></h2>
-            <span class="page2-tag font-eng uppercase">Brain City — Urban Masterplan</span>
+    <!-- PAGE 15 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Approval <strong>Process</strong></h2>
+            <span class="mono-process-projname">Brain City — Urban Masterplan</span>
         </header>
-        <section class="page2-layout">
-            <aside class="timeline-sidebar">
-                <div class="sidebar-title font-eng uppercase">Timeline</div>
-                <div class="v-timeline">
-                    <div class="v-item">
-                        <div class="v-dot active"></div>
-                        <div class="v-date">22. 07</div>
-                        <div class="v-desc" style="color: var(--text-primary);"><strong>현상설계 당선</strong></div>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">22. 07</span>
+                        <span class="mono-timeline-desc"><strong>현상설계 당선</strong></span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">23. 01</div>
-                        <div class="v-desc">실시설계팀 전환</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 01</span>
+                        <span class="mono-timeline-desc">실시설계팀 전환</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">23. 03</div>
-                        <div class="v-desc">경관심의 통과</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 03</span>
+                        <span class="mono-timeline-desc">경관심의 통과</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">23. 05</div>
-                        <div class="v-desc">소방성능<br>위주심의 통과</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 05</span>
+                        <span class="mono-timeline-desc">소방성능 위주심의 통과</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">23. 08</div>
-                        <div class="v-desc">교통영향평가<br>승인</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 08</span>
+                        <span class="mono-timeline-desc">교통영향평가 승인</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot active"></div>
-                        <div class="v-date">23. 11</div>
-                        <div class="v-desc" style="color: var(--text-primary);"><strong>건축심의 완료</strong><br>인허가 전 과정 달성</div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 11</span>
+                        <span class="mono-timeline-desc"><strong>건축심의 완료</strong> — 인허가 전 과정 달성</span>
                     </div>
                 </div>
             </aside>
-            <main class="content-main">
-                <p class="section-desc">
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
                     단순 설계안 작성을 넘어 설계의 실현 가능성을 검증한 프로젝트입니다. 현상설계 당선 후 실시설계팀으로 직접 전환하여 연속성을 확보하고, 경관·소방·교통·건축 4개 심의를 모두 직접 진행하며 관계기관과의 협의를 주도했습니다. 이를 통해 설계 의도를 심의 조건에 맞게 조율하면서도 훼손 없이 관철하는 실행력을 갖추게 되었습니다.
                 </p>
-                <ul class="achievements">
+                <ul class="mono-achievements">
                     <li>현상설계 당선 → 인허가 완료 <strong>Full-Cycle</strong> 달성</li>
                     <li><strong>4개 심의</strong>(경관·소방·교통·건축) 모두 직접 진행 및 통과</li>
                     <li><strong>1년 6개월</strong>간 인허가 전 과정 담당</li>
                     <li><strong>161,146m²</strong> 규모 주거복합 실시설계 경험</li>
                     <li>관계기관 협의 주도로 <strong>프로젝트 실행력</strong> 강화</li>
                 </ul>
-                <div class="print-gallery">
-                    <figure class="img-wrap span-2">
-                        <img src="img/28_pyeongtaek_braincity_2bl/p22-1215-희림 평택 브레인시티 주상2BL 경관심의_조감도_230120.jpg" alt="조감도">
-                        <figcaption class="img-label">01. BIRD'S EYE VIEW</figcaption>
+                <div class="mono-gallery">
+                    <figure class="img-wrap span-rows">
+                        <img src="img/28_pyeongtaek_braincity_2bl/p22-1215-희림 평택 브레인시티 주상2BL 경관심의_조감도_230120.png" alt="조감도">
+                        <span class="img-tag">01 — Bird's Eye View</span>
                     </figure>
                     <figure class="img-wrap">
-                        <img src="img/28_pyeongtaek_braincity_2bl/p23-0604-희림 평택 브레인시티 주상2BL 경관심의 4차_배치도_230620_2.jpg" alt="배치도">
-                        <figcaption class="img-label">02. SITE PLAN</figcaption>
+                        <img src="img/28_pyeongtaek_braincity_2bl/p23-0604-희림 평택 브레인시티 주상2BL 경관심의 4차_배치도_230620_2.png" alt="배치도">
+                        <span class="img-tag dark">02 — Site Plan</span>
                     </figure>
                     <figure class="img-wrap">
                         <img src="img/28_pyeongtaek_braincity_2bl/그림22.jpg" alt="상세">
-                        <figcaption class="img-label">03. DETAIL VIEW</figcaption>
+                        <span class="img-tag">03 — Detail View</span>
                     </figure>
                 </div>
             </main>
         </section>
-        <div class="page-index">PROJECT 05 / 07</div>
-        <div class="page-num">PAGE 15</div>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Pyeongtaek Brain City</span>
+                <span>Approvals · Outputs</span>
+                <span>2022—2023</span>
+            </div>
+            <div>Project 05 / 07 — Page 15</div>
+        </footer>
     </article>
 
 
@@ -1879,119 +2257,115 @@
          PROJECT 06 — 송도 마스터플랜
          ════════════════════════════════════════════ -->
 
-    <!-- PAGE 11 -->
-    <article class="page">
-        <header class="hero-image">
+    <!-- PAGE 16 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
             <img src="img/23_songdo_6_8_masterplan/01_전체조감_석경_1018.jpg" alt="송도 마스터플랜 조감도">
+            <span class="mono-hero-tag">Project 06 / 07</span>
         </header>
 
-        <section class="hero-title-area">
-            <h1 class="hero-title font-eng uppercase">Songdo <strong>6,8 Plot</strong></h1>
-            <div class="hero-subtitle font-eng uppercase">International Urban Masterplan — Foster / Morphosis / GMP</div>
+        <section class="mono-title-block">
+            <h1 class="mono-title">Songdo <strong>6,8 Plot</strong></h1>
+            <div class="mono-subtitle">International Urban Masterplan — Foster / Morphosis / GMP</div>
+            <div class="mono-subtitle-kr">송도국제도시 6,8공구 — 2.3M m² · 9개 블럭 / 2016—2024</div>
         </section>
 
-        <section class="data-grid">
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Project Overview</h3>
-                <p class="overview-text">
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
                     송도국제도시의 <strong>2,316,643 m² 규모</strong> 마스터플랜 프로젝트입니다. 2016년 도시개발 현상설계 당선부터 약 <strong>8년간 지속</strong>된 장기 프로젝트로, <strong>9개 블럭</strong>의 배치 및 디자인을 총괄했습니다.<br><br>
                     <strong>Norman Foster, Morphosis, GMP</strong>가 참여한 국제현상공모의 RFP 제작 및 관리를 담당하여 Morphosis를 최종 선정했습니다.
                 </p>
             </div>
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Specifications</h3>
-                <ul class="info-list">
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Gross Floor Area</span>
-                        <div class="kpi-big font-eng">2.3M <span class="kpi-unit">m²</span></div>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Blocks</span>
-                        <div class="kpi-big font-eng">9 <span class="kpi-unit">Blocks</span></div>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Location</span>
-                        <span class="info-value">인천광역시 송도국제도시</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Period</span>
-                        <span class="info-value font-eng">2016.11 — 2024.12</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Responsibility</h3>
-                <ul class="info-list">
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 01</span>
-                        <span class="info-value"><strong>9개 블럭</strong> 배치 및 디자인 총괄</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 02</span>
-                        <span class="info-value"><strong>국제공모 RFP</strong> 제작 및 공모 관리</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 03</span>
-                        <span class="info-value"><strong>디자인 가이드라인</strong> 및 경관상세계획</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 04</span>
-                        <span class="info-value"><strong>M3·M4블럭</strong> 주상복합 배치/평면</span>
-                    </li>
-                </ul>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Gross Floor Area</span>
+                    <span class="mono-meta-value-big">2.3M <span class="unit">m²</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Blocks</span>
+                    <span class="mono-meta-value-big">9 <span class="unit">Blocks</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Location</span>
+                    <span class="mono-meta-value">인천 송도국제도시</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2016.11 — 2024.12</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Partners</span>
+                    <span class="mono-meta-value">Foster · Morphosis · GMP</span>
+                </div>
             </div>
         </section>
-        <div class="page-index">PROJECT 06 / 07</div>
-        <div class="page-num">PAGE 16</div>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Songdo 6,8 Plot</span>
+                <span>Songdo · Incheon</span>
+                <span>2016—2024</span>
+            </div>
+            <div>Project 06 / 07 — Page 16</div>
+        </footer>
     </article>
 
-    <!-- PAGE 12 -->
-    <article class="page">
-        <header class="page-header-simple">
-            <h2 class="page2-title font-eng uppercase">Master <strong>Plan</strong></h2>
-            <span class="page2-tag font-eng uppercase">Songdo 6,8 — International Competition</span>
+    <!-- PAGE 17 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Master <strong>Plan</strong></h2>
+            <span class="mono-process-projname">Songdo 6,8 — International Competition</span>
         </header>
-        <section class="page2-layout">
-            <aside class="timeline-sidebar">
-                <div class="sidebar-title font-eng uppercase">Timeline</div>
-                <div class="v-timeline">
-                    <div class="v-item">
-                        <div class="v-dot active"></div>
-                        <div class="v-date">16. 11</div>
-                        <div class="v-desc" style="color: var(--text-primary);"><strong>도시개발</strong><br>현상설계 당선</div>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">16. 11</span>
+                        <span class="mono-timeline-desc"><strong>도시개발</strong> — 현상설계 당선</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">21. 08~</div>
-                        <div class="v-desc">마스터플랜<br>본격 진행</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">21. 08~</span>
+                        <span class="mono-timeline-desc">마스터플랜 본격 진행</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">22 — 23</div>
-                        <div class="v-desc">디자인 가이드<br>RFP 제작</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">22 — 23</span>
+                        <span class="mono-timeline-desc">디자인 가이드 — RFP 제작</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">23 — 24</div>
-                        <div class="v-desc">국제공모 진행<br>Foster/Morphosis/GMP</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23 — 24</span>
+                        <span class="mono-timeline-desc">국제공모 진행 — Foster/Morphosis/GMP</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot active"></div>
-                        <div class="v-date">24</div>
-                        <div class="v-desc" style="color: var(--text-primary);"><strong>Morphosis 선정</strong></div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">24</span>
+                        <span class="mono-timeline-desc"><strong>Morphosis 선정</strong></span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot active"></div>
-                        <div class="v-date">24. 12</div>
-                        <div class="v-desc" style="color: var(--text-primary);"><strong>경관상세계획</strong><br>완료</div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">24. 12</span>
+                        <span class="mono-timeline-desc"><strong>경관상세계획</strong> 완료</span>
                     </div>
                 </div>
             </aside>
-            <main class="content-main">
-                <p class="section-desc">
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
                     8년간 프로젝트는 크게 세 국면으로 진화했습니다. 초기(2016–2021)에는 도시개발 현상설계 당선 후 9개 블럭의 마스터플랜과 디자인 가이드라인을 수립했고, 중기(2022–2023)에는 세계적 건축사 3팀이 참여한 국제공모의 RFP를 직접 제작하여 공모를 총괄했습니다. 후기(2024)에는 Morphosis 선정 후 경관상세계획을 완성하고, M3·M4블럭은 GS건설 수의계약으로 마스터플랜 총괄에서 개별 블럭 실설계까지 역할을 확장했습니다.
                 </p>
-                <ul class="achievements">
+                <ul class="mono-achievements">
                     <li><strong>2,316,643m²</strong> 초대형 마스터플랜 디자인 총괄</li>
                     <li><strong>Foster, Morphosis, GMP</strong> 국제공모 관리</li>
                     <li>Morphosis <strong>최종 선정</strong> 및 협업</li>
@@ -1999,24 +2373,31 @@
                     <li>경관상세계획 수립 및 <strong>심의 완료</strong></li>
                     <li>M3·M4블럭 <strong>GS건설</strong> 수의계약 주상복합 설계</li>
                 </ul>
-                <div class="print-gallery">
-                    <figure class="img-wrap span-2">
+                <div class="mono-gallery">
+                    <figure class="img-wrap span-rows">
                         <img src="img/23_songdo_6_8_masterplan/02_랜드마크타워_인천대교위_1019.jpg" alt="랜드마크타워">
-                        <figcaption class="img-label">01. LANDMARK TOWER</figcaption>
+                        <span class="img-tag">01 — Landmark Tower</span>
                     </figure>
                     <figure class="img-wrap">
                         <img src="img/23_songdo_6_8_masterplan/07_제2랜드마크_1006.jpg" alt="블록 디자인" class="fit-contain">
-                        <figcaption class="img-label">02. BLOCK DESIGN</figcaption>
+                        <span class="img-tag dark">02 — Block Design</span>
                     </figure>
                     <figure class="img-wrap">
                         <img src="img/23_songdo_6_8_masterplan/@10p.png" alt="마스터플랜">
-                        <figcaption class="img-label">03. MASTERPLAN</figcaption>
+                        <span class="img-tag">03 — Masterplan</span>
                     </figure>
                 </div>
             </main>
         </section>
-        <div class="page-index">PROJECT 06 / 07</div>
-        <div class="page-num">PAGE 17</div>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Songdo 6,8 Plot</span>
+                <span>Process · Outputs</span>
+                <span>2016—2024</span>
+            </div>
+            <div>Project 06 / 07 — Page 17</div>
+        </footer>
     </article>
 
 
@@ -2024,143 +2405,142 @@
          PROJECT 07 — 은마아파트
          ════════════════════════════════════════════ -->
 
-    <!-- PAGE 13 -->
-    <article class="page">
-        <header class="hero-image">
+    <!-- PAGE 18 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
             <img src="img/03_daechi_eunma/앞페이지.jpg" alt="은마아파트 조감도" style="object-position: center 40%;">
+            <span class="mono-hero-tag">Project 07 / 07</span>
         </header>
 
-        <section class="hero-title-area">
-            <h1 class="hero-title font-eng uppercase">Eunma <strong>Apartment</strong></h1>
-            <div class="hero-subtitle font-eng uppercase">Premium Residential Redevelopment — First Major Project (Career Origin)</div>
+        <section class="mono-title-block">
+            <h1 class="mono-title">Eunma <strong>Apartment</strong></h1>
+            <div class="mono-subtitle">Premium Residential Redevelopment — First Major Project (Career Origin)</div>
+            <div class="mono-subtitle-kr">은마아파트 재건축 — 4,424세대 / 2016 (첫 대형 프로젝트)</div>
         </section>
 
-        <section class="data-grid">
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Project Overview</h3>
-                <p class="overview-text">
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
                     2016년 희림건축 입사 후 약 1년 뒤 참여한 <strong>첫 대형 재건축 프로젝트</strong>입니다.<br><br>
-                    강남 대치동 <strong>4,424세대</strong> 규모의 프리미엄 재건축 설계공모에서 지하주차장 배치와 부대시설 계획을 담당하고, 처음으로 홍보관에서 조합원들에게 직접 계획안을 설명했습니다. 이 프로젝트의 성공이 이후 <strong>9년간 50여개 프로젝트, 20개 이상 당선</strong>으로 이어지는 설계 경력의 출발점이 되었습니다.
+                    강남 대치동 <strong>4,424세대</strong> 규모의 프리미엄 재건축 설계공모에서 지하주차장 배치와 부대시설 계획을 담당하고, 처음으로 홍보관에서 조합원들에게 직접 계획안을 설명했습니다. 이 프로젝트의 성공이 이후 <strong>약 10년간 33개 프로젝트, 5건의 주요 당선</strong>으로 이어지는 설계 경력의 출발점이 되었습니다.
                 </p>
             </div>
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Specifications</h3>
-                <ul class="info-list">
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Total Units</span>
-                        <div class="kpi-big font-eng">4,424</div>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Location</span>
-                        <span class="info-value">서울특별시 강남구 대치동</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Period</span>
-                        <span class="info-value font-eng">2016.05 — 2016.10</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Career Stage</span>
-                        <span class="info-value">입사 1년차 / 첫 대형 프로젝트</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Result</span>
-                        <span class="info-value"><strong>당선</strong> (총회 통과)</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="data-col">
-                <h3 class="col-title font-eng uppercase">Responsibility</h3>
-                <ul class="info-list">
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 01</span>
-                        <span class="info-value"><strong>주차장 계획</strong> — 지하주차장 배치 참여</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 02</span>
-                        <span class="info-value"><strong>부대시설 계획</strong> — 커뮤니티 시설 배치</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 03</span>
-                        <span class="info-value"><strong>성과물 제출</strong> — 도면 및 도서 작성</span>
-                    </li>
-                    <li class="info-item">
-                        <span class="info-label font-eng uppercase">Role 04</span>
-                        <span class="info-value"><strong>설계공모 프로세스</strong> 전 과정 경험</span>
-                    </li>
-                </ul>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Total Units</span>
+                    <span class="mono-meta-value-big">4,424</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Location</span>
+                    <span class="mono-meta-value">서울 강남구 대치동</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2016.05 — 2016.10</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Career Stage</span>
+                    <span class="mono-meta-value">입사 1년차 / 첫 대형 프로젝트</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Result</span>
+                    <span class="mono-meta-value"><strong>당선</strong> (총회 통과)</span>
+                </div>
             </div>
         </section>
-        <div class="page-index">PROJECT 07 / 07</div>
-        <div class="page-num">PAGE 18</div>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Eunma Apartment</span>
+                <span>Daechi · Seoul</span>
+                <span>2016</span>
+            </div>
+            <div>Project 07 / 07 — Page 18</div>
+        </footer>
     </article>
 
-    <!-- PAGE 14 -->
-    <article class="page">
-        <header class="page-header-simple">
-            <h2 class="page2-title font-eng uppercase">Career <strong>Origin</strong></h2>
-            <span class="page2-tag font-eng uppercase">Eunma Apartment — Large-Scale Reconstruction</span>
+    <!-- PAGE 19 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Career <strong>Origin</strong></h2>
+            <span class="mono-process-projname">Eunma Apartment — Large-Scale Reconstruction</span>
         </header>
-        <section class="page2-layout">
-            <aside class="timeline-sidebar">
-                <div class="sidebar-title font-eng uppercase">Timeline</div>
-                <div class="v-timeline">
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">16. 05</div>
-                        <div class="v-desc">프로젝트 시작<br>배치대안 / 주동계획</div>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">16. 05</span>
+                        <span class="mono-timeline-desc">프로젝트 시작 — 배치대안·주동계획</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">16. 06 — 07</div>
-                        <div class="v-desc">주차장 계획<br>부대시설 계획</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">16. 06 — 07</span>
+                        <span class="mono-timeline-desc">주차장·부대시설 계획</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">16. 07 — 08</div>
-                        <div class="v-desc">성과물 작성<br>CG 작업</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">16. 07 — 08</span>
+                        <span class="mono-timeline-desc">성과물 작성 — CG 작업</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot active"></div>
-                        <div class="v-date">16. 09. 01</div>
-                        <div class="v-desc" style="color: var(--text-primary);"><strong>최종 제출</strong></div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">16. 09. 01</span>
+                        <span class="mono-timeline-desc"><strong>최종 제출</strong></span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot"></div>
-                        <div class="v-date">16. 09</div>
-                        <div class="v-desc">홍보관 운영</div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">16. 09</span>
+                        <span class="mono-timeline-desc">홍보관 운영</span>
                     </div>
-                    <div class="v-item">
-                        <div class="v-dot active"></div>
-                        <div class="v-date">16. 10</div>
-                        <div class="v-desc" style="color: var(--text-primary);"><strong>총회 당선</strong><br>최종 선정</div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">16. 10</span>
+                        <span class="mono-timeline-desc"><strong>총회 당선</strong> — 최종 선정</span>
                     </div>
                 </div>
             </aside>
-            <main class="content-main">
-                <p class="section-desc">
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
                     4,424세대 규모의 지하주차장 배치는 단순한 주차 대수 확보가 아니라, 동선 효율·구조 모듈·환기 계획을 동시에 풀어야 하는 복합 퍼즐이었습니다. 이 과정에서 건축계획이 구조·설비와 어떻게 맞물리는지를 실전으로 체득했고, 홍보관에서 조합원 앞에 서며 설계안을 비전문가에게 설득하는 커뮤니케이션 역량도 함께 쌓았습니다.
                 </p>
-                <ul class="achievements">
+                <ul class="mono-achievements">
                     <li>강남 대치동 <strong>4,424세대</strong> 재건축 총회 <strong>당선</strong></li>
                     <li>입사 1년차 <strong>첫 대형 프로젝트</strong> 성공 — 커리어 출발점</li>
                     <li>지하주차장 배치를 통해 <strong>구조·설비 연계 설계</strong> 실전 체득</li>
                     <li>홍보관 운영 — 조합원 대상 <strong>설계안 프레젠테이션</strong> 경험</li>
                     <li>설계공모 전 과정(배치→제출→홍보→당선) <strong>Full-Cycle</strong> 수행</li>
                 </ul>
-                <div class="print-gallery">
-                    <figure class="img-wrap span-2">
+                <div class="mono-gallery two-up">
+                    <figure class="img-wrap">
                         <img src="img/03_daechi_eunma/뒷페이지.jpg" alt="은마아파트 전경">
-                        <figcaption class="img-label">01. BIRD'S EYE VIEW</figcaption>
+                        <span class="img-tag">01 — Bird's Eye View</span>
                     </figure>
-                    <figure class="img-wrap span-2">
+                    <figure class="img-wrap">
                         <img src="img/03_daechi_eunma/뒷페이지2.png" alt="상세">
-                        <figcaption class="img-label">02. DETAIL VIEW</figcaption>
+                        <span class="img-tag">02 — Detail View</span>
                     </figure>
                 </div>
             </main>
         </section>
-        <div class="page-index">PROJECT 07 / 07</div>
-        <div class="page-num">PAGE 19</div>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Eunma Apartment</span>
+                <span>Origin · Outputs</span>
+                <span>2016</span>
+            </div>
+            <div>Project 07 / 07 — Page 19</div>
+        </footer>
     </article>
 
 </div>
