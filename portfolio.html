@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>건축 포트폴리오 — 희림건축 주요 프로젝트 7선</title>
+    <title>Architecture × AI Practice — JunSeong Park Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -900,6 +900,15 @@
             margin-left: 4px;
             color: var(--text-secondary);
         }
+        .mono-meta-value-sub {
+            display: block;
+            margin-top: 3px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8.5px;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+            color: var(--text-tertiary);
+        }
 
         .mono-foot-band {
             border-top: 1px solid var(--border-dark);
@@ -1103,16 +1112,31 @@
             position: absolute;
             top: 6px;
             left: 8px;
+            padding: 3px 7px;
             color: white;
             font-family: 'Montserrat', sans-serif;
             font-size: 7.5px;
             font-weight: 700;
             letter-spacing: 1.5px;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.45);
+            background: rgba(0, 0, 0, 0.42);
+            backdrop-filter: blur(3px) saturate(1.05);
+            -webkit-backdrop-filter: blur(3px) saturate(1.05);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.35);
         }
         .mono-gallery .img-tag.dark {
             color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.72);
             text-shadow: none;
+        }
+        @media print {
+            .mono-gallery .img-tag {
+                background: rgba(0, 0, 0, 0.55);
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .mono-gallery .img-tag.dark {
+                background: rgba(255, 255, 255, 0.85);
+            }
         }
 
         /* ══════════════════════════════════════
@@ -1147,8 +1171,8 @@
          ════════════════════════════════════════════ -->
     <article class="page cover-page">
         <header class="cover-header">
-            <h1 class="cover-title font-eng uppercase">Architecture<br>Portfolio</h1>
-            <div class="cover-subtitle font-eng uppercase">Selected Works 2016 — 2026</div>
+            <h1 class="cover-title font-eng uppercase">Architecture<br>× AI Practice</h1>
+            <div class="cover-subtitle font-eng uppercase">Selected Works × R&amp;D / 2016 — 2026</div>
         </header>
         <footer class="cover-bottom">
             <div class="cover-info font-eng">
@@ -1341,10 +1365,20 @@
     <article class="page">
         <header class="toc-header">
             <h2 class="toc-title font-eng uppercase">Table of <strong>Contents</strong></h2>
-            <div class="toc-tag font-eng uppercase">Selected Projects (7)</div>
+            <div class="toc-tag font-eng uppercase">Selected (7) + AI Practice</div>
         </header>
 
         <main class="toc-list-wrap">
+            <div class="toc-item">
+                <div class="toc-item-num font-eng">00</div>
+                <div class="toc-item-info">
+                    <div class="toc-item-title font-eng">AI Practice</div>
+                    <div class="toc-item-sub">Architecture × AI · Claude+MCP / Freepik / Custom Tools / 2025—2026</div>
+                </div>
+                <div class="toc-item-img"><img src="img/33_ai_practice/cover.jpg" alt="AI Practice"></div>
+                <div class="toc-item-page font-eng">P.06</div>
+            </div>
+
             <div class="toc-item">
                 <div class="toc-item-num font-eng">01</div>
                 <div class="toc-item-info">
@@ -1352,7 +1386,7 @@
                     <div class="toc-item-sub">반포미도1차 재건축 — 1,750세대 / Design Director</div>
                 </div>
                 <div class="toc-item-img"><img src="img/32_banpo_mido_1/@메인조감 야경_최종.png" alt="Banpo Mido"></div>
-                <div class="toc-item-page font-eng">P.06</div>
+                <div class="toc-item-page font-eng">P.08</div>
             </div>
 
             <div class="toc-item">
@@ -1362,7 +1396,7 @@
                     <div class="toc-item-sub">압구정3구역 재건축 — 4,300세대 / UN Studio 협업</div>
                 </div>
                 <div class="toc-item-img"><img src="img/29_apgujeong_3/01-조감crop.png" alt="Apgujeong"></div>
-                <div class="toc-item-page font-eng">P.08</div>
+                <div class="toc-item-page font-eng">P.10</div>
             </div>
 
             <div class="toc-item">
@@ -1372,7 +1406,7 @@
                     <div class="toc-item-sub">영종 미단시티 — 2,150세대 / 2개 프로젝트, 5개 블럭</div>
                 </div>
                 <div class="toc-item-img"><img src="img/25_midan_a1_a2/스크린샷 2025-07-17 163650.png" alt="Midan City"></div>
-                <div class="toc-item-page font-eng">P.10</div>
+                <div class="toc-item-page font-eng">P.12</div>
             </div>
 
             <div class="toc-item">
@@ -1382,7 +1416,7 @@
                     <div class="toc-item-sub">반포3주구 대안입찰 — Perkins Eastman 협업</div>
                 </div>
                 <div class="toc-item-img"><img src="img/17_banpo_3/03.정면투시_(주경)0407.jpg" alt="Banpo 3rd"></div>
-                <div class="toc-item-page font-eng">P.12</div>
+                <div class="toc-item-page font-eng">P.14</div>
             </div>
 
             <div class="toc-item">
@@ -1392,7 +1426,7 @@
                     <div class="toc-item-sub">평택 브레인시티 주상복합 — 인허가 Full-Cycle</div>
                 </div>
                 <div class="toc-item-img"><img src="img/28_pyeongtaek_braincity_2bl/p22-1215-희림 평택 브레인시티 주상2BL 경관심의_조감도_230120.png" alt="Brain City"></div>
-                <div class="toc-item-page font-eng">P.14</div>
+                <div class="toc-item-page font-eng">P.16</div>
             </div>
 
             <div class="toc-item">
@@ -1402,7 +1436,7 @@
                     <div class="toc-item-sub">송도 마스터플랜 — Morphosis 등 국제공모 관리</div>
                 </div>
                 <div class="toc-item-img"><img src="img/23_songdo_6_8_masterplan/01_전체조감_석경_1018.jpg" alt="Songdo"></div>
-                <div class="toc-item-page font-eng">P.16</div>
+                <div class="toc-item-page font-eng">P.18</div>
             </div>
 
             <div class="toc-item">
@@ -1412,13 +1446,13 @@
                     <div class="toc-item-sub">은마아파트 재건축 — 4,424세대 / 첫 대형 프로젝트</div>
                 </div>
                 <div class="toc-item-img"><img src="img/03_daechi_eunma/앞페이지.jpg" alt="Eunma"></div>
-                <div class="toc-item-page font-eng">P.18</div>
+                <div class="toc-item-page font-eng">P.20</div>
             </div>
         </main>
         <footer class="mono-foot-band">
             <div class="meta-left">
                 <span>JunSeong Park</span>
-                <span>Selected Projects (7)</span>
+                <span>Selected (7) + AI Practice</span>
                 <span>Index</span>
             </div>
             <div>Page 03</div>
@@ -1515,10 +1549,158 @@
 
 
     <!-- ════════════════════════════════════════════
-         PROJECT 01 — 반포미도1차
+         SPECIAL — AI PRACTICE
          ════════════════════════════════════════════ -->
 
     <!-- PAGE 06 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
+            <img src="img/33_ai_practice/cover.jpg" alt="Architecture × AI Practice" style="object-position: center 40%;">
+            <span class="mono-hero-tag">Special Series — AI Practice</span>
+        </header>
+
+        <section class="mono-title-block">
+            <h1 class="mono-title">Architecture × <strong>AI</strong></h1>
+            <div class="mono-subtitle">Internal R&amp;D — AI-Augmented Workflow / Heerim Architecture</div>
+            <div class="mono-subtitle-kr">초기설계 자동화 + 시각화 / 사내 사례발표 + 도구 도입 / 2025—2026</div>
+        </section>
+
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
+                    AI는 설계를 대체하는 도구가 아니라, <strong>초기설계 단계의 반복 검토와 시각화 속도</strong>를 끌어올리는 도구라는 가설로 시작한 사내 R&amp;D 프로젝트입니다.<br><br>
+                    사용자가 정한 부지 조건·법규·프로젝트 목표 안에서 AI가 다수 대안을 탐색·생성·랭킹하면, 사람이 판단하고 다음 작업 단계로 연결합니다. <strong>판단은 사람, 실행은 AI</strong>라는 역할 분담을 전제로, 한 번에 정답을 만드는 것이 아닌 <strong>여러 안을 빠르게 검토</strong>할 수 있게 만드는 것이 핵심입니다.<br><br>
+                    2026.04 본부장·임원진 대상 <strong>사례발표(22슬라이드)</strong>를 통해 두 트랙(<strong>Claude+MCP 매스/CAD 자동화</strong> · <strong>Freepik 시각화 가속</strong>)을 공유했고, 동기간 자체 개발한 규모검토 자동화 툴(apt · complex · hotel)이 사내 표준으로 도입되었습니다.
+                </p>
+            </div>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Tracks</span>
+                    <span class="mono-meta-value-big">2 <span class="unit">tracks</span><span class="mono-meta-value-sub">Claude+MCP · Freepik</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Use Cases</span>
+                    <span class="mono-meta-value-big">6 <span class="unit">cases</span><span class="mono-meta-value-sub">Apt 4단계 · Mixed-use 2단계</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Tools Built</span>
+                    <span class="mono-meta-value-big">4 <span class="unit">tools</span><span class="mono-meta-value-sub">apt · complex · hotel · apt_placement</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Stack</span>
+                    <span class="mono-meta-value">Claude Code · MCP · Rhino · Freepik</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Audience</span>
+                    <span class="mono-meta-value">본부장·임원진 / 주거2본부</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2025 — 2026</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>AI Practice</span>
+                <span>Internal R&amp;D · Heerim</span>
+                <span>2025—2026</span>
+            </div>
+            <div>Special — Page 06</div>
+        </footer>
+    </article>
+
+    <!-- PAGE 07 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Practice <strong>Workflow</strong></h2>
+            <span class="mono-process-projname">Architecture × AI — Two Tracks &amp; Roadmap</span>
+        </header>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 06</span>
+                        <span class="mono-timeline-desc">Track A 프로토타입 — apt.html v0</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 10</span>
+                        <span class="mono-timeline-desc"><strong>Rhino MCP 연동</strong> — 매스 자동화 가동</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 12</span>
+                        <span class="mono-timeline-desc">Track B (Freepik) 워크플로 정착</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">26. 02</span>
+                        <span class="mono-timeline-desc"><strong>apt_placement Stage 1</strong> — 데이터셋 구축</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">26. 04</span>
+                        <span class="mono-timeline-desc"><strong>본부 사례발표 v9_2</strong> — 22슬라이드</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">26. 05</span>
+                        <span class="mono-timeline-desc">apt · complex · hotel 사내 표준 적용</span>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
+                    두 트랙으로 운영합니다. <strong>Track A — Claude + MCP</strong>는 부지조건·법규·목표 3축 입력을 받아 배치대안을 탐색·랭킹하고, 선택안을 그대로 Rhino 매스로 연결합니다. 이미지에서 끝나지 않고 다음 작업 단계로 이어진다는 점이 핵심입니다. <strong>Track B — Freepik</strong>은 매스 한 장을 회전 조감·눈높이 투시·짧은 영상으로 빠르게 변환합니다. 검토와 전달이 분리된 업무가 아닌 <strong>하나의 흐름</strong>으로 이어지며, 다음 단계는 도면·BIM 영역 확장입니다.
+                </p>
+                <ul class="mono-achievements">
+                    <li><strong>Track A</strong> — 공동주택 4단계(Ranking → Mass → CAD → Wrap) + 주상복합 2단계 워크플로 정립</li>
+                    <li><strong>Track B</strong> — 시각화 작업 시간 수일 → 수 시간 단축 (정성 평가)</li>
+                    <li><strong>Custom Tools</strong> — apt.html · complex.html · hotel_layout.html 사내 표준 도입</li>
+                    <li><strong>ML Pipeline</strong> — 한국 공동주택 준공 배치 학습용 apt_placement Stage 1 구축</li>
+                    <li><strong>사례 발표</strong> — v9_2 22슬라이드 / 본부장·임원진 청중 / 2026.04</li>
+                </ul>
+                <div class="mono-gallery two-up">
+                    <figure class="img-wrap">
+                        <img src="img/33_ai_practice/track-a.jpg" alt="Track A — Mass model output">
+                        <span class="img-tag">01 — Track A · Mass Model</span>
+                    </figure>
+                    <figure class="img-wrap">
+                        <img src="img/33_ai_practice/track-b.jpg" alt="Track B — Perspective output">
+                        <span class="img-tag">02 — Track B · Perspective</span>
+                    </figure>
+                </div>
+            </main>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>AI Practice</span>
+                <span>Workflow · Tracks · Roadmap</span>
+                <span>2025—2026</span>
+            </div>
+            <div>Special — Page 07</div>
+        </footer>
+    </article>
+
+
+    <!-- ════════════════════════════════════════════
+         PROJECT 01 — 반포미도1차
+         ════════════════════════════════════════════ -->
+
+    <!-- PAGE 08 -->
     <article class="page mono-page">
         <header class="mono-hero">
             <img src="img/32_banpo_mido_1/@메인조감 야경_최종.png" alt="반포미도1차 조감도" style="object-position: center 30%;">
@@ -1547,7 +1729,7 @@
                 </div>
                 <div class="mono-meta-row">
                     <span class="mono-meta-label">Gross Floor Area</span>
-                    <span class="mono-meta-value-big">361K <span class="unit">m²</span></span>
+                    <span class="mono-meta-value-big">361,000 <span class="unit">m²</span><span class="mono-meta-value-sub">약 10.9만 평</span></span>
                 </div>
                 <div class="mono-meta-row">
                     <span class="mono-meta-label">Location</span>
@@ -1570,11 +1752,11 @@
                 <span>Banpo · Seoul</span>
                 <span>2025</span>
             </div>
-            <div>Project 01 / 07 — Page 06</div>
+            <div>Project 01 / 07 — Page 08</div>
         </footer>
     </article>
 
-    <!-- PAGE 07 -->
+    <!-- PAGE 09 -->
     <article class="page mono-page">
         <header class="mono-process-header">
             <h2 class="mono-process-title">Design <strong>Process</strong></h2>
@@ -1599,7 +1781,7 @@
                 <div class="mono-timeline-item">
                     <div class="mono-timeline-item-content">
                         <span class="mono-timeline-date">25. 04</span>
-                        <span class="mono-timeline-desc">매주 회장 보고 — 계획안 디벨럽</span>
+                        <span class="mono-timeline-desc">경영진 주간 보고 — 계획안 고도화</span>
                     </div>
                 </div>
                 <div class="mono-timeline-item">
@@ -1662,7 +1844,7 @@
                 <span>Process · Outputs</span>
                 <span>2025</span>
             </div>
-            <div>Project 01 / 07 — Page 07</div>
+            <div>Project 01 / 07 — Page 09</div>
         </footer>
     </article>
 
@@ -1671,7 +1853,7 @@
          PROJECT 02 — 압구정3구역
          ════════════════════════════════════════════ -->
 
-    <!-- PAGE 08 -->
+    <!-- PAGE 10 -->
     <article class="page mono-page">
         <header class="mono-hero">
             <img src="img/29_apgujeong_3/01-조감crop.png" alt="압구정3구역 조감도" style="object-position: center 30%;">
@@ -1700,7 +1882,7 @@
                 </div>
                 <div class="mono-meta-row">
                     <span class="mono-meta-label">Gross Floor Area</span>
-                    <span class="mono-meta-value-big">1.32M <span class="unit">m²</span></span>
+                    <span class="mono-meta-value-big">1,320,000 <span class="unit">m²</span><span class="mono-meta-value-sub">약 39.9만 평</span></span>
                 </div>
                 <div class="mono-meta-row">
                     <span class="mono-meta-label">Location</span>
@@ -1723,11 +1905,11 @@
                 <span>Apgujeong · Seoul</span>
                 <span>2023</span>
             </div>
-            <div>Project 02 / 07 — Page 08</div>
+            <div>Project 02 / 07 — Page 10</div>
         </footer>
     </article>
 
-    <!-- PAGE 09 -->
+    <!-- PAGE 11 -->
     <article class="page mono-page">
         <header class="mono-process-header">
             <h2 class="mono-process-title">Design <strong>Process</strong></h2>
@@ -1805,7 +1987,7 @@
                 <span>Process · Outputs</span>
                 <span>2023</span>
             </div>
-            <div>Project 02 / 07 — Page 09</div>
+            <div>Project 02 / 07 — Page 11</div>
         </footer>
     </article>
 
@@ -1814,7 +1996,7 @@
          PROJECT 03 — 영종 미단시티
          ════════════════════════════════════════════ -->
 
-    <!-- PAGE 10 -->
+    <!-- PAGE 12 -->
     <article class="page mono-page">
         <header class="mono-hero">
             <img src="img/26_midan_4_5_6/그림18.jpg" alt="미단시티 조감도">
@@ -1843,7 +2025,7 @@
                 </div>
                 <div class="mono-meta-row">
                     <span class="mono-meta-label">Gross Floor Area</span>
-                    <span class="mono-meta-value-big">375K <span class="unit">m²</span></span>
+                    <span class="mono-meta-value-big">375,000 <span class="unit">m²</span><span class="mono-meta-value-sub">약 11.3만 평</span></span>
                 </div>
                 <div class="mono-meta-row">
                     <span class="mono-meta-label">Location</span>
@@ -1866,11 +2048,11 @@
                 <span>Yeongjong · Incheon</span>
                 <span>2021—2023</span>
             </div>
-            <div>Project 03 / 07 — Page 10</div>
+            <div>Project 03 / 07 — Page 12</div>
         </footer>
     </article>
 
-    <!-- PAGE 11 -->
+    <!-- PAGE 13 -->
     <article class="page mono-page">
         <header class="mono-process-header">
             <h2 class="mono-process-title">Design <strong>Process</strong></h2>
@@ -1952,7 +2134,7 @@
                 <span>Process · Outputs</span>
                 <span>2021—2023</span>
             </div>
-            <div>Project 03 / 07 — Page 11</div>
+            <div>Project 03 / 07 — Page 13</div>
         </footer>
     </article>
 
@@ -1961,7 +2143,7 @@
          PROJECT 04 — 반포 3주구
          ════════════════════════════════════════════ -->
 
-    <!-- PAGE 12 -->
+    <!-- PAGE 14 -->
     <article class="page mono-page">
         <header class="mono-hero">
             <img src="img/17_banpo_3/03.정면투시_(주경)0407.jpg" alt="반포3주구 투시도" class="fit-contain">
@@ -1986,7 +2168,7 @@
                 <h3 class="col-title">Specifications</h3>
                 <div class="mono-meta-row">
                     <span class="mono-meta-label">Gross Floor Area</span>
-                    <span class="mono-meta-value-big">439K <span class="unit">m²</span></span>
+                    <span class="mono-meta-value-big">439,000 <span class="unit">m²</span><span class="mono-meta-value-sub">약 13.3만 평</span></span>
                 </div>
                 <div class="mono-meta-row">
                     <span class="mono-meta-label">Location</span>
@@ -2013,11 +2195,11 @@
                 <span>Banpo · Seoul</span>
                 <span>2020</span>
             </div>
-            <div>Project 04 / 07 — Page 12</div>
+            <div>Project 04 / 07 — Page 14</div>
         </footer>
     </article>
 
-    <!-- PAGE 13 -->
+    <!-- PAGE 15 -->
     <article class="page mono-page">
         <header class="mono-process-header">
             <h2 class="mono-process-title">Design <strong>Process</strong></h2>
@@ -2101,7 +2283,7 @@
                 <span>Process · Outputs</span>
                 <span>2020</span>
             </div>
-            <div>Project 04 / 07 — Page 13</div>
+            <div>Project 04 / 07 — Page 15</div>
         </footer>
     </article>
 
@@ -2110,7 +2292,7 @@
          PROJECT 05 — 평택 브레인시티
          ════════════════════════════════════════════ -->
 
-    <!-- PAGE 14 -->
+    <!-- PAGE 16 -->
     <article class="page mono-page">
         <header class="mono-hero">
             <img src="img/28_pyeongtaek_braincity_2bl/p22-1215-희림 평택 브레인시티 주상2BL 경관심의_조감도_230120.png" alt="평택 브레인시티 조감도">
@@ -2135,7 +2317,7 @@
                 <h3 class="col-title">Specifications</h3>
                 <div class="mono-meta-row">
                     <span class="mono-meta-label">Gross Floor Area</span>
-                    <span class="mono-meta-value-big">161K <span class="unit">m²</span></span>
+                    <span class="mono-meta-value-big">161,000 <span class="unit">m²</span><span class="mono-meta-value-sub">약 4.9만 평</span></span>
                 </div>
                 <div class="mono-meta-row">
                     <span class="mono-meta-label">Location</span>
@@ -2162,11 +2344,11 @@
                 <span>Pyeongtaek · Gyeonggi</span>
                 <span>2022—2023</span>
             </div>
-            <div>Project 05 / 07 — Page 14</div>
+            <div>Project 05 / 07 — Page 16</div>
         </footer>
     </article>
 
-    <!-- PAGE 15 -->
+    <!-- PAGE 17 -->
     <article class="page mono-page">
         <header class="mono-process-header">
             <h2 class="mono-process-title">Approval <strong>Process</strong></h2>
@@ -2248,7 +2430,7 @@
                 <span>Approvals · Outputs</span>
                 <span>2022—2023</span>
             </div>
-            <div>Project 05 / 07 — Page 15</div>
+            <div>Project 05 / 07 — Page 17</div>
         </footer>
     </article>
 
@@ -2257,7 +2439,7 @@
          PROJECT 06 — 송도 마스터플랜
          ════════════════════════════════════════════ -->
 
-    <!-- PAGE 16 -->
+    <!-- PAGE 18 -->
     <article class="page mono-page">
         <header class="mono-hero">
             <img src="img/23_songdo_6_8_masterplan/01_전체조감_석경_1018.jpg" alt="송도 마스터플랜 조감도">
@@ -2282,7 +2464,7 @@
                 <h3 class="col-title">Specifications</h3>
                 <div class="mono-meta-row">
                     <span class="mono-meta-label">Gross Floor Area</span>
-                    <span class="mono-meta-value-big">2.3M <span class="unit">m²</span></span>
+                    <span class="mono-meta-value-big">2,300,000 <span class="unit">m²</span><span class="mono-meta-value-sub">약 69.6만 평</span></span>
                 </div>
                 <div class="mono-meta-row">
                     <span class="mono-meta-label">Blocks</span>
@@ -2309,11 +2491,11 @@
                 <span>Songdo · Incheon</span>
                 <span>2016—2024</span>
             </div>
-            <div>Project 06 / 07 — Page 16</div>
+            <div>Project 06 / 07 — Page 18</div>
         </footer>
     </article>
 
-    <!-- PAGE 17 -->
+    <!-- PAGE 19 -->
     <article class="page mono-page">
         <header class="mono-process-header">
             <h2 class="mono-process-title">Master <strong>Plan</strong></h2>
@@ -2396,7 +2578,7 @@
                 <span>Process · Outputs</span>
                 <span>2016—2024</span>
             </div>
-            <div>Project 06 / 07 — Page 17</div>
+            <div>Project 06 / 07 — Page 19</div>
         </footer>
     </article>
 
@@ -2405,10 +2587,10 @@
          PROJECT 07 — 은마아파트
          ════════════════════════════════════════════ -->
 
-    <!-- PAGE 18 -->
+    <!-- PAGE 20 -->
     <article class="page mono-page">
         <header class="mono-hero">
-            <img src="img/03_daechi_eunma/앞페이지.jpg" alt="은마아파트 조감도" style="object-position: center 40%;">
+            <img src="img/03_daechi_eunma/뒷페이지.jpg" alt="은마아파트 조감도">
             <span class="mono-hero-tag">Project 07 / 07</span>
         </header>
 
@@ -2457,11 +2639,11 @@
                 <span>Daechi · Seoul</span>
                 <span>2016</span>
             </div>
-            <div>Project 07 / 07 — Page 18</div>
+            <div>Project 07 / 07 — Page 20</div>
         </footer>
     </article>
 
-    <!-- PAGE 19 -->
+    <!-- PAGE 21 -->
     <article class="page mono-page">
         <header class="mono-process-header">
             <h2 class="mono-process-title">Career <strong>Origin</strong></h2>
@@ -2539,7 +2721,7 @@
                 <span>Origin · Outputs</span>
                 <span>2016</span>
             </div>
-            <div>Project 07 / 07 — Page 19</div>
+            <div>Project 07 / 07 — Page 21</div>
         </footer>
     </article>
 
