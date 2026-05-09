@@ -804,6 +804,51 @@
             text-transform: uppercase;
             text-shadow: 0 1px 4px rgba(0,0,0,0.45);
         }
+        .mono-hero-tag.dark {
+            color: var(--text-secondary);
+            text-shadow: none;
+        }
+
+        /* 이미지 없이 타이포그래피로 채우는 hero */
+        .mono-hero.text-hero {
+            background: var(--bg-base);
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 20mm;
+        }
+        .text-hero-quote {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 56px;
+            line-height: 1.02;
+            letter-spacing: -2px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+        }
+        .text-hero-line { display: block; }
+        .text-hero-line em {
+            font-style: normal;
+            font-weight: 300;
+            color: var(--text-tertiary);
+            font-size: 0.6em;
+            letter-spacing: 0;
+            text-transform: lowercase;
+            padding: 0 4px;
+        }
+        .text-hero-foot {
+            position: absolute;
+            bottom: 11mm;
+            left: 20mm;
+            font-size: 10px;
+            color: var(--text-secondary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
 
         .mono-title-block {
             padding: 11mm 20mm 7mm 20mm;
@@ -986,6 +1031,30 @@
             text-transform: uppercase;
             margin-bottom: 4px;
         }
+        .mono-timeline-legend {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7px;
+            color: var(--text-tertiary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .mono-timeline-legend span {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .legend-dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border: 1px solid var(--text-primary);
+            border-radius: 50%;
+            background: white;
+        }
+        .legend-dot-key { background: var(--text-primary); }
         .mono-timeline-item {
             display: flex;
             gap: 10px;
@@ -1171,8 +1240,8 @@
          ════════════════════════════════════════════ -->
     <article class="page cover-page">
         <header class="cover-header">
-            <h1 class="cover-title font-eng uppercase">Architecture<br>× AI Practice</h1>
-            <div class="cover-subtitle font-eng uppercase">Selected Works × R&amp;D / 2016 — 2026</div>
+            <h1 class="cover-title font-eng uppercase">Architecture</h1>
+            <div class="cover-subtitle font-eng uppercase">Selected Works / 2016 — 2026</div>
         </header>
         <footer class="cover-bottom">
             <div class="cover-info font-eng">
@@ -1466,7 +1535,7 @@
         <header class="works-header">
             <div class="works-title-area">
                 <h2 class="works-title font-eng uppercase">All <strong>Works</strong></h2>
-                <div class="works-tag font-eng uppercase">33 Projects — Heerim Architecture (2016 — 2026)</div>
+                <div class="works-tag font-eng uppercase">33 Selected · 7 In Depth — Heerim Architecture (2016 — 2026)</div>
             </div>
             <div class="works-tag font-eng uppercase">Part 1</div>
         </header>
@@ -1509,7 +1578,7 @@
         <header class="works-header">
             <div class="works-title-area">
                 <h2 class="works-title font-eng uppercase">All <strong>Works</strong></h2>
-                <div class="works-tag font-eng uppercase">33 Projects — Heerim Architecture (2016 — 2026)</div>
+                <div class="works-tag font-eng uppercase">33 Selected · 7 In Depth — Heerim Architecture (2016 — 2026)</div>
             </div>
             <div class="works-tag font-eng uppercase">Part 2</div>
         </header>
@@ -1554,9 +1623,15 @@
 
     <!-- PAGE 06 -->
     <article class="page mono-page">
-        <header class="mono-hero">
-            <img src="img/33_ai_practice/cover.jpg" alt="Architecture × AI Practice" style="object-position: center 40%;">
-            <span class="mono-hero-tag">Special Series — AI Practice</span>
+        <header class="mono-hero text-hero">
+            <span class="mono-hero-tag dark">Special Series — AI Practice</span>
+            <div class="text-hero-quote">
+                <span class="text-hero-line">JUDGMENT</span>
+                <span class="text-hero-line"><em>by</em> HUMAN.</span>
+                <span class="text-hero-line">EXECUTION</span>
+                <span class="text-hero-line"><em>by</em> AI.</span>
+            </div>
+            <span class="text-hero-foot font-eng">Internal R&amp;D · 2025—2026</span>
         </header>
 
         <section class="mono-title-block">
@@ -1623,6 +1698,10 @@
         <section class="mono-process-body">
             <aside class="mono-timeline">
                 <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-legend">
+                    <span><i class="legend-dot legend-dot-key"></i>Key</span>
+                    <span><i class="legend-dot"></i>Step</span>
+                </div>
                 <div class="mono-timeline-item">
                     <div class="mono-timeline-item-content">
                         <span class="mono-timeline-date">25. 06</span>
@@ -1766,6 +1845,10 @@
         <section class="mono-process-body">
             <aside class="mono-timeline">
                 <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-legend">
+                    <span><i class="legend-dot legend-dot-key"></i>Key</span>
+                    <span><i class="legend-dot"></i>Step</span>
+                </div>
                 <div class="mono-timeline-item">
                     <div class="mono-timeline-item-content">
                         <span class="mono-timeline-date">25. 03. 07</span>
@@ -1919,6 +2002,10 @@
         <section class="mono-process-body">
             <aside class="mono-timeline">
                 <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-legend">
+                    <span><i class="legend-dot legend-dot-key"></i>Key</span>
+                    <span><i class="legend-dot"></i>Step</span>
+                </div>
                 <div class="mono-timeline-item">
                     <div class="mono-timeline-item-content">
                         <span class="mono-timeline-date">23. 03</span>
@@ -2062,6 +2149,10 @@
         <section class="mono-process-body">
             <aside class="mono-timeline">
                 <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-legend">
+                    <span><i class="legend-dot legend-dot-key"></i>Key</span>
+                    <span><i class="legend-dot"></i>Step</span>
+                </div>
                 <div class="mono-timeline-item is-key">
                     <div class="mono-timeline-item-content">
                         <span class="mono-timeline-date">21. 11</span>
@@ -2209,6 +2300,10 @@
         <section class="mono-process-body">
             <aside class="mono-timeline">
                 <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-legend">
+                    <span><i class="legend-dot legend-dot-key"></i>Key</span>
+                    <span><i class="legend-dot"></i>Step</span>
+                </div>
                 <div class="mono-timeline-item">
                     <div class="mono-timeline-item-content">
                         <span class="mono-timeline-date">20. 02. 10</span>
@@ -2270,7 +2365,7 @@
                         <span class="img-tag">01 — Bird's Eye View</span>
                     </figure>
                     <figure class="img-wrap">
-                        <img src="img/17_banpo_3/페이지_ 0227_지하주차장 검토_15h.jpg" alt="지하주차장">
+                        <img src="img/17_banpo_3/페이지_ 0227_지하주차장 검토_15h.jpg" alt="지하주차장" class="fit-contain">
                         <span class="img-tag">02 — Parking Plan</span>
                     </figure>
                 </div>
@@ -2358,6 +2453,10 @@
         <section class="mono-process-body">
             <aside class="mono-timeline">
                 <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-legend">
+                    <span><i class="legend-dot legend-dot-key"></i>Key</span>
+                    <span><i class="legend-dot"></i>Step</span>
+                </div>
                 <div class="mono-timeline-item is-key">
                     <div class="mono-timeline-item-content">
                         <span class="mono-timeline-date">22. 07</span>
@@ -2413,7 +2512,7 @@
                         <span class="img-tag">01 — Bird's Eye View</span>
                     </figure>
                     <figure class="img-wrap">
-                        <img src="img/28_pyeongtaek_braincity_2bl/p23-0604-희림 평택 브레인시티 주상2BL 경관심의 4차_배치도_230620_2.png" alt="배치도">
+                        <img src="img/28_pyeongtaek_braincity_2bl/p23-0604-희림 평택 브레인시티 주상2BL 경관심의 4차_배치도_230620_2.png" alt="배치도" class="fit-contain">
                         <span class="img-tag dark">02 — Site Plan</span>
                     </figure>
                     <figure class="img-wrap">
@@ -2505,6 +2604,10 @@
         <section class="mono-process-body">
             <aside class="mono-timeline">
                 <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-legend">
+                    <span><i class="legend-dot legend-dot-key"></i>Key</span>
+                    <span><i class="legend-dot"></i>Step</span>
+                </div>
                 <div class="mono-timeline-item is-key">
                     <div class="mono-timeline-item-content">
                         <span class="mono-timeline-date">16. 11</span>
@@ -2565,7 +2668,7 @@
                         <span class="img-tag dark">02 — Block Design</span>
                     </figure>
                     <figure class="img-wrap">
-                        <img src="img/23_songdo_6_8_masterplan/@10p.png" alt="마스터플랜">
+                        <img src="img/23_songdo_6_8_masterplan/@10p.png" alt="마스터플랜" class="fit-contain">
                         <span class="img-tag">03 — Masterplan</span>
                     </figure>
                 </div>
@@ -2647,12 +2750,16 @@
     <article class="page mono-page">
         <header class="mono-process-header">
             <h2 class="mono-process-title">Career <strong>Origin</strong></h2>
-            <span class="mono-process-projname">Eunma Apartment — Large-Scale Reconstruction</span>
+            <span class="mono-process-projname">Eunma Apartment — Where it all started · 2016</span>
         </header>
 
         <section class="mono-process-body">
             <aside class="mono-timeline">
                 <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-legend">
+                    <span><i class="legend-dot legend-dot-key"></i>Key</span>
+                    <span><i class="legend-dot"></i>Step</span>
+                </div>
                 <div class="mono-timeline-item">
                     <div class="mono-timeline-item-content">
                         <span class="mono-timeline-date">16. 05</span>
@@ -2708,7 +2815,7 @@
                         <span class="img-tag">01 — Bird's Eye View</span>
                     </figure>
                     <figure class="img-wrap">
-                        <img src="img/03_daechi_eunma/뒷페이지2.png" alt="상세">
+                        <img src="img/03_daechi_eunma/뒷페이지2.png" alt="상세" class="fit-contain">
                         <span class="img-tag">02 — Detail View</span>
                     </figure>
                 </div>
