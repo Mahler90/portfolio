@@ -1,0 +1,2898 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture × AI Practice — JunSeong Park Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+
+    <style>
+        :root {
+            --bg-base: #ffffff;
+            --bg-surface: #f6f6f4;
+            --text-primary: #14110d;
+            --text-secondary: #4a4641;
+            --accent: oklch(0.42 0.12 28);
+            --accent-soft: oklch(0.42 0.12 28 / 0.07);
+            --text-tertiary: #a8a59f;
+            --border-light: #e6e3dc;
+            --border-dark: #14110d;
+
+            --paper:     var(--bg-base);
+            --ink:       var(--text-primary);
+            --ink-2:     var(--text-secondary);
+            --ink-3:     var(--text-tertiary);
+            --rule:      var(--border-dark);
+            --serif:     'EB Garamond', 'Times New Roman', serif;
+            --sans:      'Pretendard Variable', 'Inter', 'Noto Sans KR', system-ui, sans-serif;
+            --mono-meta: 'Inter', system-ui, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #e8e8e8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            font-family: var(--sans);
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        .portfolio-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            transform-origin: top center;
+        }
+
+        @media screen and (max-width: 900px) {
+            .portfolio-wrapper { transform: scale(0.8); margin-bottom: -10%; }
+        }
+        @media screen and (max-width: 600px) {
+            .portfolio-wrapper { transform: scale(0.5); margin-bottom: -40%; }
+        }
+
+        /* ── A4 페이지 ── */
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: var(--paper);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            font-feature-settings: "ss01","liga","kern";
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .ital { font-style: italic; font-family: var(--serif); }
+
+        /* ── 폰트 유틸리티 ── */
+        .font-eng { font-family: 'Montserrat', sans-serif; }
+        .uppercase { text-transform: uppercase; letter-spacing: 1.5px; }
+
+        /* ══════════════════════════════════════
+           PAGE TYPE 1 — 히어로 + 3단 그리드
+           ══════════════════════════════════════ */
+        .hero-image {
+            width: 100%;
+            height: 40%;
+            position: relative;
+            background: var(--bg-surface);
+        }
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        /* 이미지 없을 때 플레이스홀더 */
+        .hero-image .placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-surface);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .hero-image .placeholder span {
+            font-size: 11px;
+            color: var(--text-secondary);
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero-title-area {
+            padding: 12mm 15mm;
+            border-bottom: 2px solid var(--border-dark);
+        }
+        .hero-title {
+            font-size: 34px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+        .hero-title strong { font-weight: 700; }
+        .hero-subtitle {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            flex: 1;
+            padding-bottom: 10mm;
+        }
+        .data-col {
+            padding: 10mm 12mm;
+            border-right: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+        }
+        .data-col:last-child { border-right: none; }
+
+        .col-title {
+            font-size: 9px;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .col-title::before {
+            content: '';
+            display: block;
+            width: 12px;
+            height: 2px;
+            background: var(--text-primary);
+            flex-shrink: 0;
+        }
+
+        .overview-text {
+            font-size: 10px;
+            line-height: 1.85;
+            color: var(--text-secondary);
+            font-weight: 400;
+            text-align: justify;
+            word-break: keep-all;
+        }
+        .overview-text strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .info-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .info-label {
+            font-size: 8px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+        .info-value {
+            font-size: 10px;
+            font-weight: 400;
+            line-height: 1.4;
+            word-break: keep-all;
+        }
+        .info-value strong {
+            font-weight: 600;
+        }
+
+        .kpi-big {
+            font-size: 28px;
+            font-weight: 300;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+            line-height: 1;
+        }
+        .kpi-unit {
+            font-size: 11px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* ══════════════════════════════════════
+           PAGE TYPE 2 — 타임라인 + 갤러리
+           ══════════════════════════════════════ */
+        .page-header-simple {
+            padding: 12mm 15mm 8mm 15mm;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .page2-title {
+            font-size: 22px;
+            font-weight: 300;
+        }
+        .page2-title strong { font-weight: 700; }
+
+        .page2-tag {
+            font-size: 9px;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+        }
+
+        .page2-layout { display: flex; flex: 1; }
+
+        /* 좌측 타임라인 사이드바 */
+        .timeline-sidebar {
+            width: 28%;
+            border-right: 1px solid var(--border-light);
+            padding: 10mm 12mm 14mm 12mm;
+            background: var(--bg-base);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-title {
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sidebar-title::before {
+            content: '';
+            display: block;
+            width: 12px;
+            height: 2px;
+            background: var(--text-primary);
+            flex-shrink: 0;
+        }
+
+        .v-timeline {
+            position: relative;
+            padding-left: 15px;
+            border-left: 1px solid var(--border-light);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .v-item { position: relative; }
+
+        .v-dot {
+            position: absolute;
+            left: -19px;
+            top: 5px;
+            width: 7px;
+            height: 7px;
+            background: var(--bg-base);
+            border: 2px solid var(--text-secondary);
+            border-radius: 50%;
+        }
+        .v-dot.active {
+            background: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+
+        .v-date {
+            font-size: 9px;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 3px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .v-desc {
+            font-size: 9px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            font-weight: 400;
+            word-break: keep-all;
+        }
+
+        /* 우측 콘텐츠 */
+        .content-main {
+            width: 72%;
+            padding: 10mm 15mm 14mm 15mm;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-desc {
+            font-size: 10px;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            font-weight: 400;
+            margin-bottom: 15px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        /* 성과 리스트 */
+        .achievements {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 15px;
+            padding: 10px 12px;
+            background: var(--bg-surface);
+            border-left: 2px solid var(--border-dark);
+        }
+        .achievements li {
+            font-size: 9px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding-left: 10px;
+            position: relative;
+            word-break: keep-all;
+        }
+        .achievements li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--text-primary);
+        }
+        .achievements li strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* 갤러리 */
+        .print-gallery {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1.2fr 1fr;
+            gap: 10px;
+        }
+
+        .img-wrap {
+            background: var(--bg-surface);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            break-inside: avoid;
+        }
+        .img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .img-wrap.span-2 { grid-column: 1 / -1; }
+
+        .img-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            font-size: 8px;
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.92);
+            padding: 5px 8px;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+            font-weight: 500;
+            border-top: 1px solid var(--border-light);
+            border-right: 1px solid var(--border-light);
+        }
+
+        /* 이미지 플레이스홀더 */
+        .img-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-surface);
+        }
+        .img-placeholder span {
+            font-size: 9px;
+            color: #bbb;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* 이미지 비율 보정 유틸리티 */
+        .fit-contain {
+            object-fit: contain !important;
+            background: var(--bg-surface);
+        }
+        .fit-wide {
+            object-position: center center !important;
+        }
+
+        /* 페이지 번호 */
+        .page-num {
+            position: absolute;
+            bottom: 8mm;
+            right: 12mm;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            letter-spacing: 2px;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2px 6px;
+            border-radius: 2px;
+        }
+        /* 좌측 프로젝트 인덱스 */
+        .page-index {
+            position: absolute;
+            bottom: 8mm;
+            left: 12mm;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8px;
+            color: #bbb;
+            font-weight: 400;
+            letter-spacing: 1px;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2px 6px;
+            border-radius: 2px;
+        }
+
+        /* ══════════════════════════════════════
+           FRAME PAGES — Cover C / CV A / TOC B
+           El Croquis tone · paper · oxblood accent
+           ══════════════════════════════════════ */
+
+        /* === COVER C — INDEX === */
+        .cv-c {
+            padding: 22mm 22mm;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            gap: 8mm;
+        }
+        .cv-c .topbar {
+            display: flex; justify-content: space-between;
+            font-family: var(--mono-meta); font-size: 8.5px;
+            letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3);
+        }
+        .cv-c .topbar .accent-mark { color: var(--accent); font-weight: 700; }
+        .cv-c .center {
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center; gap: 14px;
+        }
+        .cv-c .name {
+            font-family: var(--serif); font-weight: 500;
+            font-size: 40px; line-height: 1.1; letter-spacing: -0.6px;
+            color: var(--ink);
+        }
+        .cv-c .name em { font-style: italic; color: var(--accent); font-weight: 500; }
+        .cv-c .tag {
+            font-family: var(--mono-meta); font-size: 9px;
+            letter-spacing: 0.36em; text-transform: uppercase; color: var(--ink-3);
+        }
+        .cv-c .footline {
+            display: flex; justify-content: space-between; align-items: baseline;
+            padding-top: 5mm; border-top: 0.5px solid var(--border-light);
+            font-family: var(--mono-meta); font-size: 8.5px;
+            letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2);
+        }
+
+        /* === CV A — EDITORIAL === */
+        .cva-a { padding: 22mm 22mm; display: grid; grid-template-rows: auto auto 1fr auto; gap: 10mm; }
+        .cva-a .topbar { display: flex; justify-content: space-between; font-family: var(--mono-meta); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-2); border-bottom: 0.5px solid var(--rule); padding-bottom: 5mm; }
+        .cva-a .masthead { display: grid; grid-template-columns: 1fr auto; gap: 14mm; align-items: end; }
+        .cva-a .masthead h1 { font-family: var(--serif); font-weight: 400; font-size: 64px; line-height: 0.95; letter-spacing: -0.015em; }
+        .cva-a .masthead h1 em { font-style: italic; color: var(--accent); }
+        .cva-a .masthead .role { font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--ink-2); margin-top: 4mm; }
+        .cva-a .portrait { width: 38mm; height: 50mm; background: var(--ink-3); overflow: hidden; }
+        .cva-a .portrait img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
+        .cva-a .body { display: grid; grid-template-columns: 38mm 1fr; gap: 10mm; }
+        .cva-a .meta { display: flex; flex-direction: column; gap: 8mm; }
+        .cva-a .meta-block h3 { font-family: var(--mono-meta); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); margin-bottom: 4mm; }
+        .cva-a .meta-block ul { list-style: none; display: flex; flex-direction: column; gap: 3mm; }
+        .cva-a .meta-block li { font-family: var(--mono-meta); font-size: 10px; line-height: 1.45; color: var(--ink-2); }
+        .cva-a .meta-block li strong { color: var(--ink); font-weight: 600; display: block; font-size: 8.5px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1mm; }
+        .cva-a .meta-block .skill-row { display: flex; justify-content: space-between; padding: 1.5mm 0; border-bottom: 0.5px dashed var(--ink-3); }
+        .cva-a .meta-block .skill-row:last-child { border-bottom: none; }
+        .cva-a .meta-block .skill-row .yr { color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+        .cva-a .skill-cat { display: flex; flex-direction: column; gap: 4mm; }
+        .cva-a .skill-cat-row { display: flex; flex-direction: column; gap: 1.5mm; padding-bottom: 3mm; border-bottom: 0.5px dashed var(--ink-3); }
+        .cva-a .skill-cat-row:last-child { border-bottom: none; padding-bottom: 0; }
+        .cva-a .skill-cat-label { font-family: var(--mono-meta); font-size: 7.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); }
+        .cva-a .skill-cat-row.is-focus .skill-cat-label { color: var(--accent); }
+        .cva-a .skill-cat-tools { font-family: var(--mono-meta); font-size: 10px; font-weight: 500; color: var(--ink); line-height: 1.5; word-break: keep-all; }
+        .cva-a .skill-cat-tools .yr { color: var(--ink-3); font-weight: 400; font-size: 9px; margin-left: 3px; }
+        .cva-a .timeline { display: flex; flex-direction: column; gap: 6mm; }
+        .cva-a .tl-section h2 { font-family: var(--mono-meta); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; border-top: 0.5px solid var(--rule); padding-top: 3mm; margin-bottom: 4mm; display: flex; justify-content: space-between; }
+        .cva-a .tl-section h2 small { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--ink-2); }
+        .cva-a .entry { display: grid; grid-template-columns: 22mm 1fr; gap: 6mm; padding: 2.5mm 0; }
+        .cva-a .entry .yr { font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--ink-2); padding-top: 0.5mm; }
+        .cva-a .entry h4 { font-family: var(--serif); font-weight: 500; font-size: 14px; line-height: 1.25; }
+        .cva-a .entry h4 em { color: var(--accent); font-style: italic; }
+        .cva-a .entry p { font-family: var(--sans); font-size: 10px; color: var(--ink-2); line-height: 1.55; margin-top: 1.5mm; word-break: keep-all; }
+        .cva-a .footline { border-top: 0.5px solid var(--rule); padding-top: 4mm; display: flex; justify-content: space-between; font-family: var(--mono-meta); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-2); }
+
+        /* === TOC B — PLATE INDEX === */
+        .toc-b { padding: 22mm 22mm; display: grid; grid-template-rows: auto auto 1fr auto; gap: 8mm; }
+        .toc-b .topbar { display: flex; justify-content: space-between; font-family: var(--mono-meta); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-2); padding-bottom: 4mm; border-bottom: 0.5px solid var(--rule); }
+        .toc-b .head { display: grid; grid-template-columns: 1fr auto; align-items: end; }
+        .toc-b .head h2 { font-family: var(--serif); font-weight: 400; font-size: 56px; line-height: 1; letter-spacing: -0.015em; }
+        .toc-b .head h2 em { font-style: italic; color: var(--accent); }
+        .toc-b .head .meta { font-family: var(--mono-meta); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-2); text-align: right; }
+        .toc-b .body { display: grid; grid-template-columns: 1fr 70mm; gap: 10mm; min-height: 0; }
+        .toc-b .list { display: flex; flex-direction: column; }
+        .toc-b .group-label {
+            display: flex; align-items: center; gap: 10px;
+            font-family: var(--mono-meta); font-size: 8.5px; font-weight: 700;
+            letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3);
+            padding: 2mm 0 1.5mm; margin-top: 0;
+        }
+        .toc-b .group-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+        .toc-b .group-label + .item { border-top: none; }
+        .toc-b .item { display: grid; grid-template-columns: 28px 1fr auto; gap: 10px; padding: 3.5mm 0; border-bottom: 0.5px solid var(--ink-3); align-items: baseline; }
+        .toc-b .item .n { font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--ink-3); }
+        .toc-b .item.is-accent .n { color: var(--accent); }
+        .toc-b .item.is-feature { background: var(--accent-soft); padding-left: 8px; padding-right: 8px; margin: 1mm -8px; border-bottom: 0.5px solid var(--accent); border-radius: 2px; }
+        .toc-b .item.is-feature .n,
+        .toc-b .item.is-feature .ti,
+        .toc-b .item.is-feature .pg { color: var(--accent); }
+        .toc-b .item.is-feature .ti small { color: var(--accent); opacity: 0.8; }
+        .toc-b .item .ti { font-family: var(--serif); font-size: 16px; line-height: 1.15; }
+        .toc-b .item .ti small { display: block; font-family: var(--sans); font-size: 9.5px; color: var(--ink-2); margin-top: 1mm; word-break: keep-all; }
+        .toc-b .item .pg { font-family: var(--mono-meta); font-size: 10.5px; font-weight: 600; font-variant-numeric: tabular-nums; }
+        .toc-b .plates { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 3mm; align-content: start; }
+        .toc-b .plate {
+            aspect-ratio: 1 / 1; background: var(--ink-3);
+            position: relative; overflow: hidden;
+        }
+        .toc-b .plate img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(0.15) contrast(1.02); }
+        .toc-b .plate .lab {
+            position: absolute; left: 6px; bottom: 6px;
+            font-family: var(--mono-meta); font-size: 7.5px;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            background: var(--paper); color: var(--ink); padding: 1.5px 5px;
+        }
+        .toc-b .plate.accent { background: var(--accent); }
+        .toc-b .plate.ink { background: var(--ink); }
+        .toc-b .footline { display: flex; justify-content: space-between; font-family: var(--mono-meta); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-2); border-top: 0.5px solid var(--rule); padding-top: 4mm; }
+
+        /* ══════════════════════════════════════
+           ALL WORKS (4열 미니멀 갤러리)
+           ══════════════════════════════════════ */
+        .works-header {
+            padding: 20mm 20mm 8mm 20mm;
+            border-bottom: 2px solid var(--border-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .works-title-area { display: flex; flex-direction: column; }
+        .works-title { font-size: 30px; font-weight: 300; }
+        .works-title strong { font-weight: 700; }
+        .works-tag { font-size: 9px; color: var(--text-secondary); letter-spacing: 1px; margin-top: 5px; }
+
+        .works-minimal-grid {
+            flex: 1;
+            padding: 10mm 20mm 14mm 20mm;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: max-content;
+            gap: 20px 15px;
+        }
+
+        .minimal-card {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .minimal-card-img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: var(--bg-surface);
+            overflow: hidden;
+        }
+        .minimal-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .minimal-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .minimal-num {
+            font-size: 8px;
+            color: var(--text-tertiary);
+            font-weight: 600;
+        }
+        .minimal-name {
+            font-size: 9.5px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.3;
+            word-break: keep-all;
+        }
+
+        /* ══════════════════════════════════════
+           MONOGRAPH STYLE — Selected Project Pages v2
+           ══════════════════════════════════════ */
+        .mono-page { /* uses .page base; marker only */ }
+
+        /* === Identity Page (P1) === */
+        .mono-hero {
+            width: 100%;
+            height: 50%;
+            position: relative;
+            background: var(--bg-surface);
+            overflow: hidden;
+        }
+        .mono-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .mono-hero img.fit-contain {
+            object-fit: contain;
+            background: var(--bg-surface);
+        }
+        .mono-hero-tag {
+            position: absolute;
+            top: 11mm;
+            left: 12mm;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
+        }
+
+        .mono-title-block {
+            padding: 11mm 20mm 7mm 20mm;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .mono-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1.0;
+            letter-spacing: -1.5px;
+            text-transform: uppercase;
+        }
+        .mono-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10.5px;
+            color: var(--text-secondary);
+            margin-top: 9px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .mono-subtitle-kr {
+            font-size: 11px;
+            color: var(--text-tertiary);
+            margin-top: 4px;
+            font-weight: 400;
+        }
+
+        .mono-body {
+            flex: 1;
+            display: flex;
+            padding: 8mm 20mm;
+            gap: 28px;
+            min-height: 0;
+        }
+        .mono-body-overview {
+            flex: 0 0 60%;
+            font-size: 10.5px;
+            line-height: 1.75;
+            color: var(--text-secondary);
+            word-break: keep-all;
+        }
+        .mono-body-overview .col-title,
+        .mono-body-meta .col-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8.5px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .mono-body-overview p strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        .mono-body-meta {
+            flex: 1;
+            border-left: 1px solid var(--border-light);
+            padding-left: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .mono-meta-row {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .mono-meta-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+        }
+        .mono-meta-value {
+            font-size: 10.5px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+        .mono-meta-value-big {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 1;
+            color: var(--text-primary);
+        }
+        .mono-meta-value-big .unit {
+            font-size: 9px;
+            margin-left: 4px;
+            color: var(--text-secondary);
+        }
+        .mono-meta-value-sub {
+            display: block;
+            margin-top: 3px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8.5px;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+            color: var(--text-tertiary);
+        }
+
+        .mono-foot-band {
+            border-top: 1px solid var(--border-dark);
+            padding: 4mm 20mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--mono-meta);
+            font-size: 8px;
+            letter-spacing: 2.5px;
+            color: var(--ink-2);
+            text-transform: uppercase;
+            background: var(--paper);
+        }
+        .mono-foot-band .meta-left {
+            display: flex;
+            gap: 26px;
+        }
+        .mono-foot-band .meta-left span {
+            position: relative;
+        }
+        .mono-foot-band .meta-left span + span::before {
+            content: '·';
+            position: absolute;
+            left: -16px;
+            color: var(--border-light);
+        }
+
+        /* === Process Page (P2) === */
+        .mono-process-header {
+            padding: 13mm 20mm 6mm 20mm;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .mono-process-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 30px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        .mono-process-title strong { font-weight: 700; }
+        .mono-process-projname {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+        }
+
+        .mono-process-body {
+            flex: 1;
+            display: flex;
+            padding: 8mm 20mm 6mm 20mm;
+            gap: 26px;
+            min-height: 0;
+        }
+        .mono-timeline {
+            flex: 0 0 22%;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            border-right: 1px solid var(--border-light);
+            padding-right: 18px;
+        }
+        .mono-timeline-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .mono-timeline-item {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .mono-timeline-item::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border: 1px solid var(--text-primary);
+            border-radius: 50%;
+            margin-top: 3px;
+            background: white;
+            flex-shrink: 0;
+        }
+        .mono-timeline-item.is-key::before {
+            background: var(--text-primary);
+        }
+        .mono-timeline-item-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .mono-timeline-date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+        }
+        .mono-timeline-desc {
+            font-size: 9px;
+            color: var(--text-secondary);
+            line-height: 1.45;
+            word-break: keep-all;
+        }
+        .mono-timeline-item.is-key .mono-timeline-desc {
+            color: var(--text-primary);
+        }
+        .mono-timeline-desc strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .mono-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            min-height: 0;
+        }
+        .mono-section-desc {
+            font-size: 10.5px;
+            line-height: 1.75;
+            color: var(--text-secondary);
+            word-break: keep-all;
+        }
+        .mono-achievements {
+            list-style: none;
+            counter-reset: achv;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .mono-achievements li {
+            counter-increment: achv;
+            padding-left: 32px;
+            position: relative;
+            font-size: 10px;
+            line-height: 1.55;
+            color: var(--text-secondary);
+            word-break: keep-all;
+        }
+        .mono-achievements li::before {
+            content: counter(achv, decimal-leading-zero);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 1px;
+        }
+        .mono-achievements li strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .mono-gallery {
+            margin-top: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 6px;
+            height: 90mm;
+        }
+        .mono-gallery.two-up {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+        }
+        .mono-gallery .img-wrap {
+            overflow: hidden;
+            background: var(--bg-surface);
+            position: relative;
+            margin: 0;
+        }
+        .mono-gallery .img-wrap.span-rows {
+            grid-row: 1 / span 2;
+        }
+        .mono-gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .mono-gallery img.fit-contain {
+            object-fit: contain;
+            background: var(--bg-surface);
+        }
+        .mono-gallery .img-tag {
+            position: absolute;
+            top: 6px;
+            left: 8px;
+            padding: 3px 7px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 7.5px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            background: rgba(0, 0, 0, 0.42);
+            backdrop-filter: blur(3px) saturate(1.05);
+            -webkit-backdrop-filter: blur(3px) saturate(1.05);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+        }
+        .mono-gallery .img-tag.dark {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.72);
+            text-shadow: none;
+        }
+        @media print {
+            .mono-gallery .img-tag {
+                background: rgba(0, 0, 0, 0.55);
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .mono-gallery .img-tag.dark {
+                background: rgba(255, 255, 255, 0.85);
+            }
+        }
+
+        /* ══════════════════════════════════════
+           프린트 최적화
+           ══════════════════════════════════════ */
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { background: white !important; padding: 0; }
+            .portfolio-wrapper {
+                gap: 0;
+                transform: none !important;
+                margin: 0 !important;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none !important;
+                page-break-after: always;
+                break-after: page;
+            }
+            .page:last-child {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="portfolio-wrapper">
+
+    <!-- ════════════════════════════════════════════
+         PAGE 01 — 표지 (COVER)
+         ════════════════════════════════════════════ -->
+    <article class="page cv-c">
+        <div class="topbar">
+            <span>Architectural Portfolio</span>
+            <span>2016 — 2026</span>
+        </div>
+        <div class="center">
+            <h1 class="name">JunSeong Park</h1>
+            <div class="tag">Selected Works &amp; AI Practice</div>
+        </div>
+        <div class="footline">
+            <span>박준성 · Architectural Designer</span>
+            <span>blusb41@gmail.com</span>
+        </div>
+    </article>
+
+    <!-- ════════════════════════════════════════════
+         PAGE 02 — 이력서 (CV / RESUME)
+         ════════════════════════════════════════════ -->
+    <article class="page cva-a">
+        <div class="topbar">
+            <span>Curriculum Vitae</span>
+            <span>JunSeong Park · 朴俊成</span>
+            <span>p. 002</span>
+        </div>
+        <div class="masthead">
+            <div>
+                <h1>JunSeong<br><em>Park.</em></h1>
+                <div class="role">Architectural Designer · 11 years at Heerim, Seoul.</div>
+            </div>
+            <div class="portrait">
+                <img src="img/profile.png" alt="JunSeong Park">
+            </div>
+        </div>
+        <div class="body">
+            <aside class="meta">
+                <div class="meta-block">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><strong>Email</strong>blusb41@gmail.com</li>
+                        <li><strong>Phone</strong>+82 10-7724-0170</li>
+                        <li><strong>Based in</strong>Namyangju, Gyeonggi-do</li>
+                    </ul>
+                </div>
+                <div class="meta-block">
+                    <h3>Practice Focus</h3>
+                    <div class="skill-cat">
+                        <div class="skill-cat-row">
+                            <div class="skill-cat-label">Daily Tools</div>
+                            <div class="skill-cat-tools">AutoCAD<span class="yr">· 10y</span>, Rhinoceros · Grasshopper<span class="yr">· 10y</span>, SketchUp<span class="yr">· 10y</span></div>
+                        </div>
+                        <div class="skill-cat-row">
+                            <div class="skill-cat-label">Production</div>
+                            <div class="skill-cat-tools">D5 Render<span class="yr">· 3y</span>, V-Ray, Photoshop, InDesign</div>
+                        </div>
+                        <div class="skill-cat-row is-focus">
+                            <div class="skill-cat-label">Emerging — AI Workflow</div>
+                            <div class="skill-cat-tools">Claude · MCP<span class="yr">· 2y</span>, Freepik API, Custom Tools<span class="yr">· Python</span></div>
+                        </div>
+                        <div class="skill-cat-row">
+                            <div class="skill-cat-label">Research</div>
+                            <div class="skill-cat-tools">SPSS, ArcGIS, R<span class="yr">· statistical analysis</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="meta-block">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li class="skill-row"><span>Korean</span><span class="yr">native</span></li>
+                        <li class="skill-row"><span>English</span><span class="yr">working</span></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <div class="timeline">
+                <section class="tl-section">
+                    <h2>Practice <small>희림종합건축사사무소</small></h2>
+                    <div class="entry">
+                        <div class="yr">2015 — Now</div>
+                        <div>
+                            <h4>Architectural Designer, <em>Heerim Architects</em></h4>
+                            <p>대형 재건축 설계경쟁 다수 당선 (반포미도, 압구정3구역, 은마). UN Studio · Perkins Eastman · Morphosis 협업. 마스터플랜·인허가·실시설계 전 과정. CG 퀄리티 컨트롤 및 홍보관 운영.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="tl-section">
+                    <h2>Education <small>학력</small></h2>
+                    <div class="entry">
+                        <div class="yr">2022 — 25</div>
+                        <div>
+                            <h4>M.S., Urban &amp; Real Estate Development</h4>
+                            <p>Hanyang Univ. Graduate School · GPA 4.2 / 4.5 (2025.02 졸업)</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="tl-section">
+                    <h2>Selected Awards &amp; Publication <small>수상 · 논문</small></h2>
+                    <div class="entry"><div class="yr">2025</div><div><h4>목동14단지 재건축 설계자 선정 <em>당선</em></h4><p>디자인 담당 · 5,158세대 / 양천구 신통기획 최대 단지</p></div></div>
+                    <div class="entry"><div class="yr">2025</div><div><h4>반포미도1차 재건축 설계공모 <em>당선</em></h4><p>Design Director · 1,750세대</p></div></div>
+                    <div class="entry"><div class="yr">2024</div><div><h4>송도 6,8공구 국제공모 — Morphosis 선정</h4><p>RFP 제작 및 공모 관리 · 2.3M m²</p></div></div>
+                    <div class="entry"><div class="yr">2023</div><div><h4>압구정3구역 재건축 <em>최종 당선</em></h4><p>UN Studio 협업 · 4,300세대</p></div></div>
+                    <div class="entry"><div class="yr">2020</div><div><h4>반포3주구 시공자 선정 대안입찰</h4><p>삼성물산 + Perkins Eastman 협업</p></div></div>
+                    <div class="entry"><div class="yr">2025</div><div><h4>PLOS ONE — peer-reviewed</h4><p>Urban density and depression during COVID-19 in Seoul.</p></div></div>
+                </section>
+            </div>
+        </div>
+        <div class="footline">
+            <span>Curriculum Vitae</span>
+            <span>JunSeong Park</span>
+            <span>p. 002</span>
+        </div>
+    </article>
+
+    <!-- ════════════════════════════════════════════
+         PAGE 03 — 목차 (TABLE OF CONTENTS)
+         ════════════════════════════════════════════ -->
+    <article class="page toc-b">
+        <div class="topbar">
+            <span>Table of Contents</span>
+            <span>JunSeong Park · 2016 — 2026</span>
+            <span>p. 003</span>
+        </div>
+        <div class="head">
+            <h2>Plates &amp; <em>Chapters.</em></h2>
+            <div class="meta">Selected (10) + AI Practice<br>11 plates</div>
+        </div>
+        <div class="body">
+            <div class="list">
+                <div class="group-label"><span>Practice Focus</span></div>
+                <div class="item is-feature"><span class="n">00</span><span class="ti">AI Practice<small>Annex · 2025—26 · Claude · MCP · Freepik · Custom Tools</small></span><span class="pg">p. 006</span></div>
+
+                <div class="group-label"><span>Selected Projects</span></div>
+                <div class="item is-accent"><span class="n">01</span><span class="ti">Banpo Mido 1st<small>1,750세대 · 당선 · Design Director</small></span><span class="pg">p. 008</span></div>
+                <div class="item is-accent"><span class="n">02</span><span class="ti">Mokdong Dist. 14<small>5,158세대 · 당선 · 양천구 최대</small></span><span class="pg">p. 010</span></div>
+                <div class="item"><span class="n">03</span><span class="ti">Mokdong Dist. 10<small>4,081세대 · CG·제안서 총괄</small></span><span class="pg">p. 012</span></div>
+                <div class="item"><span class="n">04</span><span class="ti">Mokdong Dist. 5<small>3,998세대 · 랜드마크 주동</small></span><span class="pg">p. 014</span></div>
+                <div class="item is-accent"><span class="n">05</span><span class="ti">Apgujeong Dist. 3<small>4,300세대 · 당선 · UN Studio</small></span><span class="pg">p. 016</span></div>
+                <div class="item"><span class="n">06</span><span class="ti">Yeongjong Midan City<small>2,150세대 · 5 blocks</small></span><span class="pg">p. 018</span></div>
+                <div class="item"><span class="n">07</span><span class="ti">Banpo 3rd District<small>Perkins Eastman</small></span><span class="pg">p. 020</span></div>
+                <div class="item"><span class="n">08</span><span class="ti">Pyeongtaek Brain City<small>인허가 Full-Cycle</small></span><span class="pg">p. 022</span></div>
+                <div class="item"><span class="n">09</span><span class="ti">Songdo 6,8 Plot<small>Morphosis · MP</small></span><span class="pg">p. 024</span></div>
+                <div class="item is-accent"><span class="n">10</span><span class="ti">Eunma Apartment<small>4,424세대 · 당선 · 첫 大型</small></span><span class="pg">p. 026</span></div>
+            </div>
+            <div class="plates">
+                <div class="plate"><img src="img/33_ai_practice/cover.jpg" alt="AI Practice"><span class="lab">00 · AI</span></div>
+                <div class="plate"><img src="img/32_banpo_mido_1/@메인조감 야경_최종.png" alt="Banpo Mido"><span class="lab">01 · Mido</span></div>
+                <div class="plate"><img src="img/35_mokdong_14/01_메인조감도_목동14단지 재건축_007_01.jpg" alt="Mokdong 14"><span class="lab">02 · M-14</span></div>
+                <div class="plate"><img src="img/34_mokdong_10/조감도.jpg" alt="Mokdong 10"><span class="lab">03 · M-10</span></div>
+                <div class="plate"><img src="img/36_mokdong_5/목동 5단지 재건축_석경 조감도_비율조정001 copy.jpg" alt="Mokdong 5"><span class="lab">04 · M-5</span></div>
+                <div class="plate"><img src="img/29_apgujeong_3/01-조감crop.png" alt="Apgujeong"><span class="lab">05 · Apg.</span></div>
+                <div class="plate"><img src="img/25_midan_a1_a2/스크린샷 2025-07-17 163650.png" alt="Midan"><span class="lab">06 · Midan</span></div>
+                <div class="plate"><img src="img/17_banpo_3/03.정면투시_(주경)0407.jpg" alt="Banpo 3rd"><span class="lab">07 · B3</span></div>
+                <div class="plate"><img src="img/28_pyeongtaek_braincity_2bl/p22-1215-희림 평택 브레인시티 주상2BL 경관심의_조감도_230120.png" alt="Pyt."><span class="lab">08 · Pyt.</span></div>
+                <div class="plate"><img src="img/23_songdo_6_8_masterplan/01_전체조감_석경_1018.jpg" alt="Songdo"><span class="lab">09 · Sd.</span></div>
+                <div class="plate"><img src="img/03_daechi_eunma/앞페이지.jpg" alt="Eunma"><span class="lab">10 · Eun.</span></div>
+            </div>
+        </div>
+        <div class="footline">
+            <span>Index</span>
+            <span>Vol. I</span>
+            <span>p. 003</span>
+        </div>
+    </article>
+
+    <!-- ════════════════════════════════════════════
+         PAGE 04 — 전체 프로젝트 (ALL WORKS 1/2)
+         ════════════════════════════════════════════ -->
+    <article class="page">
+        <header class="works-header">
+            <div class="works-title-area">
+                <h2 class="works-title font-eng uppercase">All <strong>Works</strong></h2>
+                <div class="works-tag font-eng uppercase">36 Projects — Heerim Architecture (2016 — 2026)</div>
+            </div>
+            <div class="works-tag font-eng uppercase">Part 1</div>
+        </header>
+
+        <div class="works-minimal-grid">
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/36_mokdong_5/목동 5단지 재건축_석경 조감도_비율조정001 copy.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 36</span><span class="minimal-name">목동 5단지 재건축</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/35_mokdong_14/01_메인조감도_목동14단지 재건축_007_01.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 35</span><span class="minimal-name">목동 14단지 재건축</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/34_mokdong_10/조감도.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 34</span><span class="minimal-name">목동 10단지 재건축</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/32_banpo_mido_1/@메인조감 야경_최종.png" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 33</span><span class="minimal-name">반포미도1차 재건축</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/29_apgujeong_3/01-조감crop.png" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 30</span><span class="minimal-name">압구정3구역 재건축</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/30_seoul_ferris_wheel/서울+링+프로젝트_메인조감도 (1).jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 31</span><span class="minimal-name">서울 대관람차</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/31_pohang_costa_valley/메인조감도.png" alt="" class="fit-contain"></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 32</span><span class="minimal-name">포항 코스타밸리</span></div></div>
+
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/28_pyeongtaek_braincity_2bl/p22-1215-희림 평택 브레인시티 주상2BL 경관심의_조감도_230120.png" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 29</span><span class="minimal-name">평택 브레인시티</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/27_hangang_cinepolis/그림27.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 28</span><span class="minimal-name">한강시네폴리스</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/26_midan_4_5_6/그림18.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 27</span><span class="minimal-name">미단시티 공동4,5</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/25_midan_a1_a2/스크린샷 2025-07-17 163650.png" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 26</span><span class="minimal-name">미단시티 A1,A2</span></div></div>
+
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/24_gyeongbuk_provincial_2/그림14.jpg" alt="" class="fit-contain"></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 25</span><span class="minimal-name">경북도청신도시</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/23_songdo_6_8_masterplan/01_전체조감_석경_1018.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 24</span><span class="minimal-name">송도 6,8공구</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/22_nonhyeon_114/스크린샷 2025-07-17 162625.png" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 23</span><span class="minimal-name">논현동 오피스텔</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/21_incheon_geomdan_aa16/02_서브조감_석경_0113_15h_태양열.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 22</span><span class="minimal-name">인천검단 AA16</span></div></div>
+
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/20_gaepo_jugong_67/석경 조감도10,10.jpg" alt="" class="fit-contain"></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 21</span><span class="minimal-name">개포주공 6,7단지</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/19_bucheon_daejang_newtown/메인석경조감도0824-f Alt.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 20</span><span class="minimal-name">부천대장 신도시</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/18_daejeon_station/01 대전 주상복합_조감도_0628_04_CROP.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 19</span><span class="minimal-name">대전역세권 복합</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/17_banpo_3/03.정면투시_(주경)0407.jpg" alt="" class="fit-contain"></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 18</span><span class="minimal-name">반포 3주구</span></div></div>
+        </div>
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>JunSeong Park</span>
+                <span>All Works (36)</span>
+                <span>Part 01</span>
+            </div>
+            <div>Page 04</div>
+        </footer>
+    </article>
+
+    <!-- ════════════════════════════════════════════
+         PAGE 05 — 전체 프로젝트 (ALL WORKS 2/2)
+         ════════════════════════════════════════════ -->
+    <article class="page">
+        <header class="works-header">
+            <div class="works-title-area">
+                <h2 class="works-title font-eng uppercase">All <strong>Works</strong></h2>
+                <div class="works-tag font-eng uppercase">36 Projects — Heerim Architecture (2016 — 2026)</div>
+            </div>
+            <div class="works-tag font-eng uppercase">Part 2</div>
+        </header>
+
+        <div class="works-minimal-grid">
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/16_ykd_yeosu_kyungdo/조감01-am4.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 17</span><span class="minimal-name">여수 경도 숙박</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/15_bangbae_samho/01_메인조감도__방배삼호아파트.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 16</span><span class="minimal-name">방배 삼호아파트</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/14_asan_tangjeong_2-a6bl/그림10.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 15</span><span class="minimal-name">아산탕정 공동주택</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/13_yongsan_jeongbichang_1/004_용산 창전 재정비 구역_주동 조감도_서혜리.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 14</span><span class="minimal-name">용산정비창 환경</span></div></div>
+
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/12_gapyeong_townhouse/001_가평 타운하우스_메인 조감도-BF.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 13</span><span class="minimal-name">가평 타운하우스</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/11_goyang_buksamsong/04_고양 북삼송_연립사거리뷰.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 12</span><span class="minimal-name">고양 북삼송 A-ZONE</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/10_garak_samik/그림2.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 11</span><span class="minimal-name">가락삼익맨숀 재건축</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/09_hanoi_tht/스크린샷 2025-07-17 164043.png" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 10</span><span class="minimal-name">베트남 하노이 THT</span></div></div>
+
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/08_busan_simin_park/스크린샷 2025-07-17 164212.png" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 09</span><span class="minimal-name">부산시민공원 재정비</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/07_songdo_m2-1bl/210107-송도아메리칸타운2차-조감도.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 08</span><span class="minimal-name">송도 아메리칸타운</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/06_jamsil_woosung/잠실우성 (모델링 o).jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 07</span><span class="minimal-name">잠실우성 재건축</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/05_sejong_2-4_mixed/세종시2-4생활권 작품설명자료_페이지_03.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 06</span><span class="minimal-name">세종시 2-4생활권</span></div></div>
+
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/04_sejong_1-5_jungheung/02_조감도2.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 05</span><span class="minimal-name">세종시 1-5생활권</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/03_daechi_eunma/뒷페이지.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 04</span><span class="minimal-name">은마아파트 재건축</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/02_haeundae_golf_resort/B조감도180904.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 03</span><span class="minimal-name">해운대 골프리조트</span></div></div>
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/01_sejong_4-1_apt/그림4.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 02</span><span class="minimal-name">세종시 4-1생활권</span></div></div>
+
+            <div class="minimal-card"><div class="minimal-card-img"><img src="img/00_sejong_2-1_apt/그림1.jpg" alt=""></div><div class="minimal-info"><span class="minimal-num font-eng">NO. 01</span><span class="minimal-name">세종시 2-1생활권</span></div></div>
+        </div>
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>JunSeong Park</span>
+                <span>All Works (36)</span>
+                <span>Part 02</span>
+            </div>
+            <div>Page 05</div>
+        </footer>
+    </article>
+
+
+    <!-- ════════════════════════════════════════════
+         SPECIAL — AI PRACTICE
+         ════════════════════════════════════════════ -->
+
+    <!-- PAGE 06 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
+            <img src="img/33_ai_practice/cover.jpg" alt="Architecture × AI Practice" style="object-position: center 40%;">
+            <span class="mono-hero-tag">Special Series — AI Practice</span>
+        </header>
+
+        <section class="mono-title-block">
+            <h1 class="mono-title">Architecture × <strong>AI</strong></h1>
+            <div class="mono-subtitle">Internal R&amp;D — AI-Augmented Workflow / Heerim Architecture</div>
+            <div class="mono-subtitle-kr">초기설계 자동화 + 시각화 / 사내 사례발표 + 도구 도입 / 2025—2026</div>
+        </section>
+
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
+                    AI는 설계를 대체하는 도구가 아니라, <strong>초기설계 단계의 반복 검토와 시각화 속도</strong>를 끌어올리는 도구라는 가설로 시작한 사내 R&amp;D 프로젝트입니다.<br><br>
+                    사용자가 정한 부지 조건·법규·프로젝트 목표 안에서 AI가 다수 대안을 탐색·생성·랭킹하면, 사람이 판단하고 다음 작업 단계로 연결합니다. <strong>판단은 사람, 실행은 AI</strong>라는 역할 분담을 전제로, 한 번에 정답을 만드는 것이 아닌 <strong>여러 안을 빠르게 검토</strong>할 수 있게 만드는 것이 핵심입니다.<br><br>
+                    2026.04 본부장·임원진 대상 <strong>사례발표(22슬라이드)</strong>를 통해 두 트랙(<strong>Claude+MCP 매스/CAD 자동화</strong> · <strong>Freepik 시각화 가속</strong>)을 공유했고, 동기간 자체 개발한 규모검토 자동화 툴(apt · complex · hotel)이 사내 표준으로 도입되었습니다.
+                </p>
+            </div>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Tracks</span>
+                    <span class="mono-meta-value-big">2 <span class="unit">tracks</span><span class="mono-meta-value-sub">Claude+MCP · Freepik</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Use Cases</span>
+                    <span class="mono-meta-value-big">6 <span class="unit">cases</span><span class="mono-meta-value-sub">Apt 4단계 · Mixed-use 2단계</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Tools Built</span>
+                    <span class="mono-meta-value-big">4 <span class="unit">tools</span><span class="mono-meta-value-sub">apt · complex · hotel · apt_placement</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Stack</span>
+                    <span class="mono-meta-value">Claude Code · MCP · Rhino · Freepik</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Audience</span>
+                    <span class="mono-meta-value">본부장·임원진 / 주거2본부</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2025 — 2026</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>AI Practice</span>
+                <span>Internal R&amp;D · Heerim</span>
+                <span>2025—2026</span>
+            </div>
+            <div>Special — Page 06</div>
+        </footer>
+    </article>
+
+    <!-- PAGE 07 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Practice <strong>Workflow</strong></h2>
+            <span class="mono-process-projname">Architecture × AI — Two Tracks &amp; Roadmap</span>
+        </header>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 06</span>
+                        <span class="mono-timeline-desc">Track A 프로토타입 — apt.html v0</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 10</span>
+                        <span class="mono-timeline-desc"><strong>Rhino MCP 연동</strong> — 매스 자동화 가동</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 12</span>
+                        <span class="mono-timeline-desc">Track B (Freepik) 워크플로 정착</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">26. 02</span>
+                        <span class="mono-timeline-desc"><strong>apt_placement Stage 1</strong> — 데이터셋 구축</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">26. 04</span>
+                        <span class="mono-timeline-desc"><strong>본부 사례발표 v9_2</strong> — 22슬라이드</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">26. 05</span>
+                        <span class="mono-timeline-desc">apt · complex · hotel 사내 표준 적용</span>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
+                    두 트랙으로 운영합니다. <strong>Track A — Claude + MCP</strong>는 부지조건·법규·목표 3축 입력을 받아 배치대안을 탐색·랭킹하고, 선택안을 그대로 Rhino 매스로 연결합니다. 이미지에서 끝나지 않고 다음 작업 단계로 이어진다는 점이 핵심입니다. <strong>Track B — Freepik</strong>은 매스 한 장을 회전 조감·눈높이 투시·짧은 영상으로 빠르게 변환합니다. 검토와 전달이 분리된 업무가 아닌 <strong>하나의 흐름</strong>으로 이어지며, 다음 단계는 도면·BIM 영역 확장입니다.
+                </p>
+                <ul class="mono-achievements">
+                    <li><strong>Track A</strong> — 공동주택 4단계(Ranking → Mass → CAD → Wrap) + 주상복합 2단계 워크플로 정립</li>
+                    <li><strong>Track B</strong> — 시각화 작업 시간 수일 → 수 시간 단축 (정성 평가)</li>
+                    <li><strong>Custom Tools</strong> — apt.html · complex.html · hotel_layout.html 사내 표준 도입</li>
+                    <li><strong>ML Pipeline</strong> — 한국 공동주택 준공 배치 학습용 apt_placement Stage 1 구축</li>
+                    <li><strong>사례 발표</strong> — v9_2 22슬라이드 / 본부장·임원진 청중 / 2026.04</li>
+                </ul>
+                <div class="mono-gallery two-up">
+                    <figure class="img-wrap">
+                        <img src="img/33_ai_practice/track-a.jpg" alt="Track A — Mass model output">
+                        <span class="img-tag">01 — Track A · Mass Model</span>
+                    </figure>
+                    <figure class="img-wrap">
+                        <img src="img/33_ai_practice/track-b.jpg" alt="Track B — Perspective output">
+                        <span class="img-tag">02 — Track B · Perspective</span>
+                    </figure>
+                </div>
+            </main>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>AI Practice</span>
+                <span>Workflow · Tracks · Roadmap</span>
+                <span>2025—2026</span>
+            </div>
+            <div>Special — Page 07</div>
+        </footer>
+    </article>
+
+
+    <!-- ════════════════════════════════════════════
+         PROJECT 01 — 반포미도1차
+         ════════════════════════════════════════════ -->
+
+    <!-- PAGE 08 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
+            <img src="img/32_banpo_mido_1/@메인조감 야경_최종.png" alt="반포미도1차 조감도" style="object-position: center 30%;">
+            <span class="mono-hero-tag">Project 01 / 10</span>
+        </header>
+
+        <section class="mono-title-block">
+            <h1 class="mono-title">Banpo Mido <strong>1st</strong></h1>
+            <div class="mono-subtitle">Redevelopment Competition / Winning Proposal — Design Director</div>
+            <div class="mono-subtitle-kr">반포미도1차 재건축 — 1,750세대 / 2025</div>
+        </section>
+
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
+                    반포 프리미엄 입지의 <strong>1,750세대 대규모 재건축</strong> 설계공모 프로젝트입니다.<br><br>
+                    프로젝트 초기부터 PM과 함께 <strong>배치대안을 작성</strong>하고, 제안한 배치안과 주동평면으로 계획을 진행했습니다. <strong>스카이커뮤니티를 직접 설계</strong>하여 최종 컨펌을 받았으며, DA+해안건축과의 경쟁에서 상대안 분석 및 홍보관 운영에 참여하여 <strong>희림안 최종 당선</strong>에 기여했습니다.
+                </p>
+            </div>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Total Units</span>
+                    <span class="mono-meta-value-big">1,750</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Gross Floor Area</span>
+                    <span class="mono-meta-value-big">361,000 <span class="unit">m²</span><span class="mono-meta-value-sub">약 10.9만 평</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Location</span>
+                    <span class="mono-meta-value">서울 서초구 반포동</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2025.03 — 2025.06</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Competitor</span>
+                    <span class="mono-meta-value">DA + 해안건축</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Banpo Mido 1st</span>
+                <span>Banpo · Seoul</span>
+                <span>2025</span>
+            </div>
+            <div>Project 01 / 10 — Page 08</div>
+        </footer>
+    </article>
+
+    <!-- PAGE 09 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Design <strong>Process</strong></h2>
+            <span class="mono-process-projname">Banpo Mido 1st — Design Leadership</span>
+        </header>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 03. 07</span>
+                        <span class="mono-timeline-desc">현장설명회 — 프로젝트 시작</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 03. 10~</span>
+                        <span class="mono-timeline-desc">배치대안 작성 — 계획안 선정</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 04</span>
+                        <span class="mono-timeline-desc">경영진 주간 보고 — 계획안 고도화</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 04. 20~</span>
+                        <span class="mono-timeline-desc">스카이커뮤니티 직접 설계</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 05. 08</span>
+                        <span class="mono-timeline-desc"><strong>최종 제출</strong> — CG·홍보물</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 05~06</span>
+                        <span class="mono-timeline-desc">상대안 분석 — 홍보관 운영</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 06. 20</span>
+                        <span class="mono-timeline-desc"><strong>최종 당선</strong> — 인허가 진행중</span>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
+                    가장 큰 의사결정은 배치 방향이었습니다. 한강 조망권 극대화와 일조권 확보라는 상충 조건 속에서 8개 배치대안을 직접 작성하고, 매주 회장님 보고를 통해 최적안을 도출했습니다. 스카이커뮤니티는 한강 조망을 입주민 일상으로 끌어오겠다는 컨셉으로, 옥상층에 루프탑 라운지·피트니스·스카이가든을 배치하여 경쟁사 대비 명확한 차별점을 만들었습니다.
+                </p>
+                <ul class="mono-achievements">
+                    <li><strong>1,750세대</strong> 대규모 재건축 설계공모 <strong>당선</strong></li>
+                    <li>한강 조망 극대화를 위한 <strong>8개 배치대안</strong> 직접 작성 및 최적안 도출</li>
+                    <li><strong>스카이커뮤니티</strong> 컨셉 수립부터 설계·최종 컨펌까지 주도</li>
+                    <li>DA+해안건축 경쟁에서 상대안 분석 기반 <strong>희림안 최종 선정</strong></li>
+                    <li><strong>2025.06 당선</strong>, 인허가 착수</li>
+                </ul>
+                <div class="mono-gallery">
+                    <figure class="img-wrap span-rows">
+                        <img src="img/32_banpo_mido_1/반포미도1차아파트_홍보물_인쇄_페이지_01.png" alt="투시도">
+                        <span class="img-tag">01 — Perspective</span>
+                    </figure>
+                    <figure class="img-wrap">
+                        <img src="img/32_banpo_mido_1/반포 미도 아파트 재건축_배치도_동딱지1.png" alt="배치도" class="fit-contain">
+                        <span class="img-tag dark">02 — Site Plan</span>
+                    </figure>
+                    <figure class="img-wrap">
+                        <img src="img/32_banpo_mido_1/스카이커뮤니티_최종0620+22h.png" alt="스카이커뮤니티">
+                        <span class="img-tag">03 — Sky Community</span>
+                    </figure>
+                </div>
+            </main>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Banpo Mido 1st</span>
+                <span>Process · Outputs</span>
+                <span>2025</span>
+            </div>
+            <div>Project 01 / 10 — Page 09</div>
+        </footer>
+    </article>
+
+
+    <!-- ════════════════════════════════════════════
+         PROJECT 02 — 목동 14단지 (당선)
+         ════════════════════════════════════════════ -->
+
+    <!-- PAGE 10 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
+            <img src="img/35_mokdong_14/01_메인조감도_목동14단지 재건축_007_01.jpg" alt="목동14단지 메인조감도">
+            <span class="mono-hero-tag">Project 02 / 10</span>
+        </header>
+
+        <section class="mono-title-block">
+            <h1 class="mono-title">Mokdong <strong>Dist. 14</strong></h1>
+            <div class="mono-subtitle">Reconstruction Bid / Winning Proposal — Largest Mokdong Site</div>
+            <div class="mono-subtitle-kr">목동14단지 재건축 — 5,158세대 / 2025 당선</div>
+        </section>
+
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
+                    양천구 신통기획 단지 가운데 <strong>가장 큰 5,158세대 4획지 규모</strong>의 재건축 정비계획 변경안입니다.<br><br>
+                    지상 49층까지 끌어올린 입체적인 스카이라인과 4개 획지의 유기적 연결을 디자인 축으로 잡았습니다. <strong>2025년 12월 설계자 선정 입찰에서 당선</strong>되어, 양천구 최대 규모 단지의 디자인 방향을 이끌게 되었습니다.
+                </p>
+            </div>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Total Units</span>
+                    <span class="mono-meta-value-big">5,158</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Site Area</span>
+                    <span class="mono-meta-value-big">250,722 <span class="unit">m²</span><span class="mono-meta-value-sub">4획지 / 지상 49층</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Location</span>
+                    <span class="mono-meta-value">서울 양천구 목동동로 30 일대</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2025.10 — 2025.12</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Result</span>
+                    <span class="mono-meta-value"><strong>당선</strong> (설계자 선정)</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Mokdong Dist. 14</span>
+                <span>Yangcheon · Seoul</span>
+                <span>2025</span>
+            </div>
+            <div>Project 02 / 10 — Page 10</div>
+        </footer>
+    </article>
+
+    <!-- PAGE 11 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Design <strong>Strategy</strong></h2>
+            <span class="mono-process-projname">Mokdong Dist. 14 — 4-Plot Integration</span>
+        </header>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 10</span>
+                        <span class="mono-timeline-desc">신통기획 검토 시작 — 4획지 분석</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 10~11</span>
+                        <span class="mono-timeline-desc">배치 대안 작성 — 획지간 연계</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 11</span>
+                        <span class="mono-timeline-desc">디자인 방향 설정 — 49층 스카이라인</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 11~12</span>
+                        <span class="mono-timeline-desc">CG · 제안서 작성</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 12. 15</span>
+                        <span class="mono-timeline-desc"><strong>최종 제출</strong></span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 12</span>
+                        <span class="mono-timeline-desc"><strong>설계자 선정 당선</strong></span>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
+                    양천구 신통기획 단지 중 가장 큰 4획지 5,158세대를 하나의 단지처럼 묶기 위한 디자인 전략이 핵심이었습니다. 각 획지의 49층 타워를 시각적 축으로 연결하고, 저층부 커뮤니티 동선을 통합 설계하여 분리된 4개 획지가 단일 단지로 인지되도록 방향을 잡았습니다.
+                </p>
+                <ul class="mono-achievements">
+                    <li><strong>5,158세대 4획지</strong> 양천구 최대 신통기획 단지 — 설계자 선정 <strong>당선</strong></li>
+                    <li>지상 <strong>49층 스카이라인</strong> 디자인 방향 설정</li>
+                    <li>4획지 통합 디자인 — 단지 정체성 일관성 확보</li>
+                    <li>신통기획 정비계획 변경안 검토 — 용적률 300% 적용</li>
+                    <li><strong>2025.12 당선</strong>, 본 계획 진행</li>
+                </ul>
+                <div class="mono-gallery two-up">
+                    <figure class="img-wrap">
+                        <img src="img/35_mokdong_14/01_메인조감도_목동14단지 재건축_007_01.jpg" alt="목동14단지 메인조감도">
+                        <span class="img-tag">01 — Bird's Eye View</span>
+                    </figure>
+                    <figure class="img-wrap">
+                        <img src="img/35_mokdong_14/02_메인투시도_목동14단지 재견축_008.jpg" alt="목동14단지 메인투시도">
+                        <span class="img-tag">02 — Main Perspective</span>
+                    </figure>
+                </div>
+            </main>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Mokdong Dist. 14</span>
+                <span>Strategy · Outputs</span>
+                <span>2025</span>
+            </div>
+            <div>Project 02 / 10 — Page 11</div>
+        </footer>
+    </article>
+
+
+    <!-- ════════════════════════════════════════════
+         PROJECT 03 — 목동 10단지 (CG·제안서 총괄)
+         ════════════════════════════════════════════ -->
+
+    <!-- PAGE 12 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
+            <img src="img/34_mokdong_10/조감도.jpg" alt="목동10단지 조감도">
+            <span class="mono-hero-tag">Project 03 / 10</span>
+        </header>
+
+        <section class="mono-title-block">
+            <h1 class="mono-title">Mokdong <strong>Dist. 10</strong></h1>
+            <div class="mono-subtitle">Reconstruction Bid / CG · Proposal Lead — Full-Cycle Ownership</div>
+            <div class="mono-subtitle-kr">목동10단지 재건축 — 4,081세대 / 2025</div>
+        </section>
+
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
+                    양천구 신정동 <strong>4,081세대 2획지</strong> 재건축 정비계획 변경안입니다. 설계자 선정 입찰에서 <strong>CG·제안서 작성을 총괄</strong>하고, 제출 이후 추가 자료·후속 대응까지 일관되게 맡은 프로젝트입니다.<br><br>
+                    지상 37층으로 양천구 일대 스카이라인의 새로운 기준점을 제안했고, 단일 이미지로 단지의 일조·조망·녹지 컨셉을 압축하여 전달하는 CG 전략을 직접 디렉팅했습니다.
+                </p>
+            </div>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Total Units</span>
+                    <span class="mono-meta-value-big">4,081</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Site Area</span>
+                    <span class="mono-meta-value-big">194,686 <span class="unit">m²</span><span class="mono-meta-value-sub">2획지 / 지상 37층</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Location</span>
+                    <span class="mono-meta-value">서울 양천구 신정동 310 일대</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2025.09 — 2025.12 (+후속 대응)</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Role</span>
+                    <span class="mono-meta-value"><strong>CG · 제안서 총괄</strong></span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Mokdong Dist. 10</span>
+                <span>Sinjeong · Seoul</span>
+                <span>2025</span>
+            </div>
+            <div>Project 03 / 10 — Page 12</div>
+        </footer>
+    </article>
+
+    <!-- PAGE 13 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Full-Cycle <strong>Ownership</strong></h2>
+            <span class="mono-process-projname">Mokdong Dist. 10 — CG · Proposal · Follow-up</span>
+        </header>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 09</span>
+                        <span class="mono-timeline-desc">신통기획 검토 진입</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 10</span>
+                        <span class="mono-timeline-desc">배치 대안 작성</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 10~11</span>
+                        <span class="mono-timeline-desc">CG 작업 총괄 — 단일 이미지 디렉팅</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 11</span>
+                        <span class="mono-timeline-desc">제안서 종합 작성</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 11. 30</span>
+                        <span class="mono-timeline-desc"><strong>최종 제출</strong></span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">25. 12 ~</span>
+                        <span class="mono-timeline-desc">후속 대응 · 추가 자료</span>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
+                    이 프로젝트에서 가장 큰 역할은 디자인 한 가지에 그치지 않고 <strong>CG 품질·제안서 일관성·제출 후 대응까지 전 사이클을 책임지는 것</strong>이었습니다. CG는 단지의 일조·조망·녹지 컨셉을 한 컷에 담아내는 단일 이미지를 직접 디렉팅하여 만들었고, 제안서는 4,081세대라는 큰 규모를 비전문가 조합원이 시각적으로 이해할 수 있는 구조로 다듬었습니다. 제출 이후 후속 대응까지 동일한 디자인 언어가 유지되도록 PM 역할도 겸했습니다.
+                </p>
+                <ul class="mono-achievements">
+                    <li><strong>4,081세대 2획지</strong> 신통기획 재건축 — <strong>CG · 제안서 총괄</strong></li>
+                    <li><strong>CG 품질 디렉팅</strong> — 단일 이미지로 단지 컨셉 전달</li>
+                    <li><strong>제안서 종합 작성</strong> — 4,081세대 규모를 비전문가에게 시각화</li>
+                    <li>제출 이후 <strong>후속 대응·추가 자료</strong>까지 일관 책임</li>
+                    <li>지상 37층 — 양천구 일대 스카이라인 새 기준점 제안</li>
+                </ul>
+                <div class="mono-gallery two-up">
+                    <figure class="img-wrap">
+                        <img src="img/34_mokdong_10/조감도.jpg" alt="목동10단지 조감도">
+                        <span class="img-tag">01 — Bird's Eye View</span>
+                    </figure>
+                    <figure class="img-wrap">
+                        <img src="img/34_mokdong_10/메인투시.jpg" alt="목동10단지 메인투시">
+                        <span class="img-tag">02 — Main Perspective</span>
+                    </figure>
+                </div>
+            </main>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Mokdong Dist. 10</span>
+                <span>Process · Outputs</span>
+                <span>2025</span>
+            </div>
+            <div>Project 03 / 10 — Page 13</div>
+        </footer>
+    </article>
+
+
+    <!-- ════════════════════════════════════════════
+         PROJECT 04 — 목동 5단지 (랜드마크 주동)
+         ════════════════════════════════════════════ -->
+
+    <!-- PAGE 14 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
+            <img src="img/36_mokdong_5/목동 5단지 재건축_석경 조감도_비율조정001 copy.jpg" alt="목동5단지 조감도">
+            <span class="mono-hero-tag">Project 04 / 10</span>
+        </header>
+
+        <section class="mono-title-block">
+            <h1 class="mono-title">Mokdong <strong>Dist. 5</strong></h1>
+            <div class="mono-subtitle">Reconstruction Bid / Landmark Tower Design — Mokdong Frontline</div>
+            <div class="mono-subtitle-kr">목동5단지 재건축 — 3,998세대 / 2026</div>
+        </section>
+
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
+                    양천구 목동동로 <strong>3,998세대 2획지</strong> 재건축 정비계획 변경안입니다. <strong>랜드마크 주동 디자인</strong>을 책임지고, 저층부 근린생활시설 디자인까지 이어서 진행했습니다.<br><br>
+                    목동 중심 입지에서 49층 타워가 어떻게 보일지를 우선 결정하고, 그 디자인 언어가 저층부의 근생 시설까지 일관되게 흐르도록 계획했습니다. 건폐율 16%대의 광장형 단지 컨셉으로 제안했습니다.
+                </p>
+            </div>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Total Units</span>
+                    <span class="mono-meta-value-big">3,998</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Site Area</span>
+                    <span class="mono-meta-value-big">204,003 <span class="unit">m²</span><span class="mono-meta-value-sub">2획지 / 지상 49층</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Location</span>
+                    <span class="mono-meta-value">서울 양천구 목동동로 350</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2026.01 — 2026.02</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Role</span>
+                    <span class="mono-meta-value"><strong>랜드마크 주동 디자인</strong></span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Mokdong Dist. 5</span>
+                <span>Mokdong · Seoul</span>
+                <span>2026</span>
+            </div>
+            <div>Project 04 / 10 — Page 14</div>
+        </footer>
+    </article>
+
+    <!-- PAGE 15 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Landmark <strong>Tower</strong></h2>
+            <span class="mono-process-projname">Mokdong Dist. 5 — Form · Facade · Podium</span>
+        </header>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">26. 01</span>
+                        <span class="mono-timeline-desc">신통기획 검토 시작</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">26. 01~02</span>
+                        <span class="mono-timeline-desc">랜드마크 주동 디자인</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">26. 02</span>
+                        <span class="mono-timeline-desc">저층부 · 근린생활시설 디자인</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">26. 02</span>
+                        <span class="mono-timeline-desc">제안서 시각 자료 보강</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">26. 02. 03</span>
+                        <span class="mono-timeline-desc"><strong>최종 제출</strong></span>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
+                    단지의 첫인상을 결정하는 <strong>랜드마크 주동</strong>의 형태와 입면 디자인을 책임졌습니다. 양천구 목동 한복판이라는 입지에서 49층 타워가 어떻게 보일지를 우선 결정하고, 그 디자인 언어가 저층부 근생 시설까지 일관되게 흐르도록 계획했습니다. 제안서 막바지 단계에서 시각 자료를 추가로 보강하여 제출 직전까지 디자인 강도를 끌어올렸습니다.
+                </p>
+                <ul class="mono-achievements">
+                    <li><strong>3,998세대 2획지</strong> 신통기획 재건축 — 주동 디자인 담당</li>
+                    <li><strong>랜드마크 주동</strong> 형태·입면 직접 계획</li>
+                    <li><strong>저층부 근린생활시설</strong> 디자인 연계 — 단일 디자인 언어</li>
+                    <li>제안서 시각 자료 보강 — 제출 직전까지 디자인 강도 유지</li>
+                    <li>지상 49층 / 건폐율 16% — 광장형 단지 컨셉 제안</li>
+                </ul>
+                <div class="mono-gallery two-up">
+                    <figure class="img-wrap">
+                        <img src="img/36_mokdong_5/목동 5단지 재건축_석경 조감도_비율조정001 copy.jpg" alt="목동5단지 석경 조감도">
+                        <span class="img-tag">01 — Bird's Eye View</span>
+                    </figure>
+                    <figure class="img-wrap">
+                        <img src="img/36_mokdong_5/목동 5단지 재건축_옥상 및 근생투시도.jpg" alt="목동5단지 옥상·근생 투시도">
+                        <span class="img-tag">02 — Rooftop &amp; Retail</span>
+                    </figure>
+                </div>
+            </main>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Mokdong Dist. 5</span>
+                <span>Form · Outputs</span>
+                <span>2026</span>
+            </div>
+            <div>Project 04 / 10 — Page 15</div>
+        </footer>
+    </article>
+
+
+    <!-- ════════════════════════════════════════════
+         PROJECT 05 — 압구정3구역
+         ════════════════════════════════════════════ -->
+
+    <!-- PAGE 16 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
+            <img src="img/29_apgujeong_3/01-조감crop.png" alt="압구정3구역 조감도" style="object-position: center 30%;">
+            <span class="mono-hero-tag">Project 05 / 10</span>
+        </header>
+
+        <section class="mono-title-block">
+            <h1 class="mono-title">Apgujeong <strong>Dist. 3</strong></h1>
+            <div class="mono-subtitle">Reconstruction Project / Winning Proposal — UN Studio Collaboration</div>
+            <div class="mono-subtitle-kr">압구정3구역 재건축 — 4,300세대 / 2023</div>
+        </section>
+
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
+                    압구정 일대 <strong>최대 규모(4,300세대)</strong>의 재건축 설계경쟁 프로젝트입니다.<br><br>
+                    <strong>UN Studio</strong>와 협업하여 주동평면 개발 및 CG 작업을 담당했습니다. 1차 제출 시 기존 용적률 250%에서 <strong>300%로 상향</strong>하는 파격적 제안을 하였으며, 상대사 이의제기로 인한 입찰 재공고의 위기를 거쳐 2차 제출 시 고도화된 성과물로 <strong>최종 당선</strong>을 이뤄냈습니다.
+                </p>
+            </div>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Total Units</span>
+                    <span class="mono-meta-value-big">4,300</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Gross Floor Area</span>
+                    <span class="mono-meta-value-big">1,320,000 <span class="unit">m²</span><span class="mono-meta-value-sub">약 39.9만 평</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Location</span>
+                    <span class="mono-meta-value">서울 강남구 압구정동</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2023.03 — 2023.12</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Partner</span>
+                    <span class="mono-meta-value">UN Studio</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Apgujeong Dist. 3</span>
+                <span>Apgujeong · Seoul</span>
+                <span>2023</span>
+            </div>
+            <div>Project 05 / 10 — Page 16</div>
+        </footer>
+    </article>
+
+    <!-- PAGE 17 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Design <strong>Process</strong></h2>
+            <span class="mono-process-projname">Apgujeong Dist. 3 — Winning Strategy</span>
+        </header>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 03</span>
+                        <span class="mono-timeline-desc">프로젝트 착수 — 배치대안 정리</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 04</span>
+                        <span class="mono-timeline-desc">주동계획·입단면 — 평면도 개발 참여</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 05. 26</span>
+                        <span class="mono-timeline-desc"><strong>1차 최종 제출</strong> — 용적률 300% 제안</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 06 — 07</span>
+                        <span class="mono-timeline-desc">홍보관 운영 — 상대사 이의제기로 입찰 재공고</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 08 — 10</span>
+                        <span class="mono-timeline-desc">단위세대 고도화 — CG 업데이트</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 12</span>
+                        <span class="mono-timeline-desc"><strong>총회 통과 및 당선</strong> — 최종 선정</span>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
+                    위기를 기회로 바꾼 10개월간의 기록입니다. 1차 제출의 파격적인 용적률 300% 제안이 재공고라는 변수를 만들었지만, 이를 통해 디자인 논리를 더욱 견고히 다지고 렌더링 퀄리티를 실사 수준으로 끌어올려 조합원들의 최종 선택을 받을 수 있었습니다.
+                </p>
+                <ul class="mono-achievements">
+                    <li>압구정 일대 <strong>최대 규모(4,300세대)</strong> 재건축 당선</li>
+                    <li><strong>UN Studio</strong> 해외 건축사 협업 경험</li>
+                    <li>입찰 재공고 후 2차 제출 <strong>최종 당선</strong></li>
+                    <li><strong>용적률 300%</strong> 상향 제안 경험</li>
+                    <li>주동평면도 개발 및 <strong>CG 성과물</strong> 제작</li>
+                </ul>
+                <div class="mono-gallery two-up">
+                    <figure class="img-wrap">
+                        <img src="img/29_apgujeong_3/03-투시_낮버전.png" alt="투시도">
+                        <span class="img-tag">01 — Perspective</span>
+                    </figure>
+                    <figure class="img-wrap">
+                        <img src="img/29_apgujeong_3/08-스카이커뮤니티.png" alt="스카이커뮤니티">
+                        <span class="img-tag">02 — Sky Community</span>
+                    </figure>
+                </div>
+            </main>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Apgujeong Dist. 3</span>
+                <span>Process · Outputs</span>
+                <span>2023</span>
+            </div>
+            <div>Project 05 / 10 — Page 17</div>
+        </footer>
+    </article>
+
+
+    <!-- ════════════════════════════════════════════
+         PROJECT 06 — 영종 미단시티
+         ════════════════════════════════════════════ -->
+
+    <!-- PAGE 18 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
+            <img src="img/26_midan_4_5_6/그림18.jpg" alt="미단시티 조감도">
+            <span class="mono-hero-tag">Project 06 / 10</span>
+        </header>
+
+        <section class="mono-title-block">
+            <h1 class="mono-title">Yeongjong <strong>Midan City</strong></h1>
+            <div class="mono-subtitle">Private Developer Solicitation — 2 Projects, 5 Blocks, Full-Cycle</div>
+            <div class="mono-subtitle-kr">영종 미단시티 — 2,150세대 / 2021—2023</div>
+        </section>
+
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
+                    영종 미단시티 내 <strong>2개 프로젝트, 5개 블럭</strong>을 연속 수행한 대규모 주거단지 개발입니다.<br><br>
+                    공동4·5+단독6블록(750세대)과 A1·A2블록(1,400세대)의 <strong>디자인을 총괄</strong>하며 배치 대안검토부터 외관 디자인까지 전 과정을 주도했습니다. 두 프로젝트 모두 당선 후 <strong>건축심의, 교통영향평가까지 인허가 전 과정</strong>에 참여했습니다.
+                </p>
+            </div>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Total Units</span>
+                    <span class="mono-meta-value-big">2,150</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Gross Floor Area</span>
+                    <span class="mono-meta-value-big">375,000 <span class="unit">m²</span><span class="mono-meta-value-sub">약 11.3만 평</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Location</span>
+                    <span class="mono-meta-value">인천 중구 영종도 미단시티</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2021.11 — 2023.01</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Constructor</span>
+                    <span class="mono-meta-value">DL E&C</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Yeongjong Midan City</span>
+                <span>Yeongjong · Incheon</span>
+                <span>2021—2023</span>
+            </div>
+            <div>Project 06 / 10 — Page 18</div>
+        </footer>
+    </article>
+
+    <!-- PAGE 19 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Design <strong>Process</strong></h2>
+            <span class="mono-process-projname">Midan City — Multi-Block Development</span>
+        </header>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">21. 11</span>
+                        <span class="mono-timeline-desc"><strong>A1·A2블록</strong> — 현상설계 당선</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">22. 06</span>
+                        <span class="mono-timeline-desc">건축심의 접수 — 교평 사전검토</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">22. 07</span>
+                        <span class="mono-timeline-desc"><strong>공동4·5+단독6</strong> — 현상설계 당선</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">22. 08</span>
+                        <span class="mono-timeline-desc">경관심의 완료 — 건축심의 조치계획</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">22. 11</span>
+                        <span class="mono-timeline-desc">A1·A2 건축심의 — 교통영향평가 완료</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 01</span>
+                        <span class="mono-timeline-desc"><strong>전체 인허가 완료</strong> — 건축심의 통과</span>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
+                    A1·A2블록(1,400세대) 당선으로 시작해, 8개월 뒤 공동4·5+단독6블록(750세대)을 추가 수주하며 역할이 개별 블럭 설계에서 5개 블럭 동시 총괄로 확장되었습니다. 블럭별로 세대 규모와 향, 도로 접근성이 달라 각각 다른 배치 전략이 필요했고, 이를 하나의 통합 경관으로 정리한 것이 핵심 과제였습니다.
+                </p>
+                <ul class="mono-achievements">
+                    <li><strong>2개 프로젝트 연속 수주</strong> — 8개월 간격으로 역할 확장</li>
+                    <li>총 <strong>5개 블럭</strong> 동시 진행, 통합 경관 디자인 총괄</li>
+                    <li>경관심의·건축심의·교통영향평가 <strong>인허가 전 과정</strong> 완료</li>
+                    <li><strong>DL E&C</strong> 시공 연계 및 실시설계 협력</li>
+                    <li>총 <strong>2,150세대</strong> 규모 디자인 총괄 달성</li>
+                </ul>
+                <div class="mono-gallery">
+                    <figure class="img-wrap span-rows">
+                        <img src="img/26_midan_4_5_6/그림19.jpg" alt="미단시티 전경">
+                        <span class="img-tag">01 — Bird's Eye View</span>
+                    </figure>
+                    <figure class="img-wrap">
+                        <img src="img/25_midan_a1_a2/스크린샷 2025-07-17 163650.png" alt="A1·A2블록">
+                        <span class="img-tag">02 — Block A1·A2</span>
+                    </figure>
+                    <figure class="img-wrap">
+                        <img src="img/26_midan_4_5_6/그림20.jpg" alt="공동4,5+단독6">
+                        <span class="img-tag">03 — Block 4·5·6</span>
+                    </figure>
+                </div>
+            </main>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Yeongjong Midan City</span>
+                <span>Process · Outputs</span>
+                <span>2021—2023</span>
+            </div>
+            <div>Project 06 / 10 — Page 19</div>
+        </footer>
+    </article>
+
+
+    <!-- ════════════════════════════════════════════
+         PROJECT 07 — 반포 3주구
+         ════════════════════════════════════════════ -->
+
+    <!-- PAGE 20 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
+            <img src="img/17_banpo_3/03.정면투시_(주경)0407.jpg" alt="반포3주구 투시도" class="fit-contain">
+            <span class="mono-hero-tag" style="color: var(--text-primary); text-shadow: none;">Project 07 / 10</span>
+        </header>
+
+        <section class="mono-title-block">
+            <h1 class="mono-title">Banpo <strong>3rd Dist.</strong></h1>
+            <div class="mono-subtitle">Constructor Selection Alternative Bid — Samsung C&T + Perkins Eastman</div>
+            <div class="mono-subtitle-kr">반포3주구 시공자 선정 대안입찰 — 2020</div>
+        </section>
+
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
+                    반포 프리미엄 입지의 <strong>시공자 선정 대안입찰</strong> 프로젝트로, <strong>삼성물산</strong>과 희림건축이 협업하여 당선했습니다.<br><br>
+                    희림이 <strong>전체 설계 방향과 디자인 가이드라인을 수립</strong>하고, <strong>Perkins Eastman</strong>이 이를 바탕으로 외관 디자인을 전개하는 구조로 협업했습니다. 삼성물산 <strong>VE팀과 공사비 절감</strong> 방안도 함께 도출했습니다.
+                </p>
+            </div>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Gross Floor Area</span>
+                    <span class="mono-meta-value-big">439,000 <span class="unit">m²</span><span class="mono-meta-value-sub">약 13.3만 평</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Location</span>
+                    <span class="mono-meta-value">서울 서초구 반포동</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2020.02 — 2020.05</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Collaboration</span>
+                    <span class="mono-meta-value">삼성물산 + Perkins Eastman</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Result</span>
+                    <span class="mono-meta-value"><strong>당선</strong></span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Banpo 3rd Dist.</span>
+                <span>Banpo · Seoul</span>
+                <span>2020</span>
+            </div>
+            <div>Project 07 / 10 — Page 20</div>
+        </footer>
+    </article>
+
+    <!-- PAGE 21 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Design <strong>Process</strong></h2>
+            <span class="mono-process-projname">Banpo 3rd — Global Collaboration</span>
+        </header>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">20. 02. 10</span>
+                        <span class="mono-timeline-desc">현장설명회 — 프로젝트 시작</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">20. 02. 15~</span>
+                        <span class="mono-timeline-desc">디자인 가이드 — 배치·방향 설정</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">20. 03</span>
+                        <span class="mono-timeline-desc">Perkins 협업 — 디자인 진행</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">20. 03. 15~</span>
+                        <span class="mono-timeline-desc">물량산출 — 주차장·부대시설</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">20. 04</span>
+                        <span class="mono-timeline-desc">VE팀 협업 — 공사비 절감</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">20. 04. 30</span>
+                        <span class="mono-timeline-desc"><strong>도면 완료</strong> — 최종 제출</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">20. 05</span>
+                        <span class="mono-timeline-desc"><strong>당선</strong> — 상대사 분석 완료</span>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
+                    희림건축·Perkins Eastman·삼성물산 VE팀의 3자간 협업 프로젝트입니다. 디자인 가이드라인을 선제적으로 수립하여 방향을 명확히 하고, 물량산출과 지하주차장 전층 도면을 직접 작성했습니다. VE팀과 협업하여 트랜스퍼 최소화 및 주차장 물량 절감으로 품질 저하 없는 원가 절감을 달성했습니다.
+                </p>
+                <ul class="mono-achievements">
+                    <li>반포 프리미엄 입지 시공자 선정 대안입찰 <strong>당선</strong></li>
+                    <li><strong>Perkins Eastman</strong> 해외 건축사 협업</li>
+                    <li>삼성물산 VE팀과 <strong>공사비 절감</strong> 방안 도출</li>
+                    <li>지하주차장 <strong>전층 도면</strong> 직접 작성</li>
+                    <li>디자인 가이드라인 수립으로 <strong>다자간 협업</strong> 조율</li>
+                </ul>
+                <div class="mono-gallery two-up">
+                    <figure class="img-wrap">
+                        <img src="img/17_banpo_3/그림7.jpg" alt="조감도" class="fit-contain">
+                        <span class="img-tag">01 — Bird's Eye View</span>
+                    </figure>
+                    <figure class="img-wrap">
+                        <img src="img/17_banpo_3/페이지_ 0227_지하주차장 검토_15h.jpg" alt="지하주차장">
+                        <span class="img-tag">02 — Parking Plan</span>
+                    </figure>
+                </div>
+            </main>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Banpo 3rd Dist.</span>
+                <span>Process · Outputs</span>
+                <span>2020</span>
+            </div>
+            <div>Project 07 / 10 — Page 21</div>
+        </footer>
+    </article>
+
+
+    <!-- ════════════════════════════════════════════
+         PROJECT 08 — 평택 브레인시티
+         ════════════════════════════════════════════ -->
+
+    <!-- PAGE 22 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
+            <img src="img/28_pyeongtaek_braincity_2bl/p22-1215-희림 평택 브레인시티 주상2BL 경관심의_조감도_230120.png" alt="평택 브레인시티 조감도">
+            <span class="mono-hero-tag">Project 08 / 10</span>
+        </header>
+
+        <section class="mono-title-block">
+            <h1 class="mono-title">Pyeongtaek <strong>Brain City</strong></h1>
+            <div class="mono-subtitle">Mixed-Use Residential Complex — Full Approval Process</div>
+            <div class="mono-subtitle-kr">평택 브레인시티 주상2BL — 161K m² / 2022—2023</div>
+        </section>
+
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
+                    평택 브레인시티 <strong>161,146 m² 규모의 주거복합</strong> 프로젝트입니다.<br><br>
+                    현상설계 당선 후 실시설계팀으로 전환하여 <strong>1년 6개월간 인허가 전 과정</strong>을 직접 담당했습니다. 경관심의, 소방성능위주심의, 교통영향평가, 건축심의를 <strong>모두 직접 진행</strong>하며 설계-인허가 전 과정을 주도했습니다.
+                </p>
+            </div>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Gross Floor Area</span>
+                    <span class="mono-meta-value-big">161,000 <span class="unit">m²</span><span class="mono-meta-value-sub">약 4.9만 평</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Location</span>
+                    <span class="mono-meta-value">경기 평택시 브레인시티</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2022.07 — 2023.11</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Type</span>
+                    <span class="mono-meta-value">주거복합 (Mixed-Use)</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Approvals</span>
+                    <span class="mono-meta-value"><strong>4개 심의</strong> 전체 통과</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Pyeongtaek Brain City</span>
+                <span>Pyeongtaek · Gyeonggi</span>
+                <span>2022—2023</span>
+            </div>
+            <div>Project 08 / 10 — Page 22</div>
+        </footer>
+    </article>
+
+    <!-- PAGE 23 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Approval <strong>Process</strong></h2>
+            <span class="mono-process-projname">Brain City — Urban Masterplan</span>
+        </header>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">22. 07</span>
+                        <span class="mono-timeline-desc"><strong>현상설계 당선</strong></span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 01</span>
+                        <span class="mono-timeline-desc">실시설계팀 전환</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 03</span>
+                        <span class="mono-timeline-desc">경관심의 통과</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 05</span>
+                        <span class="mono-timeline-desc">소방성능 위주심의 통과</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 08</span>
+                        <span class="mono-timeline-desc">교통영향평가 승인</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23. 11</span>
+                        <span class="mono-timeline-desc"><strong>건축심의 완료</strong> — 인허가 전 과정 달성</span>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
+                    단순 설계안 작성을 넘어 설계의 실현 가능성을 검증한 프로젝트입니다. 현상설계 당선 후 실시설계팀으로 직접 전환하여 연속성을 확보하고, 경관·소방·교통·건축 4개 심의를 모두 직접 진행하며 관계기관과의 협의를 주도했습니다. 이를 통해 설계 의도를 심의 조건에 맞게 조율하면서도 훼손 없이 관철하는 실행력을 갖추게 되었습니다.
+                </p>
+                <ul class="mono-achievements">
+                    <li>현상설계 당선 → 인허가 완료 <strong>Full-Cycle</strong> 달성</li>
+                    <li><strong>4개 심의</strong>(경관·소방·교통·건축) 모두 직접 진행 및 통과</li>
+                    <li><strong>1년 6개월</strong>간 인허가 전 과정 담당</li>
+                    <li><strong>161,146m²</strong> 규모 주거복합 실시설계 경험</li>
+                    <li>관계기관 협의 주도로 <strong>프로젝트 실행력</strong> 강화</li>
+                </ul>
+                <div class="mono-gallery">
+                    <figure class="img-wrap span-rows">
+                        <img src="img/28_pyeongtaek_braincity_2bl/p22-1215-희림 평택 브레인시티 주상2BL 경관심의_조감도_230120.png" alt="조감도">
+                        <span class="img-tag">01 — Bird's Eye View</span>
+                    </figure>
+                    <figure class="img-wrap">
+                        <img src="img/28_pyeongtaek_braincity_2bl/p23-0604-희림 평택 브레인시티 주상2BL 경관심의 4차_배치도_230620_2.png" alt="배치도">
+                        <span class="img-tag dark">02 — Site Plan</span>
+                    </figure>
+                    <figure class="img-wrap">
+                        <img src="img/28_pyeongtaek_braincity_2bl/그림22.jpg" alt="상세">
+                        <span class="img-tag">03 — Detail View</span>
+                    </figure>
+                </div>
+            </main>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Pyeongtaek Brain City</span>
+                <span>Approvals · Outputs</span>
+                <span>2022—2023</span>
+            </div>
+            <div>Project 08 / 10 — Page 23</div>
+        </footer>
+    </article>
+
+
+    <!-- ════════════════════════════════════════════
+         PROJECT 09 — 송도 마스터플랜
+         ════════════════════════════════════════════ -->
+
+    <!-- PAGE 24 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
+            <img src="img/23_songdo_6_8_masterplan/01_전체조감_석경_1018.jpg" alt="송도 마스터플랜 조감도">
+            <span class="mono-hero-tag">Project 09 / 10</span>
+        </header>
+
+        <section class="mono-title-block">
+            <h1 class="mono-title">Songdo <strong>6,8 Plot</strong></h1>
+            <div class="mono-subtitle">International Urban Masterplan — Foster / Morphosis / GMP</div>
+            <div class="mono-subtitle-kr">송도국제도시 6,8공구 — 2.3M m² · 9개 블럭 / 2016—2024</div>
+        </section>
+
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
+                    송도국제도시의 <strong>2,316,643 m² 규모</strong> 마스터플랜 프로젝트입니다. 2016년 도시개발 현상설계 당선부터 약 <strong>8년간 지속</strong>된 장기 프로젝트로, <strong>9개 블럭</strong>의 배치 및 디자인을 총괄했습니다.<br><br>
+                    <strong>Norman Foster, Morphosis, GMP</strong>가 참여한 국제현상공모의 RFP 제작 및 관리를 담당하여 Morphosis를 최종 선정했습니다.
+                </p>
+            </div>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Gross Floor Area</span>
+                    <span class="mono-meta-value-big">2,300,000 <span class="unit">m²</span><span class="mono-meta-value-sub">약 69.6만 평</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Blocks</span>
+                    <span class="mono-meta-value-big">9 <span class="unit">Blocks</span></span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Location</span>
+                    <span class="mono-meta-value">인천 송도국제도시</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2016.11 — 2024.12</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Partners</span>
+                    <span class="mono-meta-value">Foster · Morphosis · GMP</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Songdo 6,8 Plot</span>
+                <span>Songdo · Incheon</span>
+                <span>2016—2024</span>
+            </div>
+            <div>Project 09 / 10 — Page 24</div>
+        </footer>
+    </article>
+
+    <!-- PAGE 25 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Master <strong>Plan</strong></h2>
+            <span class="mono-process-projname">Songdo 6,8 — International Competition</span>
+        </header>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">16. 11</span>
+                        <span class="mono-timeline-desc"><strong>도시개발</strong> — 현상설계 당선</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">21. 08~</span>
+                        <span class="mono-timeline-desc">마스터플랜 본격 진행</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">22 — 23</span>
+                        <span class="mono-timeline-desc">디자인 가이드 — RFP 제작</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">23 — 24</span>
+                        <span class="mono-timeline-desc">국제공모 진행 — Foster/Morphosis/GMP</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">24</span>
+                        <span class="mono-timeline-desc"><strong>Morphosis 선정</strong></span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">24. 12</span>
+                        <span class="mono-timeline-desc"><strong>경관상세계획</strong> 완료</span>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
+                    8년간 프로젝트는 크게 세 국면으로 진화했습니다. 초기(2016–2021)에는 도시개발 현상설계 당선 후 9개 블럭의 마스터플랜과 디자인 가이드라인을 수립했고, 중기(2022–2023)에는 세계적 건축사 3팀이 참여한 국제공모의 RFP를 직접 제작하여 공모를 총괄했습니다. 후기(2024)에는 Morphosis 선정 후 경관상세계획을 완성하고, M3·M4블럭은 GS건설 수의계약으로 마스터플랜 총괄에서 개별 블럭 실설계까지 역할을 확장했습니다.
+                </p>
+                <ul class="mono-achievements">
+                    <li><strong>2,316,643m²</strong> 초대형 마스터플랜 디자인 총괄</li>
+                    <li><strong>Foster, Morphosis, GMP</strong> 국제공모 관리</li>
+                    <li>Morphosis <strong>최종 선정</strong> 및 협업</li>
+                    <li><strong>9개 블럭</strong> 디자인 가이드라인 수립</li>
+                    <li>경관상세계획 수립 및 <strong>심의 완료</strong></li>
+                    <li>M3·M4블럭 <strong>GS건설</strong> 수의계약 주상복합 설계</li>
+                </ul>
+                <div class="mono-gallery">
+                    <figure class="img-wrap span-rows">
+                        <img src="img/23_songdo_6_8_masterplan/02_랜드마크타워_인천대교위_1019.jpg" alt="랜드마크타워">
+                        <span class="img-tag">01 — Landmark Tower</span>
+                    </figure>
+                    <figure class="img-wrap">
+                        <img src="img/23_songdo_6_8_masterplan/07_제2랜드마크_1006.jpg" alt="블록 디자인" class="fit-contain">
+                        <span class="img-tag dark">02 — Block Design</span>
+                    </figure>
+                    <figure class="img-wrap">
+                        <img src="img/23_songdo_6_8_masterplan/@10p.png" alt="마스터플랜">
+                        <span class="img-tag">03 — Masterplan</span>
+                    </figure>
+                </div>
+            </main>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Songdo 6,8 Plot</span>
+                <span>Process · Outputs</span>
+                <span>2016—2024</span>
+            </div>
+            <div>Project 09 / 10 — Page 25</div>
+        </footer>
+    </article>
+
+
+    <!-- ════════════════════════════════════════════
+         PROJECT 10 — 은마아파트
+         ════════════════════════════════════════════ -->
+
+    <!-- PAGE 26 -->
+    <article class="page mono-page">
+        <header class="mono-hero">
+            <img src="img/03_daechi_eunma/뒷페이지.jpg" alt="은마아파트 조감도">
+            <span class="mono-hero-tag">Project 10 / 10</span>
+        </header>
+
+        <section class="mono-title-block">
+            <h1 class="mono-title">Eunma <strong>Apartment</strong></h1>
+            <div class="mono-subtitle">Premium Residential Redevelopment — First Major Project (Career Origin)</div>
+            <div class="mono-subtitle-kr">은마아파트 재건축 — 4,424세대 / 2016 (첫 대형 프로젝트)</div>
+        </section>
+
+        <section class="mono-body">
+            <div class="mono-body-overview">
+                <h3 class="col-title">Project Overview</h3>
+                <p>
+                    2016년 희림건축 입사 후 약 1년 뒤 참여한 <strong>첫 대형 재건축 프로젝트</strong>입니다.<br><br>
+                    강남 대치동 <strong>4,424세대</strong> 규모의 프리미엄 재건축 설계공모에서 지하주차장 배치와 부대시설 계획을 담당하고, 처음으로 홍보관에서 조합원들에게 직접 계획안을 설명했습니다. 이 프로젝트의 성공이 이후 <strong>약 10년간 36개 프로젝트, 6건의 주요 당선</strong>으로 이어지는 설계 경력의 출발점이 되었습니다.
+                </p>
+            </div>
+            <div class="mono-body-meta">
+                <h3 class="col-title">Specifications</h3>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Total Units</span>
+                    <span class="mono-meta-value-big">4,424</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Location</span>
+                    <span class="mono-meta-value">서울 강남구 대치동</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Period</span>
+                    <span class="mono-meta-value">2016.05 — 2016.10</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Career Stage</span>
+                    <span class="mono-meta-value">입사 1년차 / 첫 대형 프로젝트</span>
+                </div>
+                <div class="mono-meta-row">
+                    <span class="mono-meta-label">Result</span>
+                    <span class="mono-meta-value"><strong>당선</strong> (총회 통과)</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Eunma Apartment</span>
+                <span>Daechi · Seoul</span>
+                <span>2016</span>
+            </div>
+            <div>Project 10 / 10 — Page 26</div>
+        </footer>
+    </article>
+
+    <!-- PAGE 27 -->
+    <article class="page mono-page">
+        <header class="mono-process-header">
+            <h2 class="mono-process-title">Career <strong>Origin</strong></h2>
+            <span class="mono-process-projname">Eunma Apartment — Large-Scale Reconstruction</span>
+        </header>
+
+        <section class="mono-process-body">
+            <aside class="mono-timeline">
+                <div class="mono-timeline-title">Timeline</div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">16. 05</span>
+                        <span class="mono-timeline-desc">프로젝트 시작 — 배치대안·주동계획</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">16. 06 — 07</span>
+                        <span class="mono-timeline-desc">주차장·부대시설 계획</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">16. 07 — 08</span>
+                        <span class="mono-timeline-desc">성과물 작성 — CG 작업</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">16. 09. 01</span>
+                        <span class="mono-timeline-desc"><strong>최종 제출</strong></span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">16. 09</span>
+                        <span class="mono-timeline-desc">홍보관 운영</span>
+                    </div>
+                </div>
+                <div class="mono-timeline-item is-key">
+                    <div class="mono-timeline-item-content">
+                        <span class="mono-timeline-date">16. 10</span>
+                        <span class="mono-timeline-desc"><strong>총회 당선</strong> — 최종 선정</span>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="mono-content">
+                <p class="mono-section-desc">
+                    4,424세대 규모의 지하주차장 배치는 단순한 주차 대수 확보가 아니라, 동선 효율·구조 모듈·환기 계획을 동시에 풀어야 하는 복합 퍼즐이었습니다. 이 과정에서 건축계획이 구조·설비와 어떻게 맞물리는지를 실전으로 체득했고, 홍보관에서 조합원 앞에 서며 설계안을 비전문가에게 설득하는 커뮤니케이션 역량도 함께 쌓았습니다.
+                </p>
+                <ul class="mono-achievements">
+                    <li>강남 대치동 <strong>4,424세대</strong> 재건축 총회 <strong>당선</strong></li>
+                    <li>입사 1년차 <strong>첫 대형 프로젝트</strong> 성공 — 커리어 출발점</li>
+                    <li>지하주차장 배치를 통해 <strong>구조·설비 연계 설계</strong> 실전 체득</li>
+                    <li>홍보관 운영 — 조합원 대상 <strong>설계안 프레젠테이션</strong> 경험</li>
+                    <li>설계공모 전 과정(배치→제출→홍보→당선) <strong>Full-Cycle</strong> 수행</li>
+                </ul>
+                <div class="mono-gallery two-up">
+                    <figure class="img-wrap">
+                        <img src="img/03_daechi_eunma/뒷페이지.jpg" alt="은마아파트 전경">
+                        <span class="img-tag">01 — Bird's Eye View</span>
+                    </figure>
+                    <figure class="img-wrap">
+                        <img src="img/03_daechi_eunma/뒷페이지2.png" alt="상세">
+                        <span class="img-tag">02 — Detail View</span>
+                    </figure>
+                </div>
+            </main>
+        </section>
+
+        <footer class="mono-foot-band">
+            <div class="meta-left">
+                <span>Eunma Apartment</span>
+                <span>Origin · Outputs</span>
+                <span>2016</span>
+            </div>
+            <div>Project 10 / 10 — Page 27</div>
+        </footer>
+    </article>
+
+</div>
+
+</body>
+</html>
