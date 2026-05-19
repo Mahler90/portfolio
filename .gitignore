@@ -3,3 +3,6 @@ C:Usersblusbdata.claude-log.txt
 .DS_Store
 Thumbs.db
 desktop.ini
+shots/
+shots_hi/
+_shoot*.py
