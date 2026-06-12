@@ -183,6 +183,9 @@
   .A.concept { grid-template-rows: auto 1fr auto; }
   .A.concept .hero { grid-column: 5 / -1; display: grid; grid-template-columns: 1fr; grid-template-rows: repeat(3, 1fr); gap: 10px; }
   .A.concept .hero .ph { width: 100%; height: 100%; }
+  /* UI screenshots — show the full frame incl. side panel, no crop */
+  .A.concept .hero .ph.ui { background: #fff; }
+  .A.concept .hero .ph.ui > img { object-fit: contain; }
 
   /* ============================================================ */
   /* CV                                                           */
@@ -389,15 +392,15 @@
       <div class="row"><div class="k">Audience</div><div>본부장 · 임원진 / 주거2본부</div></div>
     </div>
     <div class="body">
-      <p>An internal R&amp;D track on using AI in early-stage design. In Track A (Claude + MCP) I built one tool per building type; apt, the apartment tool, takes site, building code, and project goals and generates ranked massing alternatives directly in Rhino. Track B (Freepik) expands one massing image into aerials, perspectives, and clips. Presented to senior leadership in April 2026, now in use on live projects.</p>
-      <p class="kr">사내 R&amp;D 트랙입니다. 초기 설계에서 대안을 만들고 평가하고 시각화하는 시간을 줄이면, 같은 기간에 더 많은 안을 검토할 수 있겠다는 생각에서 시작했습니다. 두 갈래로 진행했습니다. 트랙 A(Claude + MCP)에서는 건물 유형별 도구를 만들었습니다. 그중 공동주택 도구인 apt는 부지·법규·사업 목표를 입력받아 매스 대안을 라이노에 직접 생성하고 순위를 매깁니다. 트랙 B(Freepik)는 매스 이미지 한 장을 회전 조감·휴먼스케일 투시·짧은 영상으로 확장합니다. 2026년 4월 본부장·임원진 앞에서 22장 슬라이드로 두 트랙을 발표했고, 지금은 실제 프로젝트 초기 검토에 쓰고 있습니다.</p>
+      <p>An internal R&amp;D track on using AI in early-stage design. In Track A (Claude + MCP) I built one tool per building type; apt, the apartment tool, takes site, building code, and project goals, then generates layout alternatives and runs the sunlight and parking checks — the three screens on the right. Track B (Freepik) expands one massing image into aerials, perspectives, and clips. Presented to senior leadership in April 2026, now in use on live projects.</p>
+      <p class="kr">사내 R&amp;D 트랙입니다. 초기 설계에서 대안을 만들고 평가하고 시각화하는 시간을 줄이면, 같은 기간에 더 많은 안을 검토할 수 있겠다는 생각에서 시작했습니다. 두 갈래로 진행했습니다. 트랙 A(Claude + MCP)에서는 건물 유형별 도구를 만들었습니다. 그중 공동주택 도구인 apt는 부지·법규·사업 목표를 입력받아 배치 대안을 생성하고, 일조 검토와 주차장 계획까지 한 도구 안에서 처리합니다. 오른쪽 세 화면이 그 과정입니다. 트랙 B(Freepik)는 매스 이미지 한 장을 회전 조감·휴먼스케일 투시·짧은 영상으로 확장합니다. 2026년 4월 본부장·임원진 앞에서 22장 슬라이드로 두 트랙을 발표했고, 지금은 실제 프로젝트 초기 검토에 쓰고 있습니다.</p>
     </div>
   </div>
 
   <div class="hero">
-    <div class="ph has-img" data-label="01 · Track A · Mass Model"><img src="img/33_ai_practice/cover.jpg" alt=""></div>
-    <div class="ph has-img" data-label="02 · Track A · Rhino Output"><img src="img/33_ai_practice/track-a.jpg" alt=""></div>
-    <div class="ph has-img" data-label="03 · Track B · Perspective"><img src="img/33_ai_practice/track-b.jpg" alt=""></div>
+    <div class="ph ui has-img" data-label="01 · apt · Layout Generation · 배치 대안 생성"><img src="img/33_ai_practice/1(배치대안생성).png" alt=""></div>
+    <div class="ph ui has-img" data-label="02 · apt · Sunlight Review · 일조 검토"><img src="img/33_ai_practice/2(일조검토).png" alt=""></div>
+    <div class="ph ui has-img" data-label="03 · apt · Parking Layout · 주차장 계획"><img src="img/33_ai_practice/3(주차장계획).png" alt=""></div>
   </div>
 
   <div class="foot ph-foot">
