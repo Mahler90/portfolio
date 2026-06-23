@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JunSeong Park — Selected Works · Data Center & ICT Focus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1d1d1f;
+    --ink-80: #333333;
+    --ink-48: #7a7a7a;
+    --parchment: #f5f5f7;
+    --rule: #1d1d1f;
+    --hairline: #d2d2d7;
+    --sf: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, Inter, 'Helvetica Neue', 'Noto Sans KR', sans-serif;
+    --product-shadow: 0 5px 30px 0 rgba(0,0,0,0.16);
+  }
+  html, body { margin: 0; padding: 0; background: #f5f5f7; }
+  body {
+    font-family: var(--sf); font-feature-settings: 'ss03', 'cv11';
+    display: flex; flex-direction: column; align-items: center;
+    padding: 40px 20px; gap: 28px;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* Page shell (A4 portrait @ 96dpi) -------------------------------- */
+  .pg {
+    width: 794px; height: 1123px;
+    background: #fff;
+    color: var(--ink);
+    position: relative;
+    overflow: hidden;
+    font-family: var(--sf); font-feature-settings: 'ss03', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    box-shadow: 0 10px 30px var(--hairline);
+  }
+  .pg, .pg * { box-sizing: border-box; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-feature-settings: normal; }
+  .kr   { font-family: 'Noto Sans KR', var(--sf); font-weight: 400; }
+
+  /* Image placeholder + real-image overlay -------------------------- */
+  .ph {
+    position: relative;
+    background-image: repeating-linear-gradient(135deg, #ededed 0 8px, #f5f5f5 8px 16px);
+    overflow: hidden;
+  }
+  .ph::before {
+    content: attr(data-label);
+    position: absolute; top: 8px; left: 8px;
+    font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    font-size: 9px; letter-spacing: 0.04em;
+    color: rgba(0,0,0,0.55);
+    background: rgba(255,255,255,0.85);
+    padding: 2px 6px;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+  .ph.dot {
+    background-color: #f5f5f5;
+    background-image: radial-gradient(circle at 50% 50%, #ddd 1px, transparent 1.2px);
+    background-size: 10px 10px;
+  }
+  .ph > img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    z-index: 1;
+  }
+  .ph > img.bias-top { object-position: center 25%; }
+  .ph > img.bias-bottom { object-position: center 75%; }
+  /* Once a real image is present, suppress the plate label entirely... */
+  .ph.has-img::before { content: none; }
+  /* ...except on the AI UI screenshots, where the label is a genuine caption. */
+  .ph.ui.has-img::before { content: attr(data-label); background: rgba(255,255,255,0.82); }
+
+  /* Reusable header/footer for every page --------------------------- */
+  .ph-head { display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .ph-foot { display: flex; justify-content: space-between; align-items: flex-end; font-size: 9px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+  .ph-foot .pn { font-size: 11px; }
+
+  /* ============================================================ */
+  /* COVER                                                        */
+  /* ============================================================ */
+  .Cover { padding: 56px; display: grid; grid-template-rows: auto 1fr auto; }
+  .Cover .top { display: flex; justify-content: space-between; align-items: baseline; }
+  .Cover .top .mark { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.6; }
+  .Cover .top .range { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-align: right; line-height: 1.6; }
+  .Cover .center { display: flex; flex-direction: column; justify-content: flex-end; gap: 16px; }
+  .Cover .name { font-size: 72px; line-height: 0.92; font-weight: 600; letter-spacing: -0.022em; }
+  .Cover .name .kr { font-size: 30px; display: block; margin-top: 14px; letter-spacing: -0.01em; font-weight: 500; }
+  .Cover .role { font-size: 13px; line-height: 1.4; margin-top: 24px; max-width: 460px; }
+  .Cover .role .en { display: block; }
+  .Cover .role .kr { display: block; margin-top: 4px; font-size: 13.5px; }
+  .Cover .objective { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--hairline); max-width: 460px; }
+  .Cover .objective .seek { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.55; display: block; margin-bottom: 6px; }
+  .Cover .objective .t { font-size: 14px; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; }
+  .Cover .objective .t .kr { display: block; font-size: 12.5px; font-weight: 500; margin-top: 3px; opacity: 0.78; }
+  .Cover .bottom { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: end; padding-top: 24px; border-top: 1px solid var(--rule); font-size: 10px; }
+  .Cover .bottom .col .k { font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.55; margin-bottom: 5px; display: block; }
+  .Cover .bottom .col .v { font-size: 10.5px; line-height: 1.5; }
+
+  /* ============================================================ */
+  /* STATEMENT                                                    */
+  /* ============================================================ */
+  .Stmt { padding: 56px; display: grid; grid-template-rows: auto 1fr auto; gap: 32px; }
+  .Stmt .body { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-content: center; }
+  .Stmt .body h2 { font-size: 11px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 400; margin: 0 0 18px 0; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+  .Stmt .body p { font-size: 12.5px; line-height: 1.65; margin: 0 0 14px 0; }
+  .Stmt .body .kr p { font-size: 13px; line-height: 1.85; }
+  .Stmt .pillars { display: flex; gap: 10px; margin-top: 8px; }
+  .Stmt .pillars .pill { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--hairline); border-radius: 2px; padding: 4px 8px; }
+
+  /* ============================================================ */
+  /* CONTENTS — single-page selected index                        */
+  /* ============================================================ */
+  .Idx { padding: 56px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 22px; }
+  .Idx .titlebar { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .Idx h1 { font-size: 36px; font-weight: 600; letter-spacing: -0.021em; margin: 0; line-height: 1; white-space: nowrap; }
+  .Idx h1 .kr { display: inline; font-size: 19px; font-weight: 500; margin-left: 14px; opacity: 0.55; letter-spacing: -0.005em; }
+  .Idx .titlebar .tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; text-align: right; line-height: 1.5; }
+  .Idx .list { display: flex; flex-direction: column; align-self: start; }
+  .Idx .glabel { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.5; display: flex; align-items: center; gap: 12px; margin: 18px 0 6px; }
+  .Idx .glabel::after { content: ''; flex: 1; height: 1px; background: var(--hairline); }
+  .Idx .glabel:first-child { margin-top: 0; }
+  .Idx .it { display: grid; grid-template-columns: 38px 1fr 144px 50px; gap: 18px; align-items: center; padding: 14px 0; border-top: 1px solid var(--rule); }
+  .Idx .glabel + .it { border-top: none; }
+  .Idx .it:last-child { border-bottom: 1px solid var(--rule); }
+  .Idx .it .n { font-family: 'JetBrains Mono', monospace; font-size: 13px; opacity: 0.6; }
+  .Idx .it .ti { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.12; }
+  .Idx .it .sub { font-family: 'Noto Sans KR', sans-serif; font-size: 10.5px; line-height: 1.4; opacity: 0.6; margin-top: 3px; }
+  .Idx .it .thumb { width: 144px; height: 84px; }
+  .Idx .it .thumb::before { display: none; }
+  .Idx .it .pgn { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-align: right; font-weight: 500; }
+
+  /* ============================================================ */
+  /* ALL WORKS — 36-project visual index (2-page spread)          */
+  /* ============================================================ */
+  .vcell { display: flex; flex-direction: column; gap: 4px; }
+  .vcell .thumb { width: 100%; aspect-ratio: 16/10; }
+  .vcell .vmeta { display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.06em; margin-top: 2px; }
+  .vcell .vmeta .l { font-weight: 500; }
+  .vcell .vmeta .r { opacity: 0.6; }
+  .vcell .vmeta .r.feat { opacity: 1; font-weight: 600; }
+  .vcell .ven { font-size: 10px; line-height: 1.18; letter-spacing: -0.005em; min-height: 1.18em; }
+  .vcell .vkr { font-size: 9px; line-height: 1.25; opacity: 0.55; font-family: 'Noto Sans KR', sans-serif; }
+
+  .V2 { padding: 48px 56px 48px 56px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 16px; }
+  .V2 .titlebar { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+  .V2 h1 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em; margin: 0; line-height: 1; }
+  .V2 h1 .kr { display: inline; font-size: 14px; font-weight: 500; margin-left: 10px; opacity: 0.55; letter-spacing: -0.005em; }
+  .V2 .titlebar .pageof { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; text-align: right; line-height: 1.5; }
+  .V2 .body { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: min-content; gap: 14px 12px; align-content: start; }
+  .V2 .vcell .ven { font-size: 9.5px; }
+  .V2 .vcell .vkr { font-size: 8.5px; }
+
+  /* ============================================================ */
+  /* A — INTERIOR PAGE                                            */
+  /* ============================================================ */
+  .A { padding: 56px; display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: auto 1fr auto auto; gap: 20px 14px; }
+  .A .head { grid-column: 1 / -1; }
+  .A .meta { grid-column: 1 / span 4; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+  .A .title-en { font-size: 24px; line-height: 1.05; font-weight: 600; letter-spacing: -0.018em; }
+  .A .title-kr { font-size: 15px; line-height: 1.3; font-weight: 500; margin-top: 6px; letter-spacing: -0.005em; }
+  .A .specs { font-size: 9.5px; line-height: 1.55; letter-spacing: 0.02em; }
+  .A .specs .row { display: grid; grid-template-columns: 64px 1fr; padding: 4px 0; border-top: 1px solid var(--rule); gap: 8px; }
+  .A .specs .row:last-child { border-bottom: 1px solid var(--rule); }
+  .A .specs .k { font-family: 'JetBrains Mono', monospace; text-transform: uppercase; font-size: 8.5px; letter-spacing: 0.06em; padding-top: 1px; }
+  .A .body { font-size: 10px; line-height: 1.5; }
+  .A .body p { margin: 0 0 7px 0; }
+  .A .body p.kr { font-size: 10.5px; line-height: 1.62; }
+  .A .body .bridge { margin-top: 7px; padding: 7px 10px; background: #f5f5f7; border-left: 2px solid var(--rule); font-size: 9px; line-height: 1.5; }
+  .A .body .bridge .bk { font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.55; display: block; margin-bottom: 3px; }
+  .A .hero { grid-column: 5 / -1; grid-row: 2; min-height: 0; }
+  .A .hero > .ph { width: 100%; height: 100%; }
+  .A .grid3 { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .A .grid3 .ph { aspect-ratio: 4/3; }
+  .A .grid4 { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .A .grid4 .ph { aspect-ratio: 1/1; }
+  .A .foot { grid-column: 1 / -1; }
+
+  /* Variant — Urban */
+  .A.urban { grid-template-rows: auto auto 1fr auto auto; }
+  .A.urban .meta { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: 4fr 8fr; gap: 24px; }
+  .A.urban .meta .title-col { display: flex; flex-direction: column; gap: 18px; }
+  .A.urban .meta .body { grid-column: 2; }
+  .A.urban .hero { grid-column: 1 / -1; grid-row: 3; }
+  .A.urban .hero > .ph { aspect-ratio: 16/9; height: auto; }
+
+  /* Variant — Concept (3 stacked landscape frames) */
+  .A.concept { grid-template-rows: auto 1fr auto; }
+  .A.concept .hero { grid-column: 5 / -1; display: grid; grid-template-columns: 1fr; grid-template-rows: repeat(3, 1fr); gap: 10px; }
+  .A.concept .hero .ph { width: 100%; height: 100%; }
+  /* UI screenshots — show the full frame incl. side panel, no crop */
+  .A.concept .hero .ph.ui { background: #fff; }
+  .A.concept .hero .ph.ui > img { object-fit: contain; }
+
+  /* ============================================================ */
+  /* CV                                                           */
+  /* ============================================================ */
+  .CV { padding: 56px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 24px; }
+  .CV .titlebar { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .CV h1 { font-size: 36px; font-weight: 600; letter-spacing: -0.021em; margin: 0; line-height: 1; white-space: nowrap; }
+  .CV h1 .kr { display: inline; font-size: 19px; font-weight: 500; margin-left: 14px; opacity: 0.55; letter-spacing: -0.005em; }
+  .CV .me { display: flex; gap: 14px; align-items: center; }
+  .CV .me .portrait { width: 56px; height: 56px; background: #ddd; overflow: hidden; }
+  .CV .me .portrait img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.85) contrast(1.05); }
+  .CV .me .txt { text-align: right; font-size: 10px; line-height: 1.5; }
+  .CV .me .txt .nm { font-size: 13px; font-weight: 600; }
+  .CV .me .txt .role { opacity: 0.6; }
+  .CV .body { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-content: start; }
+  .CV .col h2 { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 400; margin: 0 0 8px 0; padding-bottom: 5px; border-bottom: 1px solid var(--rule); }
+  .CV .col h2.cont { margin-top: 22px; }
+  .CV .row { display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--hairline); align-items: baseline; }
+  .CV .row .yr { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.04em; }
+  .CV .row .v { font-size: 10.5px; line-height: 1.4; }
+  .CV .row .v .sub { display: block; font-size: 9.5px; opacity: 0.6; margin-top: 2px; }
+
+  /* Mobile / responsive — scale the A4 sheet to fit narrow viewports.  */
+  /* Keep px-based design intact; visual shrink only (never enlarge).     */
+  @media screen and (max-width: 900px) {
+    html, body { overflow-x: hidden; }
+    body { padding: 12px; gap: 0; align-items: flex-start; }
+    .pg {
+      box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+      transform-origin: top left;
+      transform: scale(min(1, calc((100vw - 24px) / 794px)));
+      /* Pull the next page up to match the scaled visual height + a 12px gap */
+      margin-bottom: calc(1123px * min(1, (100vw - 24px) / 794px) - 1123px + 12px);
+    }
+  }
+
+  /* Apple pass — the single signature product shadow on contained renders */
+  .Idx .it .thumb.has-img,
+  .A .hero > .ph.has-img,
+  .A .grid3 .ph.has-img,
+  .A .grid4 .ph.has-img { box-shadow: var(--product-shadow); }
+  /* Apple reading cadence — gentle negative tracking on latin body copy */
+  .pg p:not(.kr) { letter-spacing: -0.012em; }
+
+  @page { size: A4 portrait; margin: 0; }
+  @media print {
+    body { background: #fff; padding: 0; gap: 0; }
+    .pg { box-shadow: none; }
+    .pg:not(:last-child) { page-break-after: always; }
+    /* Reproduce backgrounds, placeholder hatches and label chips in PDF/print */
+    .pg, .pg * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- p.01 — COVER                                                 -->
+<!-- ============================================================ -->
+<div class="pg Cover">
+  <div class="top">
+    <div class="mark">Selected Works<br/>2015—2026</div>
+    <div class="range">Data Center · ICT Focus<br/>기술 × 건축</div>
+  </div>
+
+  <div class="center">
+    <div class="name">
+      JunSeong Park<span class="kr">박준성</span>
+    </div>
+    <div class="role">
+      <span class="en">Architectural Designer — Technology × Architecture</span>
+      <span class="kr">건축 디자이너 · 기술과 건축의 융합</span>
+    </div>
+    <div class="objective">
+      <span class="seek">Focus / 지원 분야</span>
+      <div class="t">Data Center &amp; ICT — bringing large-scale, computational design capability into a new domain
+        <span class="kr">데이터센터·ICT 인프라 — 대규모·컴퓨테이셔널 설계 역량을 새 분야로 확장</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="col">
+      <span class="k">Practice</span>
+      <div class="v">Heerim Architects &amp; Planners<br/>희림종합건축사사무소 · 서울</div>
+    </div>
+    <div class="col">
+      <span class="k">Focus</span>
+      <div class="v">Technology · Environment · People<br/>기술 · 환경 · 사람</div>
+    </div>
+    <div class="col">
+      <span class="k">Contact</span>
+      <div class="v"><a href="mailto:blusb41@gmail.com">blusb41@gmail.com</a><br/><a href="https://github.com/Mahler90/portfolio">github.com/Mahler90/portfolio</a><br/>Namyangju · 남양주</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.02 — STATEMENT                                             -->
+<!-- ============================================================ -->
+<div class="pg Stmt">
+  <div class="ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Statement · 인사말</div>
+  </div>
+
+  <div class="body">
+    <div>
+      <h2>Statement</h2>
+      <p>Since 2015 I have delivered large-scale, technically demanding work in Korean architecture — international masterplan competitions, mixed-use developments, major redevelopments — carrying schemes from planning and concept design through competition and permitting. A master's in Urban &amp; Real Estate Development grounds the front end: feasibility, siting, and demand.</p>
+      <p>My work has always sat where three forces meet: technology, environment, and people. Recently I turned that conviction into tools — AI and computational systems now used in early-stage studies on live projects. I want to bring the same performance-and-people mindset to data centers and ICT infrastructure: buildings where engineering intensity and responsibility to environment and people have to hold together.</p>
+      <div class="pillars"><span class="pill">Technology</span><span class="pill">Environment</span><span class="pill">People</span></div>
+    </div>
+    <div class="kr">
+      <h2>인사말</h2>
+      <p>2015년부터 국제 마스터플랜 공모, 주상복합, 대형 재건축 등 기술적으로 까다로운 대규모 프로젝트를 기획·계획설계에서 공모·인허가까지 수행해 왔습니다. 도시·부동산개발 석사로 입지·사업성·수요 등 기획 단계의 토대도 갖췄습니다.</p>
+      <p>제 일은 늘 기술·환경·사람이 만나는 지점에 있었습니다. 최근에는 그 신념을 도구로 구현했습니다 — 현 프로젝트 초기 검토에 쓰이는 AI·컴퓨테이셔널 설계입니다. 이제 그 성능과 사람을 함께 추구하는 태도를, 높은 공학적 밀도와 환경·사람에 대한 책임이 양립해야 하는 데이터센터와 ICT 인프라에 적용하고 싶습니다.</p>
+      <div class="pillars"><span class="pill">기술</span><span class="pill">환경</span><span class="pill">사람</span></div>
+    </div>
+  </div>
+
+  <div class="ph-foot">
+    <div>p. 02</div>
+    <div>JS Park · 2026.06</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.03 — CONTENTS (selected index)                             -->
+<!-- ============================================================ -->
+<div class="pg Idx">
+  <div class="ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Contents · 목차</div>
+  </div>
+
+  <div class="titlebar">
+    <h1>Contents<span class="kr">목차</span></h1>
+    <div class="tag">Selected 7<br/>6 Works + AI Practice</div>
+  </div>
+
+  <div class="list">
+    <div class="glabel">Practice Focus · 사내 연구</div>
+    <div class="it">
+      <div class="n">00</div>
+      <div><div class="ti">Architecture × AI</div><div class="sub">건축 × AI · 사내 R&amp;D · Claude + MCP · 성능 검토 자동화</div></div>
+      <div class="thumb ph has-img"><img src="img/33_ai_practice/cover.jpg" alt="Architecture × AI practice — cover"></div>
+      <div class="pgn">p. 04</div>
+    </div>
+
+    <div class="glabel">Selected Projects · 주요 프로젝트</div>
+    <div class="it">
+      <div class="n">01</div>
+      <div><div class="ti">Songdo 6,8 Masterplan</div><div class="sub">송도 6,8공구 국제공모 · 캠퍼스 마스터플랜 · Morphosis 선정</div></div>
+      <div class="thumb ph has-img"><img src="img/23_songdo_6_8_masterplan/01_전체조감_석경_1018.jpg" alt="Songdo 6,8 masterplan aerial"></div>
+      <div class="pgn">p. 05</div>
+    </div>
+    <div class="it">
+      <div class="n">02</div>
+      <div><div class="ti">Pyeongtaek Brain City 2BL</div><div class="sub">평택 브레인시티 주상2BL · 인허가 단독 · 4개 심의 통과</div></div>
+      <div class="thumb ph has-img"><img src="img/28_pyeongtaek_braincity_2bl/hero_clean.png" alt="Pyeongtaek Brain City 2BL aerial"></div>
+      <div class="pgn">p. 06</div>
+    </div>
+    <div class="it">
+      <div class="n">03</div>
+      <div><div class="ti">Apgujeong District 3</div><div class="sub">압구정3구역 · UN Studio 국제협업 · 당선</div></div>
+      <div class="thumb ph has-img"><img src="img/29_apgujeong_3/hero_clean.png" alt="Apgujeong District 3 aerial"></div>
+      <div class="pgn">p. 07</div>
+    </div>
+    <div class="it">
+      <div class="n">04</div>
+      <div><div class="ti">Banpo Mido 1st</div><div class="sub">반포미도1차 재건축 · 1,743세대 · 설계 리더십 · 당선</div></div>
+      <div class="thumb ph has-img"><img src="img/32_banpo_mido_1/큰이미지.jpg" alt="Banpo Mido 1st hero render"></div>
+      <div class="pgn">p. 08</div>
+    </div>
+    <div class="it">
+      <div class="n">05</div>
+      <div><div class="ti">Mokdong District 14</div><div class="sub">목동14단지 재건축 · 5,158세대 · 양천구 최대 · 당선</div></div>
+      <div class="thumb ph has-img"><img src="img/35_mokdong_14/큰이미지.jpg" alt="Mokdong District 14 landmark tower"></div>
+      <div class="pgn">p. 09</div>
+    </div>
+    <div class="it">
+      <div class="n">06</div>
+      <div><div class="ti">Eunma Apartment</div><div class="sub">은마아파트 재건축 · 4,424세대 · 구조·설비 통합의 출발점</div></div>
+      <div class="thumb ph has-img"><img src="img/03_daechi_eunma/큰이미지.jpg" alt="Eunma Apartment redevelopment render"></div>
+      <div class="pgn">p. 10</div>
+    </div>
+  </div>
+
+  <div class="ph-foot">
+    <div>p. 03</div>
+    <div>Contents · Selected 7</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.04 — AI PRACTICE (A · Concept variant)                     -->
+<!-- ============================================================ -->
+<div class="pg A concept">
+  <div class="head ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Lead · Technology × Architecture</div>
+  </div>
+
+  <div class="meta">
+    <div>
+      <div class="title-en">Architecture × AI</div>
+      <div class="title-kr kr">건축 × AI · 사내 R&amp;D</div>
+    </div>
+    <div class="specs">
+      <div class="row"><div class="k">Year</div><div>2025 — 2026</div></div>
+      <div class="row"><div class="k">Tracks</div><div>2 — Claude+MCP · Freepik</div></div>
+      <div class="row"><div class="k">Tools</div><div>apt · complex · hotel</div></div>
+      <div class="row"><div class="k">Stack</div><div>Claude Code · MCP · Rhino · Freepik</div></div>
+      <div class="row"><div class="k">Role / 역할</div><div>R&amp;D Lead · 사례발표</div></div>
+      <div class="row"><div class="k">Status</div><div>In use, early-stage · 초기 검토 적용</div></div>
+    </div>
+    <div class="body">
+      <p>An internal R&amp;D track on cutting the time to generate, evaluate, and visualize alternatives in early-stage design. In Track A (Claude + MCP) I built one tool per building type; apt takes site, building code, and project goals, then generates layout alternatives and runs the sunlight and parking checks — the three screens at right. Track B (Freepik) expands one massing image into rotating aerials, human-scale perspectives, and clips. Presented as a 22-slide case study to senior leadership in April 2026; now used for early-stage studies on live projects.</p>
+      <p class="kr">초기 설계에서 대안을 만들고 평가·시각화하는 시간을 줄이려는 사내 R&amp;D입니다. 트랙 A(Claude+MCP)에서는 유형별 도구를 만들었고, 공동주택 도구 apt는 부지·법규·사업목표를 입력받아 배치 대안을 생성하고 일조·주차 검토까지 한 도구에서 처리합니다(오른쪽 3화면). 트랙 B(Freepik)는 매스 한 장을 회전 조감·휴먼스케일 투시·영상으로 확장합니다. 2026년 4월 본부장·임원진 앞에서 22장 슬라이드로 발표했고 실제 프로젝트 초기 검토에 쓰고 있습니다.</p>
+      <div class="bridge"><span class="bk">Why this matters for data centers · 데이터센터 연결점</span>The same approach — encode the brief, generate alternatives, auto-check the hard limits — maps directly onto data-center planning: IT-load density and availability drive the rack/hall module, clear height, and cooling topology, and so the form, with PUE and WUE as the efficiency metrics to hold. Here efficiency is a climate responsibility, not just a number. · 조건을 입력해 대안을 만들고 한계치를 자동 검토하는 같은 방식이 데이터센터 계획에 그대로 적용됩니다 — IT 부하밀도와 가용성이 랙·전산실 모듈·층고·냉방 토폴로지를, 나아가 형태를 결정하고, PUE·WUE는 지켜야 할 효율 지표가 됩니다. 여기서는 효율이 곧 환경적 책임입니다.</div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="ph ui has-img" data-label="01 · apt · Layout Generation · 배치 대안 생성"><img src="img/33_ai_practice/1(배치대안생성).png" alt="apt tool — layout alternative generation"></div>
+    <div class="ph ui has-img" data-label="02 · apt · Sunlight Review · 일조 검토"><img src="img/33_ai_practice/2(일조검토).png" alt="apt tool — sunlight review"></div>
+    <div class="ph ui has-img" data-label="03 · apt · Parking Layout · 주차장 계획"><img src="img/33_ai_practice/3(주차장계획).png" alt="apt tool — parking layout"></div>
+  </div>
+
+  <div class="foot ph-foot">
+    <div>Architecture × AI · 건축 × AI</div>
+    <div class="pn">p. 04</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.05 — SONGDO 6,8 MASTERPLAN (A · Urban variant)             -->
+<!-- ============================================================ -->
+<div class="pg A urban">
+  <div class="head ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Urban · 도시 · 국제 마스터플랜</div>
+  </div>
+
+  <div class="meta">
+    <div class="title-col">
+      <div>
+        <div class="title-en">Songdo 6,8 Masterplan</div>
+        <div class="title-kr kr">송도 6,8공구 국제공모 · Morphosis 선정</div>
+      </div>
+      <div class="specs">
+        <div class="row"><div class="k">Year</div><div>2024</div></div>
+        <div class="row"><div class="k">Site / 위치</div><div>송도 국제업무지구 · 6,8공구</div></div>
+        <div class="row"><div class="k">Scale / 규모</div><div>2.3 M m² · 230만 m²</div></div>
+        <div class="row"><div class="k">Program</div><div>International Masterplan Competition</div></div>
+        <div class="row"><div class="k">Role / 역할</div><div>Client-side support · 시행사 측 지원</div></div>
+        <div class="row"><div class="k">Authored / 작성</div><div>RFP · Design Guidelines · 설계지침</div></div>
+        <div class="row"><div class="k">Outcome</div><div>Morphosis Selected · 모포시스 선정</div></div>
+      </div>
+    </div>
+    <div class="body">
+      <p>An international masterplan competition for 2.3 million m² of reclaimed land in Songdo blocks 6 and 8. Working alongside the developer, I authored the RFP and the base design guidelines that framed the competition, and supported the selection that chose Morphosis (LA) as master architect — then ran the full planning of the M3 and M4 blocks within the district.</p>
+      <p class="kr">송도 6,8공구 230만 m² 매립지를 위한 국제 마스터플랜 공모입니다. 시행사를 도와 RFP와 기본 설계 가이드라인·공모지침을 작성했고, 모포시스(LA)가 마스터아키텍트로 선정되기까지의 과정을 지원했습니다. 이후 공구 내 M3·M4 블록 계획 전체를 총괄했습니다.</p>
+      <div class="bridge"><span class="bk">Why this matters for data centers · 데이터센터 연결점</span>An international competition, a foreign master architect, and campus-scale coordination across many partners — the same ingredients hyperscale campuses are built on. That coordination carries directly into data-center delivery. · 국제공모, 해외 마스터아키텍트 선정, 다(多)파트너 캠퍼스 조율 — 하이퍼스케일 캠퍼스를 이루는 바로 그 요소들입니다. 이 조율 역량은 데이터센터 딜리버리에 그대로 전이됩니다.</div>
+    </div>
+  </div>
+
+  <div class="hero"><div class="ph has-img" data-label="01 · Masterplan aerial — full site"><img class="bias-top" src="img/23_songdo_6_8_masterplan/01_전체조감_석경_1018.jpg" alt="Songdo 6,8 masterplan — full-site aerial"></div></div>
+
+  <div class="grid4">
+    <div class="ph has-img" data-label="02 · Landmark tower from Incheon Bridge"><img src="img/23_songdo_6_8_masterplan/02_랜드마크타워_인천대교위_1019.jpg" alt="Songdo landmark tower from Incheon Bridge"></div>
+    <div class="ph has-img" data-label="03 · Second landmark"><img src="img/23_songdo_6_8_masterplan/07_제2랜드마크_1006.jpg" alt="Songdo second landmark tower"></div>
+    <div class="ph has-img" data-label="04 · District-edge diagram"><img src="img/23_songdo_6_8_masterplan/그림1.jpg" alt="Songdo district-edge diagram"></div>
+    <div class="ph has-img" data-label="05 · Phasing study"><img src="img/23_songdo_6_8_masterplan/그림2.jpg" alt="Songdo 2025–35 phasing study"></div>
+  </div>
+
+  <div class="foot ph-foot">
+    <div>Songdo 6,8 Masterplan · 송도 6,8공구</div>
+    <div class="pn">p. 05</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.06 — PYEONGTAEK BRAIN CITY 2BL (A · Residential)           -->
+<!-- ============================================================ -->
+<div class="pg A">
+  <div class="head ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Mixed-use · 주상복합 · 인허가</div>
+  </div>
+
+  <div class="meta">
+    <div>
+      <div class="title-en">Pyeongtaek Brain City 2BL</div>
+      <div class="title-kr kr">평택 브레인시티 주상2BL · 인허가 단독</div>
+    </div>
+    <div class="specs">
+      <div class="row"><div class="k">Year</div><div>2023.01 — 2023.11</div></div>
+      <div class="row"><div class="k">Site / 위치</div><div>경기 평택시 브레인시티</div></div>
+      <div class="row"><div class="k">Scale / 규모</div><div>161,146 m² GFA · 주상복합</div></div>
+      <div class="row"><div class="k">Scope</div><div>Planning → Permitting (4 reviews)</div></div>
+      <div class="row"><div class="k">Client</div><div>DS Networks · DS네트웍스</div></div>
+      <div class="row"><div class="k">Role / 역할</div><div>Permitting Lead · 인허가 단독</div></div>
+      <div class="row"><div class="k">Status</div><div>All reviews secured · 4개 심의 전부 통과</div></div>
+    </div>
+    <div class="body">
+      <p>A 161,146 m² mixed-use block in Pyeongtaek Brain City. After the competition win I carried it solo through eleven months of permitting — landscape, fire-performance, traffic, and building review — covering every review stage of a complex approval and turning a competition scheme into a buildable project.</p>
+      <p class="kr">평택 브레인시티 161,146 m² 주상복합 2BL입니다. 현상설계 당선 후 11개월간 경관·소방성능위주·교통영향·건축 심의를 단독으로 맡아, 복합시설 인허가의 모든 심의 단계를 직접 거치며 당선안을 실제 지을 수 있는 건물로 다듬었습니다.</p>
+      <div class="bridge"><span class="bk">Why this matters for data centers · 데이터센터 연결점</span>A data center is a systems building before a form — fire-performance, MEP, and continuous power/cooling govern it, and the facility itself runs on redundancy (N+1/2N) and concurrent maintainability so it never goes dark. The transferable part here is the front end: driving four statutory technical reviews solo is the kind of multi-disciplinary authority coordination a 24/365 facility's approval demands. · 데이터센터는 형태 이전에 시스템 건축입니다 — 소방성능·MEP·무중단 전력/냉방이 좌우하고, 시설 자체는 이중화(N+1/2N)와 무중단 유지보수 위에서 돌아갑니다. 이 프로젝트에서 옮겨갈 수 있는 건 앞단입니다: 4개 기술심의를 단독으로 끌고 간 경험은 24시간 365일 가동되는 시설의 인허가가 요구하는 다(多)분야 인허가 조율력에 해당합니다.</div>
+    </div>
+  </div>
+
+  <div class="hero"><div class="ph has-img" data-label="01 · Hero — main aerial"><img class="bias-top" src="img/28_pyeongtaek_braincity_2bl/hero_clean.png" alt="Pyeongtaek Brain City 2BL — main aerial"></div></div>
+
+  <div class="grid3">
+    <div class="ph has-img" data-label="02 · Site plan · 배치도"><img src="img/28_pyeongtaek_braincity_2bl/siteplan_clean.png" alt="Pyeongtaek 2BL site plan"></div>
+    <div class="ph has-img" data-label="03 · Courtyard aerial"><img src="img/28_pyeongtaek_braincity_2bl/작은이미지2.jpg" alt="Pyeongtaek 2BL courtyard aerial"></div>
+    <div class="ph has-img" data-label="04 · Dusk perspective"><img src="img/28_pyeongtaek_braincity_2bl/작은이미지3.jpg" alt="Pyeongtaek 2BL dusk perspective"></div>
+  </div>
+
+  <div class="foot ph-foot">
+    <div>Pyeongtaek Brain City 2BL · 평택 브레인시티 주상2BL</div>
+    <div class="pn">p. 06</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.07 — APGUJEONG DISTRICT 3 (A · Residential)                -->
+<!-- ============================================================ -->
+<div class="pg A">
+  <div class="head ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Residential · 국제협업 · 이해관계자 조율</div>
+  </div>
+
+  <div class="meta">
+    <div>
+      <div class="title-en">Apgujeong District 3</div>
+      <div class="title-kr kr">압구정3구역 재건축 · UN Studio 협업 · 당선</div>
+    </div>
+    <div class="specs">
+      <div class="row"><div class="k">Year</div><div>2023</div></div>
+      <div class="row"><div class="k">Site / 위치</div><div>서울 강남구 압구정동</div></div>
+      <div class="row"><div class="k">Scale / 규모</div><div>~5,800 units · 당선안 기준</div></div>
+      <div class="row"><div class="k">Program</div><div>Large-scale Residential Redevelopment</div></div>
+      <div class="row"><div class="k">Collab.</div><div>UN Studio (Amsterdam)</div></div>
+      <div class="row"><div class="k">Role / 역할</div><div>Local Lead · KR Coordination</div></div>
+      <div class="row"><div class="k">Status</div><div>Winning Proposal · 최종 당선</div></div>
+    </div>
+    <div class="body">
+      <p>A premium Gangnam redevelopment with UN Studio. As local lead I adapted their massing to Korean codes and tower planning, coordinated two studios across time zones, and helped deliver the show-flat — roughly 5,800 units on a tight block, with a continuous skyline ridge as its signature.</p>
+      <p class="kr">UN Studio와 함께한 강남 재건축입니다. 그 매스 디자인을 국내 법규·주동 계획에 맞게 구체화하고, 시차가 나는 두 사무소를 조율하며 국내 측 리드를 맡았습니다. 홍보관 단계에도 참여했습니다. 약 5,800세대를 좁은 블록에 풀어내고 능선처럼 이어지는 스카이라인을 시그니처로 삼은 당선작입니다.</p>
+      <div class="bridge"><span class="bk">Why this matters for data centers · 데이터센터 연결점</span>Global ICT clients and foreign master architects are the norm in hyperscale work. Leading a project across two studios, two time zones, and one regulatory code is exactly the multi-stakeholder coordination hyperscale work demands. · 하이퍼스케일 작업은 글로벌 ICT 발주처·해외 마스터아키텍트와의 협업이 기본입니다. 두 사무소·두 시차·하나의 국내 법규를 잇는 조율 경험이 그대로 필요한 역량입니다.</div>
+    </div>
+  </div>
+
+  <div class="hero"><div class="ph has-img" data-label="01 · Hero — main aerial"><img class="bias-top" src="img/29_apgujeong_3/hero_clean.png" alt="Apgujeong District 3 — main aerial"></div></div>
+
+  <div class="grid3">
+    <div class="ph has-img" data-label="02 · Aerial view"><img src="img/29_apgujeong_3/작은이미지1.png" alt="Apgujeong District 3 aerial view"></div>
+    <div class="ph has-img" data-label="03 · Daytime perspective"><img src="img/29_apgujeong_3/작은이미지2.jpg" alt="Apgujeong District 3 daytime perspective"></div>
+    <div class="ph has-img" data-label="04 · Sky community"><img src="img/29_apgujeong_3/작은이미지3.jpg" alt="Apgujeong District 3 sky community"></div>
+  </div>
+
+  <div class="foot ph-foot">
+    <div>Apgujeong District 3 · 압구정3구역 재건축</div>
+    <div class="pn">p. 07</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.08 — BANPO MIDO 1st (A · Residential)                      -->
+<!-- ============================================================ -->
+<div class="pg A">
+  <div class="head ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Residential · 설계 리더십 · 재건축</div>
+  </div>
+
+  <div class="meta">
+    <div>
+      <div class="title-en">Banpo Mido 1st</div>
+      <div class="title-kr kr">반포미도1차 재건축 · 설계공모 당선</div>
+    </div>
+    <div class="specs">
+      <div class="row"><div class="k">Year</div><div>2025.03 — 2025.06</div></div>
+      <div class="row"><div class="k">Site / 위치</div><div>서울 서초구 반포동</div></div>
+      <div class="row"><div class="k">Scale / 규모</div><div>1,743 units · 최고 49층</div></div>
+      <div class="row"><div class="k">Program</div><div>Large-scale Residential Redevelopment</div></div>
+      <div class="row"><div class="k">Role / 역할</div><div>주동·스카이커뮤니티 설계</div></div>
+      <div class="row"><div class="k">Status</div><div>Winning Proposal · 당선</div></div>
+      <div class="row"><div class="k">Rival</div><div>DA + Haean Architects · 경쟁사</div></div>
+    </div>
+    <div class="body">
+      <p>A 1,743-unit redevelopment on a high-value Banpo site. I worked the layout alternatives with the PM from week one, then led the unit plan and sky-community through to final approval. In the head-to-head against DA + Haean I ran the rival analysis and the show-flat.</p>
+      <p class="kr">반포 입지의 1,743세대 재건축 설계공모입니다. 초기부터 PM과 함께 배치 대안을 작성했고, 그 배치안과 주동 평면으로 계획을 이끌었습니다. 스카이커뮤니티는 직접 설계해 최종 컨펌까지 받았습니다. DA·해안건축과의 경쟁에서 상대안 분석과 홍보관 운영을 맡아 당선에 기여했습니다.</p>
+      <div class="bridge"><span class="bk">What this proves · 증명하는 것</span>Design leadership and a competitive win at scale — the ability to set direction, hold a unit-to-skyline scheme together, and beat strong rivals under deadline. The discipline transfers to any large, high-stakes program. · 대규모에서의 설계 리더십과 경쟁 당선 — 방향을 세우고 세대부터 스카이라인까지 하나로 묶으며 마감 안에 강한 경쟁사를 이기는 역량. 어떤 대형·고난도 프로그램에도 전이됩니다.</div>
+    </div>
+  </div>
+
+  <div class="hero"><div class="ph has-img" data-label="01 · Hero — curved tower"><img class="bias-top" src="img/32_banpo_mido_1/큰이미지.jpg" alt="Banpo Mido 1st — curved residential tower"></div></div>
+
+  <div class="grid3">
+    <div class="ph has-img" data-label="02 · Sky community park"><img src="img/32_banpo_mido_1/작은이미지1.png" alt="Banpo Mido sky community park"></div>
+    <div class="ph has-img" data-label="03 · Main aerial, dusk"><img src="img/32_banpo_mido_1/작은이미지2.png" alt="Banpo Mido main aerial at dusk"></div>
+    <div class="ph has-img" data-label="04 · Eye-level perspective"><img src="img/32_banpo_mido_1/작은이미지3.jpg" alt="Banpo Mido eye-level perspective"></div>
+  </div>
+
+  <div class="foot ph-foot">
+    <div>Banpo Mido 1st · 반포미도1차 재건축</div>
+    <div class="pn">p. 08</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.09 — MOKDONG DISTRICT 14 (A · Residential)                 -->
+<!-- ============================================================ -->
+<div class="pg A">
+  <div class="head ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Residential · 최대 규모 딜리버리 · 재건축</div>
+  </div>
+
+  <div class="meta">
+    <div>
+      <div class="title-en">Mokdong District 14</div>
+      <div class="title-kr kr">목동14단지 재건축 · 설계공모 당선</div>
+    </div>
+    <div class="specs">
+      <div class="row"><div class="k">Year</div><div>2025</div></div>
+      <div class="row"><div class="k">Site / 위치</div><div>서울 양천구 신정동</div></div>
+      <div class="row"><div class="k">Scale / 규모</div><div>5,158 units · 양천구 최대</div></div>
+      <div class="row"><div class="k">Program</div><div>Apartment Redevelopment · 신통기획</div></div>
+      <div class="row"><div class="k">Role / 역할</div><div>Tower &amp; Podium Design</div></div>
+      <div class="row"><div class="k">Status</div><div>Winning Proposal · 당선</div></div>
+      <div class="row"><div class="k">Scale</div><div>The largest Mokdong site</div></div>
+    </div>
+    <div class="body">
+      <p>The largest of the Mokdong sites — 5,158 units in a single block. On the winning bid I handled the tower and low-rise base design, shaping both the skyline form and the street-level experience, and helped set the site-layout direction.</p>
+      <p class="kr">양천구 최대 규모의 신통기획 단지입니다. 한 블록에 5,158세대가 들어가는 당선작에서 주동과 저층부 디자인을 맡아, 단지 첫인상을 좌우하는 주동 형태와 보행자가 마주하는 저층부 표정을 함께 다뤘고 배치 방향을 잡는 일에도 참여했습니다.</p>
+      <div class="bridge"><span class="bk">What this proves · 증명하는 것</span>Delivery at the largest scale — handling tower and ground-plane design within a single 5,158-unit block. Holding a defined scope inside a project of that magnitude is the same discipline a campus-scale data center needs. · 최대 규모의 딜리버리 — 5,158세대 한 블록에서 주동·저층부라는 명확한 범위를 끝까지 끌고 간 경험. 큰 프로젝트 안에서 맡은 부분을 통제력 있게 다루는 역량은 캠퍼스급 데이터센터에도 동일하게 요구됩니다.</div>
+    </div>
+  </div>
+
+  <div class="hero"><div class="ph has-img" data-label="01 · Hero — landmark tower"><img class="bias-top" src="img/35_mokdong_14/큰이미지.jpg" alt="Mokdong District 14 — landmark tower"></div></div>
+
+  <div class="grid3">
+    <div class="ph has-img" data-label="02 · Main aerial"><img src="img/35_mokdong_14/작은이미지1 (1).jpg" alt="Mokdong District 14 main aerial"></div>
+    <div class="ph has-img" data-label="03 · Site view"><img src="img/35_mokdong_14/작은이미지1(2).jpg" alt="Mokdong District 14 site view"></div>
+    <div class="ph has-img" data-label="04 · Wide aerial"><img src="img/35_mokdong_14/작은이미지1(3).jpg" alt="Mokdong District 14 wide aerial"></div>
+  </div>
+
+  <div class="foot ph-foot">
+    <div>Mokdong District 14 · 목동14단지 재건축</div>
+    <div class="pn">p. 09</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.10 — EUNMA APARTMENT (A · Residential)                     -->
+<!-- ============================================================ -->
+<div class="pg A">
+  <div class="head ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Residential · 구조·설비 통합 · 출발점</div>
+  </div>
+
+  <div class="meta">
+    <div>
+      <div class="title-en">Eunma Apartment</div>
+      <div class="title-kr kr">은마아파트 재건축 · 첫 대형 프로젝트</div>
+    </div>
+    <div class="specs">
+      <div class="row"><div class="k">Year</div><div>2016.05 — 2016.10</div></div>
+      <div class="row"><div class="k">Site / 위치</div><div>서울 강남구 대치동</div></div>
+      <div class="row"><div class="k">Scale / 규모</div><div>4,424 units</div></div>
+      <div class="row"><div class="k">Program</div><div>Residential Redevelopment</div></div>
+      <div class="row"><div class="k">Role / 역할</div><div>Underground &amp; MEP-coordinated ancillary · 지하·부대시설</div></div>
+      <div class="row"><div class="k">Status</div><div>Participated · 참여</div></div>
+      <div class="row"><div class="k">Note</div><div>Career origin · 출발점</div></div>
+    </div>
+    <div class="body">
+      <p>The first large redevelopment I worked on, a year in — 4,424 units in Daechi-dong. My brief was underground parking and ancillary program: not glamorous, but it is where I learned to read planning, structure, and MEP together, and first faced residents in a show-flat. The four winning bids that came later all started here.</p>
+      <p class="kr">입사 1년 차에 참여한 첫 대형 재건축입니다. 강남 대치동 4,424세대. 지하주차장·부대시설이라는 화려하지 않은 역할 속에서 평면·구조·설비(MEP)를 함께 읽는 법을 배웠고, 홍보관에서 처음 조합원 앞에 섰습니다. 이후 이어진 당선 4건이 모두 여기서 출발했습니다.</p>
+      <div class="bridge"><span class="bk">Why this matters for data centers · 데이터센터 연결점</span>Data centers live and die on what isn't the facade — structure, power, cooling, the underground. Reading structure and MEP together from the start is the literacy infrastructure buildings demand. · 데이터센터는 입면이 아니라 구조·전력·냉방·지하에서 성패가 갈립니다. 처음부터 구조와 MEP를 함께 읽는 법이 인프라 건축이 요구하는 소양입니다.</div>
+    </div>
+  </div>
+
+  <div class="hero"><div class="ph has-img" data-label="01 · Hero — eye-level perspective"><img src="img/03_daechi_eunma/큰이미지.jpg" alt="Eunma Apartment — eye-level perspective"></div></div>
+
+  <div class="grid3">
+    <div class="ph has-img" data-label="02 · Bird's-eye aerial"><img src="img/03_daechi_eunma/작은이미지1 (2).jpg" alt="Eunma Apartment bird's-eye aerial"></div>
+    <div class="ph has-img" data-label="03 · Approach view"><img src="img/03_daechi_eunma/작은이미지2.jpg" alt="Eunma Apartment approach view"></div>
+    <div class="ph has-img" data-label="04 · Tower study"><img src="img/03_daechi_eunma/작은이미지3.jpg" alt="Eunma Apartment tower study"></div>
+  </div>
+
+  <div class="foot ph-foot">
+    <div>Eunma Apartment · 은마아파트 재건축</div>
+    <div class="pn">p. 10</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.11 — ALL WORKS 1/2 (works 01—20)                           -->
+<!-- ============================================================ -->
+<div class="pg V2">
+  <div class="ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>All Works · 전체 작품</div>
+  </div>
+
+  <div class="titlebar">
+    <h1>All Works<span class="kr">전체 작품</span></h1>
+    <div class="pageof">Page 1 / 2<br/>01 — 20 · 36 works total</div>
+  </div>
+
+  <div class="body">
+    <div class="vcell"><div class="thumb ph has-img" data-label="01 · 2016"><img src="img/00_sejong_2-1_apt/그림1.jpg" alt="Sejong 2-1 Residential"></div><div class="vmeta"><span class="l">01 · 2016</span><span class="r">—</span></div><div class="ven">Sejong 2-1 Residential</div><div class="vkr">세종시 2-1생활권</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="02 · 2017"><img src="img/01_sejong_4-1_apt/aerial_clean.jpg" alt="Sejong 4-1 Residential"></div><div class="vmeta"><span class="l">02 · 2017</span><span class="r">—</span></div><div class="ven">Sejong 4-1 Residential</div><div class="vkr">세종시 4-1생활권</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="03 · 2018"><img src="img/02_haeundae_golf_resort/B조감도180904.jpg" alt="Haeundae Golf Resort"></div><div class="vmeta"><span class="l">03 · 2018</span><span class="r">—</span></div><div class="ven">Haeundae Golf Resort</div><div class="vkr">해운대 골프리조트</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="04 · 2016"><img src="img/03_daechi_eunma/큰이미지.jpg" alt="Eunma Apartment"></div><div class="vmeta"><span class="l">04 · 2016</span><span class="r feat">p. 10</span></div><div class="ven">Eunma Apartment</div><div class="vkr">은마아파트 재건축 · 첫 대형 프로젝트</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="05 · 2018"><img src="img/04_sejong_1-5_jungheung/02_조감도2.jpg" alt="Sejong 1-5 Jungheung"></div><div class="vmeta"><span class="l">05 · 2018</span><span class="r">—</span></div><div class="ven">Sejong 1-5 Jungheung</div><div class="vkr">세종시 1-5생활권</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="06 · 2018"><img src="img/05_sejong_2-4_mixed/aerial_clean.jpg" alt="Sejong 2-4 Mixed-use"></div><div class="vmeta"><span class="l">06 · 2018</span><span class="r">—</span></div><div class="ven">Sejong 2-4 Mixed-use</div><div class="vkr">세종시 2-4생활권</div></div>
+
+    <div class="vcell"><div class="thumb ph has-img" data-label="07 · 2018"><img src="img/06_jamsil_woosung/잠실우성 (모델링 o).jpg" alt="Jamsil Woosung"></div><div class="vmeta"><span class="l">07 · 2018</span><span class="r">—</span></div><div class="ven">Jamsil Woosung</div><div class="vkr">잠실우성 재건축</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="08 · 2021"><img src="img/07_songdo_m2-1bl/210107-송도아메리칸타운2차-조감도.jpg" alt="Songdo American Town"></div><div class="vmeta"><span class="l">08 · 2021</span><span class="r">—</span></div><div class="ven">Songdo American Town</div><div class="vkr">송도 아메리칸타운</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="09 · 2019"><img src="img/08_busan_simin_park/스크린샷 2025-07-17 164212.png" alt="Busan Simin Park"></div><div class="vmeta"><span class="l">09 · 2019</span><span class="r">—</span></div><div class="ven">Busan Simin Park</div><div class="vkr">부산시민공원 재정비</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="10 · 2020"><img src="img/09_hanoi_tht/스크린샷 2025-07-17 164043.png" alt="Hanoi THT Newtown"></div><div class="vmeta"><span class="l">10 · 2020</span><span class="r">—</span></div><div class="ven">Hanoi THT Newtown</div><div class="vkr">베트남 하노이 THT</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="11 · 2019"><img src="img/10_garak_samik/그림2.jpg" alt="Garak Samik Mansion"></div><div class="vmeta"><span class="l">11 · 2019</span><span class="r">—</span></div><div class="ven">Garak Samik Mansion</div><div class="vkr">가락삼익맨숀 재건축</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="12 · 2019"><img src="img/11_goyang_buksamsong/04_고양 북삼송_연립사거리뷰.jpg" alt="Goyang Buksamsong A-Zone"></div><div class="vmeta"><span class="l">12 · 2019</span><span class="r">—</span></div><div class="ven">Goyang Buksamsong A-Zone</div><div class="vkr">고양 북삼송 A-ZONE</div></div>
+
+    <div class="vcell"><div class="thumb ph has-img" data-label="13 · 2020"><img src="img/12_gapyeong_townhouse/001_가평 타운하우스_메인 조감도-BF.jpg" alt="Gapyeong Townhouse"></div><div class="vmeta"><span class="l">13 · 2020</span><span class="r">—</span></div><div class="ven">Gapyeong Townhouse</div><div class="vkr">가평 타운하우스</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="14 · 2020"><img src="img/13_yongsan_jeongbichang_1/001_용산 창전 재정비 구역_조감도.JPG" alt="Yongsan Jeongbichang Edge"></div><div class="vmeta"><span class="l">14 · 2020</span><span class="r">—</span></div><div class="ven">Yongsan Jeongbichang Edge</div><div class="vkr">용산정비창 환경</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="15 · 2020"><img src="img/14_asan_tangjeong_2-a6bl/그림10.jpg" alt="Asan Tangjeong 2-A6"></div><div class="vmeta"><span class="l">15 · 2020</span><span class="r">—</span></div><div class="ven">Asan Tangjeong 2-A6</div><div class="vkr">아산탕정 공동주택</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="16 · 2021"><img src="img/15_bangbae_samho/01_메인조감도__방배삼호아파트.jpg" alt="Bangbae Samho Apartment"></div><div class="vmeta"><span class="l">16 · 2021</span><span class="r">—</span></div><div class="ven">Bangbae Samho Apt.</div><div class="vkr">방배 삼호아파트</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="17 · 2021"><img src="img/16_ykd_yeosu_kyungdo/조감01-am4.jpg" alt="Yeosu Kyungdo Lodging"></div><div class="vmeta"><span class="l">17 · 2021</span><span class="r">—</span></div><div class="ven">Yeosu Kyungdo Lodging</div><div class="vkr">여수 경도 숙박</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="18 · 2020"><img src="img/17_banpo_3/03.정면투시_(주경)0407.jpg" alt="Banpo 3rd District"></div><div class="vmeta"><span class="l">18 · 2020</span><span class="r">—</span></div><div class="ven">Banpo 3rd District</div><div class="vkr">반포 3주구 대안입찰</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="19 · 2021"><img src="img/18_daejeon_station/01 대전 주상복합_조감도_0628_04_CROP.jpg" alt="Daejeon Station Mixed-use"></div><div class="vmeta"><span class="l">19 · 2021</span><span class="r">—</span></div><div class="ven">Daejeon Station Mixed-use</div><div class="vkr">대전역세권 복합</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="20 · 2022"><img src="img/19_bucheon_daejang_newtown/메인석경조감도0824-f Alt.jpg" alt="Bucheon Daejang Newtown"></div><div class="vmeta"><span class="l">20 · 2022</span><span class="r">—</span></div><div class="ven">Bucheon Daejang Newtown</div><div class="vkr">부천대장 신도시</div></div>
+  </div>
+
+  <div class="ph-foot">
+    <div>p. 11</div>
+    <div>All Works · 1 of 2</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.12 — ALL WORKS 2/2 (works 21—36)                           -->
+<!-- ============================================================ -->
+<div class="pg V2">
+  <div class="ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>All Works · 전체 작품</div>
+  </div>
+
+  <div class="titlebar">
+    <h1>All Works<span class="kr">전체 작품</span></h1>
+    <div class="pageof">Page 2 / 2<br/>21 — 36 · 36 works total</div>
+  </div>
+
+  <div class="body">
+    <div class="vcell"><div class="thumb ph has-img" data-label="21 · 2022"><img src="img/20_gaepo_jugong_67/스카이 커뮤니티 투시도 (2).jpg" alt="Gaepo Jugong 6,7"></div><div class="vmeta"><span class="l">21 · 2022</span><span class="r">—</span></div><div class="ven">Gaepo Jugong 6,7</div><div class="vkr">개포주공 6,7단지</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="22 · 2023"><img src="img/21_incheon_geomdan_aa16/02_서브조감_석경_0113_15h_태양열.jpg" alt="Incheon Geomdan AA16"></div><div class="vmeta"><span class="l">22 · 2023</span><span class="r">—</span></div><div class="ven">Incheon Geomdan AA16</div><div class="vkr">인천검단 AA16</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="23 · 2022"><img src="img/22_nonhyeon_114/스크린샷 2025-07-17 162636.png" alt="Nonhyeon 114 Officetel"></div><div class="vmeta"><span class="l">23 · 2022</span><span class="r">—</span></div><div class="ven">Nonhyeon 114 Officetel</div><div class="vkr">논현동 오피스텔</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="24 · 2024"><img src="img/23_songdo_6_8_masterplan/01_전체조감_석경_1018.jpg" alt="Songdo 6,8 Masterplan"></div><div class="vmeta"><span class="l">24 · 2024</span><span class="r feat">p. 05</span></div><div class="ven">Songdo 6,8 Masterplan</div><div class="vkr">송도 6,8공구 · Morphosis 선정</div></div>
+
+    <div class="vcell"><div class="thumb ph has-img" data-label="25 · 2022"><img src="img/24_gyeongbuk_provincial_2/그림14.jpg" alt="Gyeongbuk Provincial Town 2"></div><div class="vmeta"><span class="l">25 · 2022</span><span class="r">—</span></div><div class="ven">Gyeongbuk Provincial Town 2</div><div class="vkr">경북도청신도시 2단계</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="26 · 2024"><img src="img/25_midan_a1_a2/스크린샷 2025-07-17 163650.png" alt="Midan City A1, A2"></div><div class="vmeta"><span class="l">26 · 2024</span><span class="r">—</span></div><div class="ven">Midan City A1, A2</div><div class="vkr">미단시티 A1, A2</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="27 · 2024"><img src="img/26_midan_4_5_6/그림18.jpg" alt="Midan City 4, 5, 6"></div><div class="vmeta"><span class="l">27 · 2024</span><span class="r">—</span></div><div class="ven">Midan City 4, 5, 6</div><div class="vkr">미단시티 공동4,5,6</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="28 · 2024"><img src="img/27_hangang_cinepolis/그림27.jpg" alt="Hangang Cinépolis"></div><div class="vmeta"><span class="l">28 · 2024</span><span class="r">—</span></div><div class="ven">Hangang Cinépolis</div><div class="vkr">한강 시네폴리스</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="29 · 2023"><img src="img/28_pyeongtaek_braincity_2bl/hero_clean.png" alt="Pyeongtaek Brain City 2BL"></div><div class="vmeta"><span class="l">29 · 2023</span><span class="r feat">p. 06</span></div><div class="ven">Pyeongtaek Brain City 2BL</div><div class="vkr">평택 브레인시티 주상2BL · 당선</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="30 · 2023"><img src="img/29_apgujeong_3/hero_clean.png" alt="Apgujeong District 3"></div><div class="vmeta"><span class="l">30 · 2023</span><span class="r feat">p. 07</span></div><div class="ven">Apgujeong Dist. 3</div><div class="vkr">압구정3구역 · UN Studio · 당선</div></div>
+
+    <div class="vcell"><div class="thumb ph has-img" data-label="31 · 2022"><img src="img/30_seoul_ferris_wheel/서울+링+프로젝트_메인조감도 (1).jpg" alt="Seoul Ferris Wheel"></div><div class="vmeta"><span class="l">31 · 2022</span><span class="r">—</span></div><div class="ven">Seoul Ferris Wheel</div><div class="vkr">서울 대관람차</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="32 · 2023"><img src="img/31_pohang_costa_valley/메인조감도.png" alt="Pohang Costa Valley"></div><div class="vmeta"><span class="l">32 · 2023</span><span class="r">—</span></div><div class="ven">Pohang Costa Valley</div><div class="vkr">포항 코스타밸리</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="33 · 2025"><img src="img/32_banpo_mido_1/큰이미지.jpg" alt="Banpo Mido 1st"></div><div class="vmeta"><span class="l">33 · 2025</span><span class="r feat">p. 08</span></div><div class="ven">Banpo Mido 1st</div><div class="vkr">반포미도1차 재건축 · 당선</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="34 · 2025"><img src="img/34_mokdong_10/조감도.jpg" alt="Mokdong District 10"></div><div class="vmeta"><span class="l">34 · 2025</span><span class="r">—</span></div><div class="ven">Mokdong Dist. 10</div><div class="vkr">목동10단지 재건축</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="35 · 2025"><img src="img/35_mokdong_14/작은이미지1 (1).jpg" alt="Mokdong District 14"></div><div class="vmeta"><span class="l">35 · 2025</span><span class="r feat">p. 09</span></div><div class="ven">Mokdong Dist. 14</div><div class="vkr">목동14단지 재건축 · 당선</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="36 · 2026"><img src="img/36_mokdong_5/목동 5단지 재건축_석경 조감도_비율조정001 copy.jpg" alt="Mokdong District 5"></div><div class="vmeta"><span class="l">36 · 2026</span><span class="r">—</span></div><div class="ven">Mokdong Dist. 5</div><div class="vkr">목동5단지 재건축</div></div>
+  </div>
+
+  <div class="ph-foot">
+    <div>p. 12</div>
+    <div>All Works · 2 of 2</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.13 — CURRICULUM VITAE                                      -->
+<!-- ============================================================ -->
+<div class="pg CV">
+  <div class="ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Curriculum Vitae · 이력</div>
+  </div>
+
+  <div class="titlebar">
+    <h1>Curriculum Vitae<span class="kr">이력</span></h1>
+    <div class="me">
+      <div class="portrait"><img src="img/profile.png" alt="JunSeong Park"></div>
+      <div class="txt">
+        <div class="nm">JunSeong Park · 박준성</div>
+        <div class="role">Architectural Designer · Technology × Architecture</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="col">
+      <h2>Practice · 실무</h2>
+      <div class="row"><div class="yr">2015 — Now</div><div class="v">Heerim Architects &amp; Planners<br/><span class="sub">Architectural Designer · Seoul · 희림종합건축사사무소</span><span class="sub">기획·계획설계 · 공모·인허가 단계 수행</span><span class="sub">UN Studio 협업 · Morphosis(송도) 선정 지원</span></div></div>
+
+      <h2 class="cont">Winning Bids · 당선</h2>
+      <div class="row"><div class="yr">2025</div><div class="v">Mokdong District 14 · 목동14단지<br/><span class="sub">5,158 units · 양천구 최대 규모</span></div></div>
+      <div class="row"><div class="yr">2025</div><div class="v">Banpo Mido 1st · 반포미도1차<br/><span class="sub">1,743 units · 주동·스카이커뮤니티</span></div></div>
+      <div class="row"><div class="yr">2023</div><div class="v">Apgujeong District 3 · 압구정3구역<br/><span class="sub">~5,800 units · UN Studio 협업</span></div></div>
+      <div class="row"><div class="yr">2023</div><div class="v">Pyeongtaek Brain City 2BL · 평택 브레인시티<br/><span class="sub">161,146 m² · 인허가 단독 · 4개 심의 통과</span></div></div>
+
+      <h2 class="cont">Internal R&amp;D · 사내 연구</h2>
+      <div class="row"><div class="yr">2025 — 26</div><div class="v">Architecture × AI Practice<br/><span class="sub">22-slide presentation to senior leadership · 사례발표</span><span class="sub">apt · complex · hotel tools in early-stage use on live projects</span></div></div>
+    </div>
+
+    <div class="col">
+      <h2>Technology · 기술</h2>
+      <div class="row"><div class="yr">AI · 2y</div><div class="v">Claude · MCP · Freepik API · Custom Python tools<br/><span class="sub">Computational design · performance automation</span></div></div>
+      <div class="row"><div class="yr">Daily · 10y</div><div class="v">AutoCAD · Rhinoceros + Grasshopper · SketchUp</div></div>
+      <div class="row"><div class="yr">Production</div><div class="v">D5 Render (3y) · V-Ray · Photoshop · InDesign</div></div>
+      <div class="row"><div class="yr">Research</div><div class="v">SPSS · ArcGIS · R · statistical analysis</div></div>
+
+      <h2 class="cont">Education &amp; Research · 학력·연구</h2>
+      <div class="row"><div class="yr">2022 — 25</div><div class="v">M.S., Urban &amp; Real Estate Development<br/><span class="sub">Hanyang University · GPA 4.2 / 4.5 · 2025.02</span></div></div>
+      <div class="row"><div class="yr">2025</div><div class="v">PLOS ONE · peer-reviewed<br/><span class="sub">Urban density &amp; depression during COVID-19, Seoul</span></div></div>
+
+      <h2 class="cont">Data Center Readiness · 데이터센터 준비</h2>
+      <div class="row"><div class="yr">Self-study</div><div class="v">DC design fundamentals · DC 설계 기초<br/><span class="sub">Hyperscale / colocation · cooling (air vs liquid) &amp; PUE/WUE drivers</span><span class="sub">Uptime Tier III topology (concurrent maintainability) · N+1 redundancy · high-density MEP</span></div></div>
+
+      <h2 class="cont">Collaborators · 협업</h2>
+      <div class="row"><div class="yr">2023 — 25</div><div class="v">UN Studio (Amsterdam)<br/><span class="sub">Apgujeong District 3 — co-design, local lead · 압구정3구역 협업</span><span class="sub">Morphosis (LA) — selected via the Songdo competition · 송도 공모 선정</span></div></div>
+
+      <h2 class="cont">Languages · 언어</h2>
+      <div class="row"><div class="yr">—</div><div class="v">Korean (native) · English (working)</div></div>
+    </div>
+  </div>
+
+  <div class="ph-foot">
+    <div>p. 13</div>
+    <div>Curriculum Vitae</div>
+  </div>
+</div>
+
+</body>
+</html>
