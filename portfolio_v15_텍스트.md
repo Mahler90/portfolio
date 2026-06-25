@@ -50,10 +50,10 @@
   - Presented: `사내 임원회의 · 전사 발표`  *(옛 'Tracks: 2…' 줄 삭제, 'Audience' → 'Presented'; 트랙 B Freepik 전체 제거)*
 
 **본문 EN**
-> An internal R&D track on using AI in early-stage design. With Claude + MCP I built one tool per building type; apt, the apartment tool, works from site, building code, and project goals to make layout alternatives and run the sunlight and parking checks — the three screens on the right. Presented at a company-wide executive meeting in April 2026, now in use on live projects.
+> An internal R&D study on AI-assisted early design. Using Claude + MCP, I developed workflows for apartment, complex, and hotel studies. The apartment workflow uses site conditions, planning rules, and project targets to generate layout options, then checks sunlight and parking capacity with Rhino-linked tools. Presented at an internal executive meeting in April 2026, it is now used for early-stage project reviews.
 
 **본문 KR**
-> 사내 R&D 트랙입니다. 초기 설계에서 대안을 만들고 평가하고 시각화하는 시간을 줄이면, 같은 기간에 더 많은 안을 검토할 수 있겠다는 생각에서 시작했습니다. Claude + MCP로 건물 유형별 도구를 만들었습니다. 그중 공동주택 도구인 apt는 부지·법규·사업 목표를 바탕으로 배치 대안을 만들고, 일조 검토와 주차장 계획까지 한 도구 안에서 처리합니다. 오른쪽 세 화면이 그 과정입니다. 2026년 4월 사내 임원회의에서 전사 발표했고, 지금은 실제 프로젝트 초기 검토에 쓰고 있습니다.
+> 초기 설계 검토를 빠르게 반복하기 위한 사내 R&D입니다. Claude + MCP를 활용해 공동주택·복합시설·호텔 유형별 검토 워크플로를 만들었습니다. 그중 apt는 부지 조건·법규·사업 목표를 바탕으로 배치 대안을 만들고, Rhino와 연계된 도구로 일조와 주차 검토까지 이어갑니다. 2026년 4월 사내 임원회의에서 전사 대상으로 발표했고, 현재 실무 프로젝트의 초기 검토에도 적용하고 있습니다.
 
 ---
 
@@ -71,10 +71,10 @@
   - Opp.: `DA + Haean Architects · 경쟁사`
 
 **본문 EN**
-> A 1,743-unit redevelopment on a premium Banpo site. I developed the layout alternatives with the PM from the first week, led the unit-plan work, and designed the sky-community myself to final sign-off. Against DA + Haean, I ran the rival analysis and managed the show-flat.
+> A 1,743-unit redevelopment competition in Banpo. From the initial stage, I developed layout alternatives with the PM, worked through the unit plans, and designed the sky-community through final approval. For the competition against DA + Haean, I prepared competitor analysis and managed the show-flat presentation.
 
 **본문 KR**
-> 반포 프리미엄 입지의 1,743세대 재건축 설계공모입니다. 초기부터 PM과 함께 배치 대안을 작성했고, 그 배치안과 주동 평면으로 계획을 이끌었습니다. 스카이커뮤니티는 직접 설계해 최종 컨펌까지 받았습니다. DA·해안건축과의 경쟁에서는 상대안 분석과 홍보관 운영을 맡아 희림 안의 당선에 기여했습니다.
+> 반포의 1,743세대 재건축 설계공모입니다. 초기부터 PM과 함께 배치 대안을 작성했고, 그 배치안과 주동 평면으로 계획을 이끌었습니다. 스카이커뮤니티는 직접 설계해 최종 승인까지 진행했습니다. DA·해안건축과의 경쟁에서는 상대안 분석과 홍보관 운영을 맡아 희림 안의 당선에 기여했습니다.
 
 ---
 
@@ -113,10 +113,10 @@
   - Status: `Final Winning · 최종 당선`
 
 **본문 EN**
-> A premium Gangnam redevelopment with UN Studio. As local lead I adapted their massing to Korean codes and tower planning, coordinated two studios across time zones, and took part in the show-flat. On a tight Apgujeong block, the scheme's signature is a continuous, ridge-like skyline.
+> A major Gangnam redevelopment with UN Studio. As local lead, I adapted their massing to Korean codes and residential tower planning, coordinated the Seoul and Amsterdam teams, and supported the show-flat stage. Within a constrained Apgujeong block, the proposal shaped a continuous ridge-like skyline as its main urban gesture.
 
 **본문 KR**
-> UN Studio와 함께한 강남 프리미엄 재건축입니다. 그들의 매스 디자인을 국내 법규와 주동 계획에 맞게 구체화하고, 시차가 나는 두 사무소를 조율하며 국내 측 리드를 맡았습니다. 홍보관 단계에도 참여했습니다. 압구정의 좁은 블록에 능선처럼 이어지는 스카이라인을 시그니처로 삼은 당선작입니다.
+> UN Studio와 함께한 강남권 대형 재건축입니다. UN Studio의 매스 디자인을 국내 법규와 주동 계획에 맞게 구체화하고, 서울과 암스테르담 두 팀 사이의 조율을 맡았습니다. 홍보관 단계에도 참여했습니다. 한정된 압구정 블록 조건 안에서 능선처럼 이어지는 스카이라인을 주요 설계 방향으로 삼은 당선작입니다.
 
 ---
 
@@ -134,10 +134,10 @@
   - Status: `Permitting Complete · 4개 심의 전부 통과`
 
 **본문 EN**
-> A 161,146 m² mixed-use block in Pyeongtaek Brain City. After winning the competition, I carried it through eleven months of permitting — landscape, fire-performance, traffic, and building review — covering every review stage of a mixed-use approval. All four reviews secured.
+> A 161,146 m² mixed-use residential block in Pyeongtaek Brain City. After the competition win, I worked on the permitting phase for eleven months, covering landscape review, performance-based fire safety review, traffic impact review, and building review. The project passed all four review stages.
 
 **본문 KR**
-> 평택 브레인시티 161,146 m² 주상복합 2BL입니다. 현상설계 당선 후 11개월간 경관·소방성능위주·교통영향·건축 심의를 맡아, 복합시설 인허가의 모든 심의 단계를 직접 거쳤습니다. 당선안을 실제 지을 수 있는 건물로 다듬는 후반 설계였고, 4개 심의를 전부 통과했습니다.
+> 평택 브레인시티 161,146 m² 규모의 주상복합 2BL입니다. 현상설계 당선 후 11개월간 경관·소방성능위주·교통영향·건축 심의를 담당했습니다. 당선안을 인허가 가능한 계획으로 조정하는 후속 설계 과정이었고, 4개 심의를 모두 통과했습니다.
 
 ---
 
@@ -154,10 +154,10 @@
   - Outcome: `Morphosis Selected · 모포시스 선정`
 
 **본문 EN**
-> An international masterplan competition for 2.3 million m² of reclaimed land in Songdo blocks 6 and 8. On the owner's side I prepared the RFP and design guidelines and handled the competition logistics; the competition selected Morphosis (LA) as masterplanner. I then coordinated the M3 and M4 block plans from the owner side. The diagram below shows the program-and-circulation logic and the 2025—35 phasing.
+> An international masterplan competition for 2.3 million m² of reclaimed land in Songdo blocks 6 and 8. On the owner's side I prepared the RFP and design guidelines and handled the competition logistics; the competition selected Morphosis (LA) as masterplanner. I then coordinated the M3 and M4 block plans from the owner side. The diagram below shows the proposed program, circulation structure, and phasing plan for 2025–2035.
 
 **본문 KR**
-> 송도 6,8공구, 230만 m² 매립지를 위한 국제 마스터플랜 공모입니다. 발주처 측에서 RFP와 설계 지침을 작성하고, 후보군 정리·자료 준비·해외 참가팀 조율 등 공모 운영을 지원했습니다. 공모를 통해 모포시스(LA)가 마스터플래너로 선정되었습니다. 이후 공구 내 M3·M4 블록 계획은 발주처 측에서 조율했습니다. 아래 다이어그램은 당선안의 프로그램·동선과 2025—35년 단계 구획을 보여줍니다.
+> 송도 6,8공구, 230만 m² 매립지를 위한 국제 마스터플랜 공모입니다. 발주처 측에서 RFP와 설계 지침을 작성하고, 후보군 정리·자료 준비·해외 참가팀 조율 등 공모 운영을 지원했습니다. 공모를 통해 모포시스(LA)가 마스터플래너로 선정되었습니다. 이후 공구 내 M3·M4 블록 계획은 발주처 측에서 조율했습니다. 아래 다이어그램은 선정안의 프로그램 구성·동선 체계와 2025–2035년 단계 계획을 보여줍니다.
 
 ---
 
@@ -175,10 +175,10 @@
   - Note: `Career origin · 출발점`
 
 **본문 EN**
-> The first large redevelopment I worked on, a year in — 4,424 units in Daechi-dong. The brief was underground parking and ancillary program: not glamorous, but it was where I learned to read planning, structure, and MEP together, and first faced residents in a show-flat. Four winning bids came later, and they all started here.
+> I joined my first large redevelopment project in my first year at Heerim: 4,424 units in Daechi-dong. I worked on underground parking and ancillary facilities, learning how planning, structure, and MEP coordination come together in a redevelopment project. The show-flat stage was also my first direct exposure to resident-facing presentation work. The experience became the starting point for later redevelopment competition work.
 
 **본문 KR**
-> 입사 1년 차에 참여한 첫 대형 재건축입니다. 강남 대치동 4,424세대. 지하주차장과 부대시설이라는 화려하지 않은 역할 속에서 평면·구조·설비를 함께 읽는 법을 배웠고, 홍보관에서 처음으로 조합원 앞에 섰습니다. 이후 작업과 당선 4건이 모두 여기서 출발했습니다.
+> 입사 1년 차에 참여한 첫 대형 재건축입니다. 강남 대치동 4,424세대 규모의 프로젝트에서 지하주차장과 부대시설 계획을 맡았습니다. 이 과정에서 평면·구조·설비를 함께 읽는 법을 배웠고, 홍보관 단계에서 조합원을 대상으로 한 설명 업무도 처음 경험했습니다. 이후 재건축 설계공모 작업의 출발점이 된 프로젝트입니다.
 
 ---
 
@@ -244,7 +244,7 @@
 **Practice · 실무**
 - `2015 — Now` — Heerim Architects & Planners
   - Architectural Designer · Seoul · 희림종합건축사사무소
-  - 대형 재건축 설계경쟁 다수 당선
+  - 대형 재건축 설계공모 당선작 다수 참여
   - UN Studio 협업 · Songdo 발주처 지원  *(Perkins Eastman 삭제·근거없음 / Morphosis는 발주처 입장이라 '협업'→'발주처 지원'으로)*
 
 **Winning Bids · 당선**
@@ -261,7 +261,7 @@
 - `2025` PLOS ONE · peer-reviewed — Urban density and depression during COVID-19 in Seoul
 
 **Internal R&D · 사내 연구**
-- `2025 — 26` Architecture × AI Practice — Company-wide executive presentation · 사내 임원회의 발표 / apt · complex · hotel tools applied to live projects  *(옛 '22-slide … senior leadership' → 통일)*
+- `2025 — 26` Architecture × AI Practice — Internal executive presentation · 사내 임원회의 발표 / apt · complex · hotel tools used in early project reviews  *(옛 '22-slide … senior leadership' → 통일)*
 
 **Practice Focus · 작업 도구**
 - `Daily · 11y` AutoCAD · Rhinoceros + Grasshopper · SketchUp  *(10y→11y, 표지·직함 11년과 통일)*
@@ -270,8 +270,8 @@
 - `Research` SPSS · ArcGIS · R · statistical analysis
 
 **Collaborators · 협업**
-- `2023 — 25` UN Studio · Amsterdam — Apgujeong District 3 (premium residential)
-- `2020` Samsung C&T — Banpo 3rd District constructor selection  *(Perkins Eastman 삭제)*
+- `2023 — 25` UN Studio · Amsterdam — Apgujeong District 3 (residential redevelopment)
+- `2020` Samsung C&T — Banpo 3rd District contractor selection bid  *(Perkins Eastman 삭제)*
 - *(Morphosis 행 삭제 — 발주처 지원 입장이라 '협업사' 아님. Songdo는 실무란에 '발주처 지원'으로 표기)*
 
 **Languages · 언어**
@@ -290,7 +290,7 @@
 
 ---
 
-### 정리 — ✅ 2026-06-25 2차 반영 완료 (portfolio_v15.html + 이 .md)
+### 정리 — ✅ 2026-06-25 3차 반영 완료 (portfolio_v15.html + 이 .md)
 
 **1차 (⚠️ 사실/일관성):**
 1. **압구정 세대수** 4,300 → **5,175세대**(확정 정비계획=분양4,525+임대650; 목차·p.06 스펙·CV). 본문 EN/KR은 숫자 빼고 스펙에만. *2차에서 ~5,800(당선보도)→5,175로 변경 → 정림 PDF(~5,800)와는 달라짐.*
@@ -304,9 +304,15 @@
 7. **은마 전면 '참여·출발점'** — `총회 통과`+`당선` 모두 제거: p.09 Status `설계공모 참여`, 전체작품 `첫 대형`, CV 당선목록서 **은마 행 삭제** → 당선 **4건**(반포·목동14·압구정·평택)으로 정합, 본문 `추가 당선 4건`→`당선 4건`.
 8. **p.03 Architecture × AI** — 트랙 B(Freepik) 전면 제거: 목차·스펙(Tracks 줄·Stack·CV Freepik API) 삭제, 본문 트랙 A만, "입력받아 생성"→"바탕으로 만들고", `Audience`→`Presented: 사내 임원회의·전사 발표`.
 9. **송도 발주처 지원 재프레이밍** — Role `Owner-side Support · 발주처 지원`, 본문 "심사 진행 맡았다" 삭제·선정 수동태("공모를 통해 모포시스 선정"), M3·M4 `총괄`→발주처 측 `조율`. CV Collaborators **Morphosis 행 삭제**(협업사 아님)→실무란에 `Songdo 발주처 지원`.
-10. **CV 표현 통일** — `22-slide … senior leadership`→`company-wide executive presentation · 사내 임원회의 발표`, `Freepik API` 삭제.
+10. **CV 표현 통일** — `22-slide … senior leadership` 정리, `Freepik API` 삭제.
+
+**3차 (AI톤/번역투 완화 리뷰):**
+11. **본문 6면 영/한 재작성** — 마케팅·번역투 어휘 제거: p.03(track→study, tool→workflow, "live projects"→"early-stage project reviews"; Rhino는 **연계 도구**로 표기-사용자 확인, 직접 수행 아님 → "with Rhino-linked tools"/"Rhino와 연계된 도구로"), p.04(competition·competitor analysis, "최종 컨펌"→"최종 승인까지", 프리미엄 삭제), p.06(premium→major·"강남권 대형", "two studios"→Seoul/Amsterdam teams, signature/시그니처→"main urban gesture"/"주요 설계 방향"), p.07("secured"→"were approved", "직접 거쳤습니다"→"담당", "인허가 가능한 계획으로 조정"), p.08(diagram 문장 자연화·`당선안`→`선정안`), p.09(드라마틱 엔딩 완화).
+12. **CV 경어 완화** — `다수 당선`→`설계공모 당선작 다수 참여`, `Company-wide`→`Internal executive`, `live projects`→`early project reviews`, `premium residential`→`residential redevelopment`, `constructor selection`→`contractor selection bid`.
+13. **미반영(본인 판단 대기):** Program 스펙 `Premium Residential Redevelopment` 3곳(p.04·06·09)은 사실 세그먼트 라벨이라 그대로 둠 — 원하면 `Residential Redevelopment`로 낮출 수 있음.
 
 > **건축사 직함:** 미취득 → `Architectural Designer` 유지.
 > **유지(방어 가능):** 압구정 `Local Lead`(외주 협업 표준 역할), p.03 `R&D Lead`. 역할동사 누적(Director/단독/총괄)은 해소됨.
 > **면접 대비(텍스트는 유지):** 압구정 Local Lead, 평택 4개 심의, 송도 발주처 지원 기여 범위 — 구체 설명만 준비.
-> **남은 일:** v15.html·_텍스트.md git 미추적(main) → 커밋 대기. 일반본 PDF / 정림 PDF(압구정 5,175 반영) 갱신은 선택.
+> **3차 보강(추가 검수):** p.09 `joined` 비문 수정(→"I joined my first large redevelopment project…"), p.07 `review processes were approved`→`The project passed all four review stages`(KR "통과" 정합), p.03 Rhino=연계 도구로 확정.
+> **상태:** 1·2차+정림정리 push 완료(`c3d1a73`·`d5d621c`). **3차(AI톤+보강)는 이번 커밋에 포함.** Program 스펙 `Premium` 3곳은 기본값(유지). 일반본 PDF / 정림 PDF(5,175 반영) 갱신은 선택.
