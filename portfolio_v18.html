@@ -1,0 +1,1370 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JunSeong Park — Selected Works · 2015—2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1d1d1f;
+    --ink-80: #333333;
+    --ink-48: #7a7a7a;
+    --parchment: #f5f5f7;
+    --rule: #1d1d1f;
+    --hairline: #d2d2d7;
+    --sf: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, Inter, 'Helvetica Neue', 'Noto Sans KR', sans-serif;
+    --product-shadow: 0 5px 30px 0 rgba(0,0,0,0.16);
+  }
+  html, body { margin: 0; padding: 0; background: #f5f5f7; }
+  body {
+    font-family: var(--sf); font-feature-settings: 'ss03', 'cv11';
+    display: flex; flex-direction: column; align-items: center;
+    padding: 40px 20px; gap: 28px;
+  }
+
+  /* Page shell (A4 portrait @ 96dpi) -------------------------------- */
+  .pg {
+    width: 794px; height: 1123px;
+    background: #fff;
+    color: var(--ink);
+    position: relative;
+    overflow: hidden;
+    font-family: var(--sf); font-feature-settings: 'ss03', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    box-shadow: 0 10px 30px var(--hairline);
+  }
+  .pg, .pg * { box-sizing: border-box; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-feature-settings: normal; }
+  .kr   { font-family: 'Noto Sans KR', var(--sf); font-weight: 400; }
+
+  /* Image placeholder + real-image overlay -------------------------- */
+  .ph {
+    position: relative;
+    background-image: repeating-linear-gradient(135deg, #ededed 0 8px, #f5f5f5 8px 16px);
+    overflow: hidden;
+  }
+  .ph::before {
+    content: attr(data-label);
+    position: absolute; top: 8px; left: 8px;
+    font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    font-size: 9px; letter-spacing: 0.04em;
+    color: rgba(0,0,0,0.55);
+    background: rgba(255,255,255,0.85);
+    padding: 2px 6px;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+  .ph.dot {
+    background-color: #f5f5f5;
+    background-image: radial-gradient(circle at 50% 50%, #ddd 1px, transparent 1.2px);
+    background-size: 10px 10px;
+  }
+  .ph > img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    z-index: 1;
+  }
+  .ph > img.bias-top { object-position: center 25%; }
+  .ph > img.bias-bottom { object-position: center 75%; }
+  .ph.has-img::before { background: rgba(255,255,255,0.78); }
+
+  /* Reusable header/footer for every page --------------------------- */
+  .ph-head { display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .ph-foot { display: flex; justify-content: space-between; align-items: flex-end; font-size: 9px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+  .ph-foot .pn { font-size: 11px; }
+
+  /* ============================================================ */
+  /* COVER                                                        */
+  /* ============================================================ */
+  .Cover { padding: 56px; display: grid; grid-template-rows: auto 1fr auto; }
+  .Cover .top { display: flex; justify-content: space-between; align-items: baseline; }
+  .Cover .top .mark { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.6; }
+  .Cover .top .range { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-align: right; line-height: 1.6; }
+  .Cover .center { display: flex; flex-direction: column; justify-content: flex-end; gap: 16px; }
+  .Cover .name { font-size: 72px; line-height: 0.92; font-weight: 600; letter-spacing: -0.022em; }
+  .Cover .name .kr { font-size: 30px; display: block; margin-top: 14px; letter-spacing: -0.01em; font-weight: 500; }
+  .Cover .role { font-size: 13px; line-height: 1.4; margin-top: 24px; max-width: 420px; }
+  .Cover .role .en { display: block; }
+  .Cover .role .kr { display: block; margin-top: 4px; font-size: 13.5px; }
+  .Cover .bottom { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: end; padding-top: 24px; border-top: 1px solid var(--rule); font-size: 10px; }
+  .Cover .bottom .col .k { font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.55; margin-bottom: 5px; display: block; }
+  .Cover .bottom .col .v { font-size: 10.5px; line-height: 1.5; }
+
+  /* ============================================================ */
+  /* STATEMENT                                                    */
+  /* ============================================================ */
+  .Stmt { padding: 56px; display: grid; grid-template-rows: auto 1fr auto; gap: 32px; }
+  .Stmt .body { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-content: center; }
+  .Stmt .body h2 { font-size: 11px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 400; margin: 0 0 18px 0; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+  .Stmt .body p { font-size: 12.5px; line-height: 1.65; margin: 0 0 14px 0; }
+  .Stmt .body .kr p { font-size: 13px; line-height: 1.85; }
+
+  /* ============================================================ */
+  /* CONTENTS — single-page selected index                        */
+  /* ============================================================ */
+  .Idx { padding: 56px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 22px; }
+  .Idx .titlebar { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .Idx h1 { font-size: 36px; font-weight: 600; letter-spacing: -0.021em; margin: 0; line-height: 1; white-space: nowrap; }
+  .Idx h1 .kr { display: inline; font-size: 19px; font-weight: 500; margin-left: 14px; opacity: 0.55; letter-spacing: -0.005em; }
+  .Idx .titlebar .tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; text-align: right; line-height: 1.5; }
+  .Idx .list { display: flex; flex-direction: column; align-self: start; }
+  .Idx .glabel { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.5; display: flex; align-items: center; gap: 12px; margin: 18px 0 6px; }
+  .Idx .glabel::after { content: ''; flex: 1; height: 1px; background: var(--hairline); }
+  .Idx .glabel:first-child { margin-top: 0; }
+  .Idx .it { display: grid; grid-template-columns: 38px 1fr 144px 50px; gap: 18px; align-items: center; padding: 14px 0; border-top: 1px solid var(--rule); }
+  .Idx .glabel + .it { border-top: none; }
+  .Idx .it:last-child { border-bottom: 1px solid var(--rule); }
+  .Idx .it .n { font-family: 'JetBrains Mono', monospace; font-size: 13px; opacity: 0.6; }
+  .Idx .it .ti { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.12; }
+  .Idx .it .sub { font-family: 'Noto Sans KR', sans-serif; font-size: 10.5px; line-height: 1.4; opacity: 0.6; margin-top: 3px; }
+  .Idx .it .thumb { width: 144px; height: 84px; }
+  .Idx .it .thumb::before { display: none; }
+  .Idx .it .pgn { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-align: right; font-weight: 500; }
+
+  /* ============================================================ */
+  /* ALL WORKS — 36-project visual index (2-page spread)          */
+  /* ============================================================ */
+  .vcell { display: flex; flex-direction: column; gap: 4px; }
+  .vcell .thumb { width: 100%; aspect-ratio: 16/10; }
+  .vcell .vmeta { display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.06em; margin-top: 2px; }
+  .vcell .vmeta .l { font-weight: 500; }
+  .vcell .vmeta .r { opacity: 0.6; }
+  .vcell .vmeta .r.feat { opacity: 1; font-weight: 600; }
+  .vcell .ven { font-size: 10px; line-height: 1.18; letter-spacing: -0.005em; min-height: 1.18em; }
+  .vcell .vkr { font-size: 9px; line-height: 1.25; opacity: 0.55; font-family: 'Noto Sans KR', sans-serif; }
+
+  .V2 { padding: 48px 56px 48px 56px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 16px; }
+  .V2 .titlebar { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+  .V2 h1 { font-size: 24px; font-weight: 600; letter-spacing: -0.018em; margin: 0; line-height: 1; }
+  .V2 h1 .kr { display: inline; font-size: 14px; font-weight: 500; margin-left: 10px; opacity: 0.55; letter-spacing: -0.005em; }
+  .V2 .titlebar .pageof { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; text-align: right; line-height: 1.5; }
+  .V2 .body { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: min-content; gap: 14px 12px; align-content: start; }
+  .V2 .vcell .ven { font-size: 9.5px; }
+  .V2 .vcell .vkr { font-size: 8.5px; }
+
+  /* ============================================================ */
+  /* A — INTERIOR PAGE                                            */
+  /* ============================================================ */
+  .A { padding: 56px; display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: auto 1fr auto auto; gap: 24px 16px; }
+  .A .head { grid-column: 1 / -1; }
+  .A .meta { grid-column: 1 / span 4; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+  .A .title-en { font-size: 24px; line-height: 1.05; font-weight: 600; letter-spacing: -0.018em; }
+  .A .title-kr { font-size: 15px; line-height: 1.3; font-weight: 500; margin-top: 6px; letter-spacing: -0.005em; }
+  .A .specs { font-size: 9.5px; line-height: 1.55; letter-spacing: 0.02em; }
+  .A .specs .row { display: grid; grid-template-columns: 64px 1fr; padding: 5px 0; border-top: 1px solid var(--rule); gap: 8px; }
+  .A .specs .row:last-child { border-bottom: 1px solid var(--rule); }
+  .A .specs .k { font-family: 'JetBrains Mono', monospace; text-transform: uppercase; font-size: 8.5px; letter-spacing: 0.06em; padding-top: 1px; }
+  .A .body { font-size: 10px; line-height: 1.6; }
+  .A .body p { margin: 0 0 10px 0; }
+  .A .body p.kr { font-size: 10.5px; line-height: 1.7; }
+  .A .hero { grid-column: 5 / -1; grid-row: 2; min-height: 0; }
+  .A .hero > .ph { width: 100%; height: 100%; }
+  .A .grid3 { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .A .grid3 .ph { aspect-ratio: 4/3; }
+  .A .grid4 { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .A .grid4 .ph { aspect-ratio: 1/1; }
+  .A .foot { grid-column: 1 / -1; }
+
+  /* Variant — Urban */
+  .A.urban { grid-template-rows: auto auto 1fr auto auto; }
+  .A.urban .meta { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: 4fr 8fr; gap: 24px; }
+  .A.urban .meta .title-col { display: flex; flex-direction: column; gap: 18px; }
+  .A.urban .meta .body { grid-column: 2; }
+  .A.urban .hero { grid-column: 1 / -1; grid-row: 3; }
+  .A.urban .hero > .ph { aspect-ratio: 16/9; height: auto; }
+
+  /* Variant — Concept (3 stacked landscape frames) */
+  .A.concept { grid-template-rows: auto 1fr auto; }
+  .A.concept .hero { grid-column: 5 / -1; display: grid; grid-template-columns: 1fr; grid-template-rows: repeat(3, 1fr); gap: 10px; }
+  .A.concept .hero .ph { width: 100%; height: 100%; }
+  /* UI screenshots — show the full frame incl. side panel, no crop */
+  .A.concept .hero .ph.ui { background: #fff; }
+  .A.concept .hero .ph.ui > img { object-fit: contain; }
+
+  /* ============================================================ */
+  /* CV                                                           */
+  /* ============================================================ */
+  .CV { padding: 56px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 24px; }
+  .CV .titlebar { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .CV h1 { font-size: 36px; font-weight: 600; letter-spacing: -0.021em; margin: 0; line-height: 1; white-space: nowrap; }
+  .CV h1 .kr { display: inline; font-size: 19px; font-weight: 500; margin-left: 14px; opacity: 0.55; letter-spacing: -0.005em; }
+  .CV .me { display: flex; gap: 14px; align-items: center; }
+  .CV .me .portrait { width: 56px; height: 56px; background: #ddd; overflow: hidden; }
+  .CV .me .portrait img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.85) contrast(1.05); }
+  .CV .me .txt { text-align: right; font-size: 10px; line-height: 1.5; }
+  .CV .me .txt .nm { font-size: 13px; font-weight: 600; }
+  .CV .me .txt .role { opacity: 0.6; }
+  .CV .body { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-content: start; }
+  .CV .col h2 { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 400; margin: 0 0 8px 0; padding-bottom: 5px; border-bottom: 1px solid var(--rule); }
+  .CV .col h2.cont { margin-top: 22px; }
+  .CV .row { display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--hairline); align-items: baseline; }
+  .CV .row .yr { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.04em; }
+  .CV .row .v { font-size: 10.5px; line-height: 1.4; }
+  .CV .row .v .sub { display: block; font-size: 9.5px; opacity: 0.6; margin-top: 2px; }
+
+  /* Mobile / responsive — scale the A4 sheet to fit narrow viewports.  */
+  /* Keep px-based design intact; visual shrink only.                    */
+  @media screen and (max-width: 900px) {
+    html, body { overflow-x: hidden; }
+    body { padding: 12px; gap: 0; align-items: flex-start; }
+    .pg {
+      box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+      transform-origin: top left;
+      transform: scale(calc((100vw - 24px) / 794px));
+      /* Pull the next page up to match the scaled visual height + a 12px gap */
+      margin-bottom: calc(1123px * ((100vw - 24px) / 794px) - 1123px + 12px);
+    }
+  }
+
+  /* Apple pass — the single signature product shadow on contained renders */
+  .Idx .it .thumb.has-img,
+  .A .hero > .ph.has-img,
+  .A .grid3 .ph.has-img,
+  .A .grid4 .ph.has-img { box-shadow: var(--product-shadow); }
+  /* Apple reading cadence — gentle negative tracking on latin body copy */
+  .pg p:not(.kr) { letter-spacing: -0.012em; }
+
+  /* ============================================================ */
+  /* INTERACTIVE — screen only (print/PDF stays clean)            */
+  /* ============================================================ */
+  /* 1) Scroll reveal — each sheet fades up as it enters view.      */
+  /*    Hidden state gated on html.anim (added by an early script   */
+  /*    only when motion is allowed), so no-JS / reduced-motion     */
+  /*    users see everything immediately.                           */
+  html.anim .pg {
+    opacity: 0; will-change: opacity, transform;
+    transition: opacity .75s cubic-bezier(.16,1,.3,1),
+                transform .75s cubic-bezier(.16,1,.3,1);
+  }
+  html.anim .pg.revealed { opacity: 1; }
+  /* translateY only on desktop — on mobile .pg already uses a scale
+     transform, so we animate opacity alone there to avoid clobbering it. */
+  @media screen and (min-width: 901px) {
+    html.page-snap {
+      scroll-snap-type: y mandatory;
+      scroll-padding-top: 32px;
+      scroll-behavior: smooth;
+    }
+    html.page-snap .pg {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+    html.anim .pg { transform: translateY(28px); }
+    html.anim .pg.revealed { transform: translateY(0); }
+  }
+
+  html.page-snap .pg {
+    transition-property: opacity, transform, box-shadow;
+  }
+  html.page-snap .pg.is-current {
+    box-shadow: 0 18px 44px rgba(0,0,0,0.18);
+  }
+
+  /* 2) Image hover zoom + cursor-reactive depth ------------------ */
+  .ph.has-img {
+    --hover-x: 0px;
+    --hover-y: 0px;
+    --parallax-y: 0px;
+    --img-scale: 1;
+    --glint-x: 50%;
+    --glint-y: 50%;
+    cursor: zoom-in;
+    isolation: isolate;
+  }
+  .ph.has-img > img {
+    transform: translate3d(var(--hover-x), calc(var(--hover-y) + var(--parallax-y)), 0)
+               scale(var(--img-scale));
+    transition: transform .55s cubic-bezier(.16,1,.3,1);
+    will-change: transform;
+  }
+  .ph.has-img::before { z-index: 4; }
+  .ph.has-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background: radial-gradient(circle at var(--glint-x) var(--glint-y),
+      rgba(255,255,255,0.34) 0,
+      rgba(255,255,255,0.13) 24%,
+      rgba(255,255,255,0) 48%);
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition: opacity .35s ease;
+  }
+  @media (hover: hover) {
+    .ph.has-img:hover { --img-scale: 1.045; }
+    .ph.has-img:hover::after { opacity: .45; }
+    .A.concept .ph.ui.has-img:hover { --img-scale: 1.018; }
+  }
+  /* contents thumbnails navigate (whole row), so no zoom cursor there */
+  .Idx .it .ph.has-img { cursor: inherit; }
+
+  /* 2b) Cover magnetism ------------------------------------------ */
+  @media (hover: hover) and (min-width: 901px) {
+    .Cover .name,
+    .Cover .role,
+    .Cover .bottom {
+      transition: transform .45s cubic-bezier(.16,1,.3,1);
+      will-change: transform;
+    }
+    .Cover .name { transform: translate3d(var(--cover-title-x, 0px), var(--cover-title-y, 0px), 0); }
+    .Cover .role { transform: translate3d(var(--cover-role-x, 0px), var(--cover-role-y, 0px), 0); }
+    .Cover .bottom { transform: translate3d(var(--cover-bottom-x, 0px), var(--cover-bottom-y, 0px), 0); }
+  }
+
+  /* 3a) Contents rows are clickable jumps ------------------------ */
+  .Idx .it { cursor: pointer; transition: background .2s ease; }
+  @media (hover: hover) {
+    .Idx .it:hover { background: #fafafa; }
+    .Idx .it:hover .ti { text-decoration: underline;
+      text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  }
+
+  /* 3b) Scroll progress bar -------------------------------------- */
+  #progressBar { position: fixed; top: 0; left: 0; height: 2px; width: 0;
+    background: var(--ink); z-index: 60; transition: width .1s linear; }
+
+  /* 3c) Page-dot navigator (right edge) -------------------------- */
+  #navDots { position: fixed; top: 50%; right: 18px; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 10px; z-index: 60; }
+  #navDots .dot { width: 9px; height: 9px; border-radius: 50%; padding: 0;
+    border: 1px solid var(--ink-48); background: transparent; cursor: pointer;
+    position: relative; transition: background .25s ease, transform .25s ease, border-color .25s ease; }
+  #navDots .dot:hover { transform: scale(1.3); border-color: var(--ink); }
+  #navDots .dot.active { background: var(--ink); border-color: var(--ink); }
+  #navDots .dot .lbl { position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+    white-space: nowrap; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.04em;
+    color: #fff; background: var(--ink); padding: 3px 7px; border-radius: 3px;
+    opacity: 0; pointer-events: none; transition: opacity .2s ease; }
+  #navDots .dot:hover .lbl { opacity: 1; }
+  @media (max-width: 700px) { #navDots { display: none; } }
+
+  /* 3d) Current page cue ----------------------------------------- */
+  #pageCue { position: fixed; right: 18px; bottom: 18px; z-index: 60;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em;
+    color: #fff; background: rgba(29,29,31,0.88); padding: 5px 8px; border-radius: 3px;
+    opacity: 0; transform: translateY(6px); pointer-events: none;
+    transition: opacity .24s ease, transform .24s cubic-bezier(.16,1,.3,1); }
+  #pageCue.show { opacity: 1; transform: translateY(0); }
+  @media (max-width: 700px) { #pageCue { display: none; } }
+
+  /* 4) Lightbox overlay ------------------------------------------ */
+  #lightbox { position: fixed; inset: 0; z-index: 80; display: flex;
+    align-items: center; justify-content: center; padding: 4vmin;
+    background: rgba(20,20,22,0.92); cursor: zoom-out;
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity .25s ease, visibility 0s linear .25s; }
+  #lightbox.open { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0s; }
+  #lightbox figure { margin: 0; max-width: 94vw; max-height: 92vh;
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    opacity: 0;
+    transform: translate3d(0,8px,0) scale(.96);
+    transform-origin: var(--lb-origin-x, 50%) var(--lb-origin-y, 50%);
+    transition: opacity .24s ease, transform .34s cubic-bezier(.16,1,.3,1); }
+  #lightbox.open figure { opacity: 1; transform: translate3d(0,0,0) scale(1); }
+  #lightbox img { max-width: 94vw; max-height: 84vh; object-fit: contain;
+    background: #fff; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  #lightbox figcaption { font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.06em; color: rgba(255,255,255,0.85); text-transform: uppercase; }
+  #lightbox .close { position: fixed; top: 18px; right: 20px; width: 34px; height: 34px;
+    border: none; border-radius: 50%; background: rgba(255,255,255,0.14); color: #fff;
+    font-size: 20px; line-height: 1; cursor: pointer; }
+  #lightbox .nav-btn { position: fixed; top: 50%; width: 42px; height: 42px;
+    transform: translateY(-50%); border: 1px solid rgba(255,255,255,0.24); border-radius: 50%;
+    background: rgba(255,255,255,0.12); color: #fff; cursor: pointer;
+    font-size: 28px; line-height: 1; display: flex; align-items: center; justify-content: center;
+    transition: background .2s ease, transform .2s ease, opacity .2s ease; }
+  #lightbox .nav-btn:hover { background: rgba(255,255,255,0.20); transform: translateY(-50%) scale(1.06); }
+  #lightbox .prev { left: 22px; }
+  #lightbox .next { right: 22px; }
+  #lightbox.single .nav-btn { opacity: 0; pointer-events: none; }
+  #lightbox.switching figure {
+    opacity: .72;
+    transform: translate3d(var(--lb-step-x, 0px),0,0) scale(.985);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ph.has-img > img,
+    .ph.has-img::after,
+    #pageCue,
+    #lightbox,
+    #lightbox figure,
+    #lightbox .nav-btn,
+    .Cover .name,
+    .Cover .role,
+    .Cover .bottom { transition: none; transform: none !important; }
+    .ph.has-img::after { display: none; }
+  }
+
+  @page { size: A4 portrait; margin: 0; }
+  @media print {
+    body { background: #fff; padding: 0; gap: 0; }
+    .pg,
+    html.page-snap .pg.is-current { box-shadow: none !important; }
+    .pg:not(:last-child) { page-break-after: always; }
+    /* never let interactive chrome or hidden-reveal state reach paper */
+    #progressBar, #navDots, #pageCue, #lightbox { display: none !important; }
+    html.anim .pg { opacity: 1 !important; transform: none !important; }
+    .ph.has-img > img,
+    .Cover .name,
+    .Cover .role,
+    .Cover .bottom { transform: none !important; }
+    .ph.has-img::after { display: none !important; }
+  }
+</style>
+<script>
+/* Add the reveal "hidden" state before first paint (no flash), but only
+   when motion is welcome. Safety: if the main script never reveals a page,
+   show everything shortly after load so content can't get stuck hidden. */
+(function () {
+  try {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.documentElement.className += ' anim';
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        if (!document.querySelector('.pg.revealed')) {
+          var pg = document.querySelectorAll('.pg');
+          for (var i = 0; i < pg.length; i++) pg[i].classList.add('revealed');
+        }
+      }, 400);
+    });
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- p.01 — COVER                                                 -->
+<!-- ============================================================ -->
+<div class="pg Cover">
+  <div class="top">
+    <div class="mark">Selected Works<br/>2015 — 2026</div>
+    <div class="range">Vol. 01 / Print Edition</div>
+  </div>
+
+  <div class="center">
+    <div class="name">
+      JunSeong Park<span class="kr">박준성</span>
+    </div>
+    <div class="role">
+      <span class="en">Architectural Designer · 11 Years at Heerim, Seoul</span>
+      <span class="kr">건축 디자이너 · 희림종합건축사사무소 · 11년</span>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="col">
+      <span class="k">Practice</span>
+      <div class="v">Heerim Architects &amp; Planners<br/>희림종합건축사사무소 · 서울</div>
+    </div>
+    <div class="col">
+      <span class="k">Contact</span>
+      <div class="v">blusb41@gmail.com</div>
+    </div>
+    <div class="col">
+      <span class="k">Portfolio</span>
+      <div class="v">36 works + AI Practice</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.02 — CONTENTS (selected index)                             -->
+<!-- ============================================================ -->
+<div class="pg Idx">
+  <div class="ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Contents · 목차</div>
+  </div>
+
+  <div class="titlebar">
+    <h1>Contents<span class="kr">목차</span></h1>
+    <div class="tag">7 Selected<br/>AI Practice + 6 Works</div>
+  </div>
+
+  <div class="list">
+    <div class="glabel">Practice Focus · 사내 연구</div>
+    <div class="it">
+      <div class="n">00</div>
+      <div><div class="ti">Architecture × AI</div><div class="sub">건축 × AI · 사내 R&amp;D · Claude + MCP</div></div>
+      <div class="thumb ph has-img"><img src="img/33_ai_practice/cover.jpg" alt=""></div>
+      <div class="pgn">p. 03</div>
+    </div>
+
+    <div class="glabel">Selected Projects · 주요 프로젝트</div>
+    <div class="it">
+      <div class="n">01</div>
+      <div><div class="ti">Banpo Mido 1st</div><div class="sub">반포미도1차 재건축 · 1,743세대 · 당선</div></div>
+      <div class="thumb ph has-img"><img src="img/32_banpo_mido_1/큰이미지.jpg" alt=""></div>
+      <div class="pgn">p. 04</div>
+    </div>
+    <div class="it">
+      <div class="n">02</div>
+      <div><div class="ti">Mokdong District 14</div><div class="sub">목동14단지 재건축 · 5,158세대 · 당선</div></div>
+      <div class="thumb ph has-img"><img src="img/35_mokdong_14/큰이미지.jpg" alt=""></div>
+      <div class="pgn">p. 05</div>
+    </div>
+    <div class="it">
+      <div class="n">03</div>
+      <div><div class="ti">Apgujeong District 3</div><div class="sub">압구정3구역 · 5,175세대 · UN Studio · 당선</div></div>
+      <div class="thumb ph has-img"><img src="img/29_apgujeong_3/hero_clean.png" alt=""></div>
+      <div class="pgn">p. 06</div>
+    </div>
+    <div class="it">
+      <div class="n">04</div>
+      <div><div class="ti">Pyeongtaek Brain City 2BL</div><div class="sub">평택 브레인시티 주상2BL · 인허가 11개월 · 당선</div></div>
+      <div class="thumb ph has-img"><img src="img/28_pyeongtaek_braincity_2bl/hero_clean.png" alt=""></div>
+      <div class="pgn">p. 07</div>
+    </div>
+    <div class="it">
+      <div class="n">05</div>
+      <div><div class="ti">Songdo 6,8 Masterplan</div><div class="sub">송도 6,8공구 국제공모 · Morphosis 선정</div></div>
+      <div class="thumb ph has-img"><img src="img/23_songdo_6_8_masterplan/01_전체조감_석경_1018.jpg" alt=""></div>
+      <div class="pgn">p. 08</div>
+    </div>
+    <div class="it">
+      <div class="n">06</div>
+      <div><div class="ti">Eunma Apartment</div><div class="sub">은마아파트 재건축 · 4,424세대 · 첫 대형</div></div>
+      <div class="thumb ph has-img"><img src="img/03_daechi_eunma/큰이미지.jpg" alt=""></div>
+      <div class="pgn">p. 09</div>
+    </div>
+  </div>
+
+  <div class="ph-foot">
+    <div>p. 02</div>
+    <div>Contents · Selected 7</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.03 — AI PRACTICE (A · Concept variant)                     -->
+<!-- ============================================================ -->
+<div class="pg A concept">
+  <div class="head ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Special · Internal R&amp;D</div>
+  </div>
+
+  <div class="meta">
+    <div>
+      <div class="title-en">Architecture × AI</div>
+      <div class="title-kr kr">건축 × AI · 사내 R&amp;D</div>
+    </div>
+    <div class="specs">
+      <div class="row"><div class="k">Year</div><div>2025 — 2026</div></div>
+      <div class="row"><div class="k">Tools</div><div>apt · complex · hotel</div></div>
+      <div class="row"><div class="k">Stack</div><div>Claude Code · MCP · Rhino</div></div>
+      <div class="row"><div class="k">Role / 역할</div><div>R&amp;D Lead · 사례발표</div></div>
+      <div class="row"><div class="k">Presented</div><div>사내 임원회의 · 전사 발표</div></div>
+    </div>
+    <div class="body">
+      <p>An internal R&amp;D study on AI-assisted early design. Using Claude + MCP, I developed workflows for apartment, complex, and hotel studies. The apartment workflow uses site conditions, planning rules, and project targets to generate layout options, then checks sunlight and parking capacity with Rhino-linked tools. Presented at an internal executive meeting in April 2026, it is now used for early-stage project reviews.</p>
+      <p class="kr">초기 설계 검토를 빠르게 반복하기 위한 사내 R&amp;D입니다. Claude + MCP를 활용해 공동주택·복합시설·호텔 유형별 검토 워크플로를 만들었습니다. 그중 apt는 부지 조건·법규·사업 목표를 바탕으로 배치 대안을 만들고, Rhino와 연계된 도구로 일조와 주차 검토까지 이어갑니다. 2026년 4월 사내 임원회의에서 전사 대상으로 발표했고, 현재 실무 프로젝트의 초기 검토에도 적용하고 있습니다.</p>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="ph ui has-img" data-label="01 · apt · Layout Generation · 배치 대안 생성"><img src="img/33_ai_practice/1(배치대안생성).png" alt=""></div>
+    <div class="ph ui has-img" data-label="02 · apt · Sunlight Review · 일조 검토"><img src="img/33_ai_practice/2(일조검토).png" alt=""></div>
+    <div class="ph ui has-img" data-label="03 · apt · Parking Layout · 주차장 계획"><img src="img/33_ai_practice/3(주차장계획).png" alt=""></div>
+  </div>
+
+  <div class="foot ph-foot">
+    <div>Architecture × AI · 건축 × AI</div>
+    <div class="pn">p. 03</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.04 — BANPO MIDO 1st (A · Residential)                      -->
+<!-- ============================================================ -->
+<div class="pg A">
+  <div class="head ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Residential · 주거 · 재건축</div>
+  </div>
+
+  <div class="meta">
+    <div>
+      <div class="title-en">Banpo Mido 1st</div>
+      <div class="title-kr kr">반포미도1차 재건축 · 설계공모 당선</div>
+    </div>
+    <div class="specs">
+      <div class="row"><div class="k">Year</div><div>2025.03 — 2025.06</div></div>
+      <div class="row"><div class="k">Site / 위치</div><div>서울 서초구 반포동</div></div>
+      <div class="row"><div class="k">Area / 면적</div><div>1,743 units</div></div>
+      <div class="row"><div class="k">Program</div><div>Premium Residential Redevelopment</div></div>
+      <div class="row"><div class="k">Role / 역할</div><div>주동·스카이커뮤니티 설계</div></div>
+      <div class="row"><div class="k">Status</div><div>Winning Proposal · 당선</div></div>
+      <div class="row"><div class="k">Opp.</div><div>DA + Haean Architects · 경쟁사</div></div>
+    </div>
+    <div class="body">
+      <p>A 1,743-unit redevelopment competition in Banpo. From the initial stage, I developed layout alternatives with the PM, worked through the unit plans, and designed the sky-community through final approval. For the competition against DA + Haean, I prepared competitor analysis and managed the show-flat presentation.</p>
+      <p class="kr">반포의 1,743세대 재건축 설계공모입니다. 초기부터 PM과 함께 배치 대안을 작성했고, 그 배치안과 주동 평면으로 계획을 이끌었습니다. 스카이커뮤니티는 직접 설계해 최종 승인까지 진행했습니다. DA·해안건축과의 경쟁에서는 상대안 분석과 홍보관 운영을 맡아 희림 안의 당선에 기여했습니다.</p>
+    </div>
+  </div>
+
+  <div class="hero"><div class="ph has-img" data-label="01 · Hero — curved tower"><img src="img/32_banpo_mido_1/큰이미지.jpg" alt=""></div></div>
+
+  <div class="grid3">
+    <div class="ph has-img" data-label="02 · Sky community park"><img src="img/32_banpo_mido_1/작은이미지1.png" alt=""></div>
+    <div class="ph has-img" data-label="03 · Main aerial, dusk"><img src="img/32_banpo_mido_1/작은이미지2.png" alt=""></div>
+    <div class="ph has-img" data-label="04 · Eye-level perspective"><img src="img/32_banpo_mido_1/작은이미지3.jpg" alt=""></div>
+  </div>
+
+  <div class="foot ph-foot">
+    <div>Banpo Mido 1st · 반포미도1차 재건축</div>
+    <div class="pn">p. 04</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.05 — MOKDONG DISTRICT 14 (A · Residential)                 -->
+<!-- ============================================================ -->
+<div class="pg A">
+  <div class="head ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Residential · 주거 · 재건축</div>
+  </div>
+
+  <div class="meta">
+    <div>
+      <div class="title-en">Mokdong District 14</div>
+      <div class="title-kr kr">목동14단지 재건축 · 설계공모 당선</div>
+    </div>
+    <div class="specs">
+      <div class="row"><div class="k">Year</div><div>2025</div></div>
+      <div class="row"><div class="k">Site / 위치</div><div>서울 양천구 신정동</div></div>
+      <div class="row"><div class="k">Area / 면적</div><div>5,158 units · 양천구 최대</div></div>
+      <div class="row"><div class="k">Program</div><div>Apartment Redevelopment · 신통기획</div></div>
+      <div class="row"><div class="k">Role / 역할</div><div>Tower & Podium Design</div></div>
+      <div class="row"><div class="k">Status</div><div>Winning Proposal · 당선</div></div>
+      <div class="row"><div class="k">Scale</div><div>The largest Mokdong site</div></div>
+    </div>
+    <div class="body">
+      <p>The largest of the Mokdong sites — 5,158 units in a single block. On the winning bid I handled the tower and low-rise base design, shaping both the skyline form and the street-level experience, and helped set the site-layout direction.</p>
+      <p class="kr">양천구 최대 규모의 신통기획 단지입니다. 한 블록에 5,158세대가 들어가는 당선작에서 주동과 저층부 디자인을 맡았습니다. 단지의 첫인상을 좌우하는 주동 형태와 보행자가 실제로 마주하는 저층부 표정을 함께 다뤘고, 단지 배치 방향을 잡는 일에도 참여했습니다.</p>
+    </div>
+  </div>
+
+  <div class="hero"><div class="ph has-img" data-label="01 · Hero — landmark tower"><img src="img/35_mokdong_14/큰이미지.jpg" alt=""></div></div>
+
+  <div class="grid3">
+    <div class="ph has-img" data-label="02 · Main aerial"><img src="img/35_mokdong_14/작은이미지1 (1).jpg" alt=""></div>
+    <div class="ph has-img" data-label="03 · Site view"><img src="img/35_mokdong_14/작은이미지1(2).jpg" alt=""></div>
+    <div class="ph has-img" data-label="04 · Wide aerial"><img src="img/35_mokdong_14/작은이미지1(3).jpg" alt=""></div>
+  </div>
+
+  <div class="foot ph-foot">
+    <div>Mokdong District 14 · 목동14단지 재건축</div>
+    <div class="pn">p. 05</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.06 — APGUJEONG DISTRICT 3 (A · Residential)                -->
+<!-- ============================================================ -->
+<div class="pg A">
+  <div class="head ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Residential · 주거 · 재건축</div>
+  </div>
+
+  <div class="meta">
+    <div>
+      <div class="title-en">Apgujeong District 3</div>
+      <div class="title-kr kr">압구정3구역 재건축 · UN Studio 협업 · 당선</div>
+    </div>
+    <div class="specs">
+      <div class="row"><div class="k">Year</div><div>2023</div></div>
+      <div class="row"><div class="k">Site / 위치</div><div>서울 강남구 압구정동</div></div>
+      <div class="row"><div class="k">Area / 면적</div><div>5,175 units</div></div>
+      <div class="row"><div class="k">Program</div><div>Premium Residential Redevelopment</div></div>
+      <div class="row"><div class="k">Collab.</div><div>UN Studio (Amsterdam)</div></div>
+      <div class="row"><div class="k">Role / 역할</div><div>Local Lead · KR Coordination</div></div>
+      <div class="row"><div class="k">Status</div><div>Final Winning · 최종 당선</div></div>
+    </div>
+    <div class="body">
+      <p>A major Gangnam redevelopment with UN Studio. As local lead, I adapted their massing to Korean codes and residential tower planning, coordinated the Seoul and Amsterdam teams, and supported the show-flat stage. Within a constrained Apgujeong block, the proposal shaped a continuous ridge-like skyline as its main urban gesture.</p>
+      <p class="kr">UN Studio와 함께한 강남권 대형 재건축입니다. UN Studio의 매스 디자인을 국내 법규와 주동 계획에 맞게 구체화하고, 서울과 암스테르담 두 팀 사이의 조율을 맡았습니다. 홍보관 단계에도 참여했습니다. 한정된 압구정 블록 조건 안에서 능선처럼 이어지는 스카이라인을 주요 설계 방향으로 삼은 당선작입니다.</p>
+    </div>
+  </div>
+
+  <div class="hero"><div class="ph has-img" data-label="01 · Hero — main aerial"><img src="img/29_apgujeong_3/hero_clean.png" alt=""></div></div>
+
+  <div class="grid3">
+    <div class="ph has-img" data-label="02 · Aerial view"><img src="img/29_apgujeong_3/작은이미지1.png" alt=""></div>
+    <div class="ph has-img" data-label="03 · Daytime perspective"><img src="img/29_apgujeong_3/작은이미지2.jpg" alt=""></div>
+    <div class="ph has-img" data-label="04 · Sky community"><img src="img/29_apgujeong_3/작은이미지3.jpg" alt=""></div>
+  </div>
+
+  <div class="foot ph-foot">
+    <div>Apgujeong District 3 · 압구정3구역 재건축</div>
+    <div class="pn">p. 06</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.07 — PYEONGTAEK BRAIN CITY 2BL (A · Residential)           -->
+<!-- ============================================================ -->
+<div class="pg A">
+  <div class="head ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Mixed-use Residential · 주상복합 · 인허가</div>
+  </div>
+
+  <div class="meta">
+    <div>
+      <div class="title-en">Pyeongtaek Brain City 2BL</div>
+      <div class="title-kr kr">평택 브레인시티 주상2BL · 인허가 11개월</div>
+    </div>
+    <div class="specs">
+      <div class="row"><div class="k">Year</div><div>2023.01 — 2023.11</div></div>
+      <div class="row"><div class="k">Site / 위치</div><div>경기 평택시 브레인시티</div></div>
+      <div class="row"><div class="k">Area / 면적</div><div>161,146 m² GFA · 주상복합</div></div>
+      <div class="row"><div class="k">Program</div><div>Mixed-use Residential Development</div></div>
+      <div class="row"><div class="k">Client</div><div>DS Networks · DS네트웍스</div></div>
+      <div class="row"><div class="k">Role / 역할</div><div>Permitting · 인허가 담당</div></div>
+      <div class="row"><div class="k">Status</div><div>Permitting Complete · 4개 심의 전부 통과</div></div>
+    </div>
+    <div class="body">
+      <p>A 161,146 m² mixed-use residential block in Pyeongtaek Brain City. After the competition win, I worked on the permitting phase for eleven months, covering landscape review, performance-based fire safety review, traffic impact review, and building review. The project passed all four review stages.</p>
+      <p class="kr">평택 브레인시티 161,146 m² 규모의 주상복합 2BL입니다. 현상설계 당선 후 11개월간 경관·소방성능위주·교통영향·건축 심의를 담당했습니다. 당선안을 인허가 가능한 계획으로 조정하는 후속 설계 과정이었고, 4개 심의를 모두 통과했습니다.</p>
+    </div>
+  </div>
+
+  <div class="hero"><div class="ph has-img" data-label="01 · Hero — main aerial"><img src="img/28_pyeongtaek_braincity_2bl/hero_clean.png" alt=""></div></div>
+
+  <div class="grid3">
+    <div class="ph has-img" data-label="02 · Site plan · 배치도"><img src="img/28_pyeongtaek_braincity_2bl/siteplan_clean.png" alt=""></div>
+    <div class="ph has-img" data-label="03 · Courtyard aerial"><img src="img/28_pyeongtaek_braincity_2bl/작은이미지2.jpg" alt=""></div>
+    <div class="ph has-img" data-label="04 · Dusk perspective"><img src="img/28_pyeongtaek_braincity_2bl/작은이미지3.jpg" alt=""></div>
+  </div>
+
+  <div class="foot ph-foot">
+    <div>Pyeongtaek Brain City 2BL · 평택 브레인시티 주상2BL</div>
+    <div class="pn">p. 07</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.08 — SONGDO 6,8 MASTERPLAN (A · Urban variant)             -->
+<!-- ============================================================ -->
+<div class="pg A urban">
+  <div class="head ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Urban · 도시 · 마스터플랜</div>
+  </div>
+
+  <div class="meta">
+    <div class="title-col">
+      <div>
+        <div class="title-en">Songdo 6,8 Masterplan</div>
+        <div class="title-kr kr">송도 6,8공구 국제공모 · Morphosis 선정</div>
+      </div>
+      <div class="specs">
+        <div class="row"><div class="k">Year</div><div>2024</div></div>
+        <div class="row"><div class="k">Site / 위치</div><div>송도 국제업무지구 · 6,8공구</div></div>
+        <div class="row"><div class="k">Area / 면적</div><div>2.3 M m² total</div></div>
+        <div class="row"><div class="k">Program</div><div>International Masterplan Competition</div></div>
+        <div class="row"><div class="k">Role / 역할</div><div>Owner-side Support · 발주처 지원</div></div>
+        <div class="row"><div class="k">Outcome</div><div>Morphosis Selected · 모포시스 선정</div></div>
+      </div>
+    </div>
+    <div class="body">
+      <p>An international masterplan competition for 2.3 million m² of reclaimed land in Songdo blocks 6 and 8. On the owner's side I prepared the RFP and design guidelines and handled the competition logistics; the competition selected Morphosis (LA) as masterplanner. I then coordinated the M3 and M4 block plans from the owner side. The diagram below shows the proposed program, circulation structure, and phasing plan for 2025–2035.</p>
+      <p class="kr">송도 6,8공구, 230만 m² 매립지를 위한 국제 마스터플랜 공모입니다. 발주처 측에서 RFP와 설계 지침을 작성하고, 후보군 정리·자료 준비·해외 참가팀 조율 등 공모 운영을 지원했습니다. 공모를 통해 모포시스(LA)가 마스터플래너로 선정되었습니다. 이후 공구 내 M3·M4 블록 계획은 발주처 측에서 조율했습니다. 아래 다이어그램은 선정안의 프로그램 구성·동선 체계와 2025–2035년 단계 계획을 보여줍니다.</p>
+    </div>
+  </div>
+
+  <div class="hero"><div class="ph has-img" data-label="01 · Masterplan aerial — full site"><img src="img/23_songdo_6_8_masterplan/01_전체조감_석경_1018.jpg" alt=""></div></div>
+
+  <div class="grid4">
+    <div class="ph has-img" data-label="02 · Landmark tower from Incheon Bridge"><img src="img/23_songdo_6_8_masterplan/02_랜드마크타워_인천대교위_1019.jpg" alt=""></div>
+    <div class="ph has-img" data-label="03 · Second landmark"><img src="img/23_songdo_6_8_masterplan/07_제2랜드마크_1006.jpg" alt=""></div>
+    <div class="ph has-img" data-label="04 · District-edge diagram"><img src="img/23_songdo_6_8_masterplan/그림1.jpg" alt=""></div>
+    <div class="ph has-img" data-label="05 · Phasing study"><img src="img/23_songdo_6_8_masterplan/그림2.jpg" alt=""></div>
+  </div>
+
+  <div class="foot ph-foot">
+    <div>Songdo 6,8 Masterplan · 송도 6,8공구</div>
+    <div class="pn">p. 08</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.09 — EUNMA APARTMENT (A · Residential)                     -->
+<!-- ============================================================ -->
+<div class="pg A">
+  <div class="head ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Residential · Career Origin · 첫 대형</div>
+  </div>
+
+  <div class="meta">
+    <div>
+      <div class="title-en">Eunma Apartment</div>
+      <div class="title-kr kr">은마아파트 재건축 · 첫 대형 프로젝트</div>
+    </div>
+    <div class="specs">
+      <div class="row"><div class="k">Year</div><div>2016.05 — 2016.10</div></div>
+      <div class="row"><div class="k">Site / 위치</div><div>서울 강남구 대치동</div></div>
+      <div class="row"><div class="k">Area / 면적</div><div>4,424 units</div></div>
+      <div class="row"><div class="k">Program</div><div>Premium Residential Redevelopment</div></div>
+      <div class="row"><div class="k">Role / 역할</div><div>입사 1년차 · 지하주차장·부대시설</div></div>
+      <div class="row"><div class="k">Status</div><div>Design Competition · 설계공모 참여</div></div>
+      <div class="row"><div class="k">Note</div><div>Career origin · 출발점</div></div>
+    </div>
+    <div class="body">
+      <p>I joined my first large redevelopment project in my first year at Heerim: 4,424 units in Daechi-dong. I worked on underground parking and ancillary facilities, learning how planning, structure, and MEP coordination come together in a redevelopment project. The show-flat stage was also my first direct exposure to resident-facing presentation work. The experience became the starting point for later redevelopment competition work.</p>
+      <p class="kr">입사 1년 차에 참여한 첫 대형 재건축입니다. 강남 대치동 4,424세대 규모의 프로젝트에서 지하주차장과 부대시설 계획을 맡았습니다. 이 과정에서 평면·구조·설비를 함께 읽는 법을 배웠고, 홍보관 단계에서 조합원을 대상으로 한 설명 업무도 처음 경험했습니다. 이후 재건축 설계공모 작업의 출발점이 된 프로젝트입니다.</p>
+    </div>
+  </div>
+
+  <div class="hero"><div class="ph has-img" data-label="01 · Hero — eye-level perspective"><img src="img/03_daechi_eunma/큰이미지.jpg" alt=""></div></div>
+
+  <div class="grid3">
+    <div class="ph has-img" data-label="02 · Bird's-eye aerial"><img src="img/03_daechi_eunma/작은이미지1 (2).jpg" alt=""></div>
+    <div class="ph has-img" data-label="03 · Approach view"><img src="img/03_daechi_eunma/작은이미지2.jpg" alt=""></div>
+    <div class="ph has-img" data-label="04 · Tower study"><img src="img/03_daechi_eunma/작은이미지3.jpg" alt=""></div>
+  </div>
+
+  <div class="foot ph-foot">
+    <div>Eunma Apartment · 은마아파트 재건축</div>
+    <div class="pn">p. 09</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.10 — ALL WORKS 1/2 (works 01—20)                           -->
+<!-- ============================================================ -->
+<div class="pg V2">
+  <div class="ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>All Works · 전체 작품</div>
+  </div>
+
+  <div class="titlebar">
+    <h1>All Works<span class="kr">전체 작품</span></h1>
+    <div class="pageof">Page 1 / 2<br/>01 — 20 · 36 works total</div>
+  </div>
+
+  <div class="body">
+    <div class="vcell"><div class="thumb ph has-img" data-label="01 · 2016"><img src="img/00_sejong_2-1_apt/그림1.jpg" alt=""></div><div class="vmeta"><span class="l">01 · 2016</span><span class="r">—</span></div><div class="ven">Sejong 2-1 Residential</div><div class="vkr">세종시 2-1생활권</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="02 · 2017"><img src="img/01_sejong_4-1_apt/aerial_clean.jpg" alt=""></div><div class="vmeta"><span class="l">02 · 2017</span><span class="r">—</span></div><div class="ven">Sejong 4-1 Residential</div><div class="vkr">세종시 4-1생활권</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="03 · 2018"><img src="img/02_haeundae_golf_resort/B조감도180904.jpg" alt=""></div><div class="vmeta"><span class="l">03 · 2018</span><span class="r">—</span></div><div class="ven">Haeundae Golf Resort</div><div class="vkr">해운대 골프리조트</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="04 · 2016"><img src="img/03_daechi_eunma/큰이미지.jpg" alt=""></div><div class="vmeta"><span class="l">04 · 2016</span><span class="r feat">p. 09</span></div><div class="ven">Eunma Apartment</div><div class="vkr">은마아파트 재건축 · 첫 대형</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="05 · 2018"><img src="img/04_sejong_1-5_jungheung/02_조감도2.jpg" alt=""></div><div class="vmeta"><span class="l">05 · 2018</span><span class="r">—</span></div><div class="ven">Sejong 1-5 Jungheung</div><div class="vkr">세종시 1-5생활권</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="06 · 2018"><img src="img/05_sejong_2-4_mixed/aerial_clean.jpg" alt=""></div><div class="vmeta"><span class="l">06 · 2018</span><span class="r">—</span></div><div class="ven">Sejong 2-4 Mixed-use</div><div class="vkr">세종시 2-4생활권</div></div>
+
+    <div class="vcell"><div class="thumb ph has-img" data-label="07 · 2018"><img src="img/06_jamsil_woosung/잠실우성 (모델링 o).jpg" alt=""></div><div class="vmeta"><span class="l">07 · 2018</span><span class="r">—</span></div><div class="ven">Jamsil Woosung</div><div class="vkr">잠실우성 재건축</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="08 · 2021"><img src="img/07_songdo_m2-1bl/210107-송도아메리칸타운2차-조감도.jpg" alt=""></div><div class="vmeta"><span class="l">08 · 2021</span><span class="r">—</span></div><div class="ven">Songdo American Town</div><div class="vkr">송도 아메리칸타운</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="09 · 2019"><img src="img/08_busan_simin_park/스크린샷 2025-07-17 164212.png" alt=""></div><div class="vmeta"><span class="l">09 · 2019</span><span class="r">—</span></div><div class="ven">Busan Simin Park</div><div class="vkr">부산시민공원 재정비</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="10 · 2020"><img src="img/09_hanoi_tht/스크린샷 2025-07-17 164043.png" alt=""></div><div class="vmeta"><span class="l">10 · 2020</span><span class="r">—</span></div><div class="ven">Hanoi THT Newtown</div><div class="vkr">베트남 하노이 THT</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="11 · 2019"><img src="img/10_garak_samik/그림2.jpg" alt=""></div><div class="vmeta"><span class="l">11 · 2019</span><span class="r">—</span></div><div class="ven">Garak Samik Mansion</div><div class="vkr">가락삼익맨숀 재건축</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="12 · 2019"><img src="img/11_goyang_buksamsong/04_고양 북삼송_연립사거리뷰.jpg" alt=""></div><div class="vmeta"><span class="l">12 · 2019</span><span class="r">—</span></div><div class="ven">Goyang Buksamsong A-Zone</div><div class="vkr">고양 북삼송 A-ZONE</div></div>
+
+    <div class="vcell"><div class="thumb ph has-img" data-label="13 · 2020"><img src="img/12_gapyeong_townhouse/001_가평 타운하우스_메인 조감도-BF.jpg" alt=""></div><div class="vmeta"><span class="l">13 · 2020</span><span class="r">—</span></div><div class="ven">Gapyeong Townhouse</div><div class="vkr">가평 타운하우스</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="14 · 2020"><img src="img/13_yongsan_jeongbichang_1/001_용산 창전 재정비 구역_조감도.JPG" alt=""></div><div class="vmeta"><span class="l">14 · 2020</span><span class="r">—</span></div><div class="ven">Yongsan Jeongbichang Edge</div><div class="vkr">용산정비창 환경</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="15 · 2020"><img src="img/14_asan_tangjeong_2-a6bl/그림10.jpg" alt=""></div><div class="vmeta"><span class="l">15 · 2020</span><span class="r">—</span></div><div class="ven">Asan Tangjeong 2-A6</div><div class="vkr">아산탕정 공동주택</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="16 · 2021"><img src="img/15_bangbae_samho/01_메인조감도__방배삼호아파트.jpg" alt=""></div><div class="vmeta"><span class="l">16 · 2021</span><span class="r">—</span></div><div class="ven">Bangbae Samho Apt.</div><div class="vkr">방배 삼호아파트</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="17 · 2021"><img src="img/16_ykd_yeosu_kyungdo/조감01-am4.jpg" alt=""></div><div class="vmeta"><span class="l">17 · 2021</span><span class="r">—</span></div><div class="ven">Yeosu Kyungdo Lodging</div><div class="vkr">여수 경도 숙박</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="18 · 2020"><img src="img/17_banpo_3/03.정면투시_(주경)0407.jpg" alt=""></div><div class="vmeta"><span class="l">18 · 2020</span><span class="r">—</span></div><div class="ven">Banpo 3rd District</div><div class="vkr">반포 3주구 대안입찰</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="19 · 2021"><img src="img/18_daejeon_station/01 대전 주상복합_조감도_0628_04_CROP.jpg" alt=""></div><div class="vmeta"><span class="l">19 · 2021</span><span class="r">—</span></div><div class="ven">Daejeon Station Mixed-use</div><div class="vkr">대전역세권 복합</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="20 · 2022"><img src="img/19_bucheon_daejang_newtown/메인석경조감도0824-f Alt.jpg" alt=""></div><div class="vmeta"><span class="l">20 · 2022</span><span class="r">—</span></div><div class="ven">Bucheon Daejang Newtown</div><div class="vkr">부천대장 신도시</div></div>
+  </div>
+
+  <div class="ph-foot">
+    <div>p. 10</div>
+    <div>All Works · 1 of 2</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.11 — ALL WORKS 2/2 (works 21—36)                           -->
+<!-- ============================================================ -->
+<div class="pg V2">
+  <div class="ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>All Works · 전체 작품</div>
+  </div>
+
+  <div class="titlebar">
+    <h1>All Works<span class="kr">전체 작품</span></h1>
+    <div class="pageof">Page 2 / 2<br/>21 — 36 · 36 works total</div>
+  </div>
+
+  <div class="body">
+    <div class="vcell"><div class="thumb ph has-img" data-label="21 · 2022"><img src="img/20_gaepo_jugong_67/스카이 커뮤니티 투시도 (2).jpg" alt=""></div><div class="vmeta"><span class="l">21 · 2022</span><span class="r">—</span></div><div class="ven">Gaepo Jugong 6,7</div><div class="vkr">개포주공 6,7단지</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="22 · 2023"><img src="img/21_incheon_geomdan_aa16/02_서브조감_석경_0113_15h_태양열.jpg" alt=""></div><div class="vmeta"><span class="l">22 · 2023</span><span class="r">—</span></div><div class="ven">Incheon Geomdan AA16</div><div class="vkr">인천검단 AA16</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="23 · 2022"><img src="img/22_nonhyeon_114/스크린샷 2025-07-17 162636.png" alt=""></div><div class="vmeta"><span class="l">23 · 2022</span><span class="r">—</span></div><div class="ven">Nonhyeon 114 Officetel</div><div class="vkr">논현동 오피스텔</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="24 · 2024"><img src="img/23_songdo_6_8_masterplan/01_전체조감_석경_1018.jpg" alt=""></div><div class="vmeta"><span class="l">24 · 2024</span><span class="r feat">p. 08</span></div><div class="ven">Songdo 6,8 Masterplan</div><div class="vkr">송도 6,8공구 · Morphosis 선정</div></div>
+
+    <div class="vcell"><div class="thumb ph has-img" data-label="25 · 2022"><img src="img/24_gyeongbuk_provincial_2/그림14.jpg" alt=""></div><div class="vmeta"><span class="l">25 · 2022</span><span class="r">—</span></div><div class="ven">Gyeongbuk Provincial Town 2</div><div class="vkr">경북도청신도시 2단계</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="26 · 2024"><img src="img/25_midan_a1_a2/스크린샷 2025-07-17 163650.png" alt=""></div><div class="vmeta"><span class="l">26 · 2024</span><span class="r">—</span></div><div class="ven">Midan City A1, A2</div><div class="vkr">미단시티 A1, A2</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="27 · 2024"><img src="img/26_midan_4_5_6/그림18.jpg" alt=""></div><div class="vmeta"><span class="l">27 · 2024</span><span class="r">—</span></div><div class="ven">Midan City 4, 5, 6</div><div class="vkr">미단시티 공동4,5,6</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="28 · 2024"><img src="img/27_hangang_cinepolis/그림27.jpg" alt=""></div><div class="vmeta"><span class="l">28 · 2024</span><span class="r">—</span></div><div class="ven">Hangang Cinépolis</div><div class="vkr">한강 시네폴리스</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="29 · 2023"><img src="img/28_pyeongtaek_braincity_2bl/hero_clean.png" alt=""></div><div class="vmeta"><span class="l">29 · 2023</span><span class="r feat">p. 07</span></div><div class="ven">Pyeongtaek Brain City 2BL</div><div class="vkr">평택 브레인시티 주상2BL · 당선</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="30 · 2023"><img src="img/29_apgujeong_3/hero_clean.png" alt=""></div><div class="vmeta"><span class="l">30 · 2023</span><span class="r feat">p. 06</span></div><div class="ven">Apgujeong Dist. 3</div><div class="vkr">압구정3구역 · UN Studio · 당선</div></div>
+
+    <div class="vcell"><div class="thumb ph has-img" data-label="31 · 2022"><img src="img/30_seoul_ferris_wheel/서울+링+프로젝트_메인조감도 (1).jpg" alt=""></div><div class="vmeta"><span class="l">31 · 2022</span><span class="r">—</span></div><div class="ven">Seoul Ferris Wheel</div><div class="vkr">서울 대관람차</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="32 · 2023"><img src="img/31_pohang_costa_valley/메인조감도.png" alt=""></div><div class="vmeta"><span class="l">32 · 2023</span><span class="r">—</span></div><div class="ven">Pohang Costa Valley</div><div class="vkr">포항 코스타밸리</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="33 · 2025"><img src="img/32_banpo_mido_1/hero_clean.png" alt=""></div><div class="vmeta"><span class="l">33 · 2025</span><span class="r feat">p. 04</span></div><div class="ven">Banpo Mido 1st</div><div class="vkr">반포미도1차 재건축 · 당선</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="34 · 2025"><img src="img/34_mokdong_10/조감도.jpg" alt=""></div><div class="vmeta"><span class="l">34 · 2025</span><span class="r">—</span></div><div class="ven">Mokdong Dist. 10</div><div class="vkr">목동10단지 재건축</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="35 · 2025"><img src="img/35_mokdong_14/작은이미지1 (1).jpg" alt=""></div><div class="vmeta"><span class="l">35 · 2025</span><span class="r feat">p. 05</span></div><div class="ven">Mokdong Dist. 14</div><div class="vkr">목동14단지 재건축 · 당선</div></div>
+    <div class="vcell"><div class="thumb ph has-img" data-label="36 · 2026"><img src="img/36_mokdong_5/목동 5단지 재건축_석경 조감도_비율조정001 copy.jpg" alt=""></div><div class="vmeta"><span class="l">36 · 2026</span><span class="r">—</span></div><div class="ven">Mokdong Dist. 5</div><div class="vkr">목동5단지 재건축</div></div>
+  </div>
+
+  <div class="ph-foot">
+    <div>p. 11</div>
+    <div>All Works · 2 of 2</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- p.12 — CURRICULUM VITAE                                      -->
+<!-- ============================================================ -->
+<div class="pg CV">
+  <div class="ph-head">
+    <div>JS Park · Selected Works 2015—2026</div>
+    <div>Curriculum Vitae · 이력</div>
+  </div>
+
+  <div class="titlebar">
+    <h1>Curriculum Vitae<span class="kr">이력</span></h1>
+    <div class="me">
+      <div class="portrait"><img src="img/profile.png" alt="JunSeong Park"></div>
+      <div class="txt">
+        <div class="nm">JunSeong Park · 박준성</div>
+        <div class="role">Architectural Designer · 11 yrs at Heerim</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="col">
+      <h2>Practice · 실무</h2>
+      <div class="row"><div class="yr">2015 — Now</div><div class="v">Heerim Architects &amp; Planners<br/><span class="sub">Architectural Designer · Seoul · 희림종합건축사사무소</span><span class="sub">대형 재건축 설계공모 당선작 다수 참여</span><span class="sub">UN Studio 협업 · Songdo 발주처 지원</span></div></div>
+
+      <h2 class="cont">Winning Bids · 당선</h2>
+      <div class="row"><div class="yr">2025</div><div class="v">Mokdong District 14 · 목동14단지<br/><span class="sub">5,158 units · 양천구 최대 규모</span></div></div>
+      <div class="row"><div class="yr">2025</div><div class="v">Banpo Mido 1st · 반포미도1차<br/><span class="sub">1,743 units · 주동·스카이커뮤니티 설계</span></div></div>
+      <div class="row"><div class="yr">2023</div><div class="v">Apgujeong District 3 · 압구정3구역<br/><span class="sub">5,175 units · UN Studio 협업</span></div></div>
+      <div class="row"><div class="yr">2023</div><div class="v">Pyeongtaek Brain City 2BL · 평택 브레인시티<br/><span class="sub">161,146 m² · 인허가 담당 · 4개 심의 통과</span></div></div>
+
+      <h2 class="cont">Education · 학력</h2>
+      <div class="row"><div class="yr">2022 — 25</div><div class="v">M.S., Urban &amp; Real Estate Development<br/><span class="sub">Hanyang University · 2025.02 졸업</span></div></div>
+
+      <h2 class="cont">Publication · 논문</h2>
+      <div class="row"><div class="yr">2025</div><div class="v">PLOS ONE · peer-reviewed<br/><span class="sub">Urban density and depression during COVID-19 in Seoul</span></div></div>
+
+      <h2 class="cont">Internal R&amp;D · 사내 연구</h2>
+      <div class="row"><div class="yr">2025 — 26</div><div class="v">Architecture × AI Practice<br/><span class="sub">Internal executive presentation · 사내 임원회의 발표</span><span class="sub">apt · complex · hotel tools used in early project reviews</span></div></div>
+    </div>
+
+    <div class="col">
+      <h2>Practice Focus · 작업 도구</h2>
+      <div class="row"><div class="yr">Daily · 11y</div><div class="v">AutoCAD · Rhinoceros + Grasshopper · SketchUp</div></div>
+      <div class="row"><div class="yr">Production</div><div class="v">D5 Render (3y) · V-Ray · Photoshop · InDesign</div></div>
+      <div class="row"><div class="yr">AI · 2y</div><div class="v">Claude · MCP · Custom Python tools</div></div>
+      <div class="row"><div class="yr">Research</div><div class="v">SPSS · ArcGIS · R · statistical analysis</div></div>
+
+      <h2 class="cont">Collaborators · 협업</h2>
+      <div class="row"><div class="yr">2023 — 25</div><div class="v">UN Studio · Amsterdam<br/><span class="sub">Apgujeong District 3 (residential redevelopment)</span></div></div>
+      <div class="row"><div class="yr">2020</div><div class="v">Samsung C&amp;T<br/><span class="sub">Banpo 3rd District contractor selection bid</span></div></div>
+
+      <h2 class="cont">Languages · 언어</h2>
+      <div class="row"><div class="yr">—</div><div class="v">Korean (native) · English (working)</div></div>
+    </div>
+  </div>
+
+  <div class="ph-foot">
+    <div>p. 12</div>
+    <div>Curriculum Vitae</div>
+  </div>
+</div>
+
+<script>
+/* ================================================================
+   Interactive layer — all screen-only. Page ids, nav labels and the
+   contents→page wiring are derived in JS (document order), so the
+   print markup above is untouched.
+   ================================================================ */
+(function () {
+  var reduce = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pages = Array.prototype.slice.call(document.querySelectorAll('.pg'));
+  var NAMES = ['Cover', 'Contents', 'Architecture × AI', 'Banpo Mido 1st',
+    'Mokdong 14', 'Apgujeong 3', 'Pyeongtaek 2BL', 'Songdo 6,8', 'Eunma',
+    'All Works 1', 'All Works 2', 'Curriculum Vitae'];
+  var docEl = document.documentElement;
+  var wideQuery = window.matchMedia ? window.matchMedia('(min-width: 901px)') : null;
+  var currentPageIndex = 0;
+
+  pages.forEach(function (p, i) {
+    if (!p.id) p.id = 'p' + ('0' + (i + 1)).slice(-2);
+  });
+
+  function refreshSnapMode() {
+    docEl.classList.toggle('page-snap', !reduce && !!wideQuery && wideQuery.matches);
+  }
+  refreshSnapMode();
+  if (wideQuery) {
+    if (wideQuery.addEventListener) wideQuery.addEventListener('change', refreshSnapMode);
+    else if (wideQuery.addListener) wideQuery.addListener(refreshSnapMode);
+  }
+
+  function nearestPageIndex() {
+    var center = (window.innerHeight || document.documentElement.clientHeight) / 2;
+    var best = 0;
+    var bestDist = Infinity;
+    pages.forEach(function (p, i) {
+      var r = p.getBoundingClientRect();
+      var dist = Math.abs((r.top + r.height / 2) - center);
+      if (dist < bestDist) { best = i; bestDist = dist; }
+    });
+    return best;
+  }
+
+  function pageLabel(idx) {
+    return 'p.' + ('0' + (idx + 1)).slice(-2) + ' · ' + (NAMES[idx] || pages[idx].id);
+  }
+
+  function goTo(target) {
+    var idx = typeof target === 'number' ? Math.max(0, Math.min(pages.length - 1, target)) : pages.indexOf(target);
+    var el = typeof target === 'number' ? pages[idx] : target;
+    if (!el) return;
+    setCurrentPage(idx, true);
+    el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  }
+
+  var canFineHover = window.matchMedia &&
+    window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* 0) Cursor-reactive image motion ------------------------------ */
+  if (!reduce && canFineHover) {
+    var kineticImages = Array.prototype.slice.call(document.querySelectorAll('.ph.has-img'));
+    kineticImages.forEach(function (ph) {
+      ph.addEventListener('pointermove', function (ev) {
+        var r = ph.getBoundingClientRect();
+        if (!r.width || !r.height) return;
+        var nx = ((ev.clientX - r.left) / r.width) - 0.5;
+        var ny = ((ev.clientY - r.top) / r.height) - 0.5;
+        var max = ph.classList.contains('ui') ? 2.2 : 5.2;
+        ph.style.setProperty('--hover-x', (-nx * max).toFixed(2) + 'px');
+        ph.style.setProperty('--hover-y', (-ny * max).toFixed(2) + 'px');
+        ph.style.setProperty('--glint-x', ((nx + 0.5) * 100).toFixed(1) + '%');
+        ph.style.setProperty('--glint-y', ((ny + 0.5) * 100).toFixed(1) + '%');
+      }, { passive: true });
+      ph.addEventListener('pointerleave', function () {
+        ph.style.setProperty('--hover-x', '0px');
+        ph.style.setProperty('--hover-y', '0px');
+        ph.style.setProperty('--glint-x', '50%');
+        ph.style.setProperty('--glint-y', '50%');
+      });
+    });
+  }
+
+  /* 0b) Cover title magnetism ------------------------------------ */
+  var cover = document.querySelector('.Cover');
+  function setCoverShift(titleX, titleY, roleX, roleY, bottomX, bottomY) {
+    if (!cover) return;
+    cover.style.setProperty('--cover-title-x', titleX.toFixed(2) + 'px');
+    cover.style.setProperty('--cover-title-y', titleY.toFixed(2) + 'px');
+    cover.style.setProperty('--cover-role-x', roleX.toFixed(2) + 'px');
+    cover.style.setProperty('--cover-role-y', roleY.toFixed(2) + 'px');
+    cover.style.setProperty('--cover-bottom-x', bottomX.toFixed(2) + 'px');
+    cover.style.setProperty('--cover-bottom-y', bottomY.toFixed(2) + 'px');
+  }
+  if (!reduce && canFineHover && cover) {
+    cover.addEventListener('pointermove', function (ev) {
+      var r = cover.getBoundingClientRect();
+      var nx = ((ev.clientX - r.left) / r.width) - 0.5;
+      var ny = ((ev.clientY - r.top) / r.height) - 0.5;
+      setCoverShift(nx * 10, ny * 8, nx * 4.5, ny * 3.5, nx * -2.5, ny * -2);
+    }, { passive: true });
+    cover.addEventListener('pointerleave', function () {
+      setCoverShift(0, 0, 0, 0, 0, 0);
+    });
+  }
+
+  /* 1) Scroll reveal --------------------------------------------- */
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+    pages.forEach(function (p) { io.observe(p); });
+  } else {
+    pages.forEach(function (p) { p.classList.add('revealed'); });
+  }
+
+  /* 2) Scroll progress bar --------------------------------------- */
+  var bar = document.createElement('div');
+  bar.id = 'progressBar';
+  document.body.appendChild(bar);
+  function onScroll() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  /* 2b) Scroll-linked hero-image depth ---------------------------- */
+  var parallaxImages = Array.prototype.slice.call(document.querySelectorAll('.A .hero .ph.has-img:not(.ui)'));
+  var depthTicking = false;
+  function updateDepth() {
+    depthTicking = false;
+    var wide = window.matchMedia && window.matchMedia('(min-width: 901px)').matches;
+    if (reduce || !wide) {
+      parallaxImages.forEach(function (ph) { ph.style.setProperty('--parallax-y', '0px'); });
+      return;
+    }
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    parallaxImages.forEach(function (ph) {
+      var page = ph.closest('.pg');
+      if (!page) return;
+      var r = page.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) {
+        ph.style.setProperty('--parallax-y', '0px');
+        return;
+      }
+      var offset = ((r.top + r.height / 2) - vh / 2) / vh;
+      var y = Math.max(-12, Math.min(12, offset * -16));
+      ph.style.setProperty('--parallax-y', y.toFixed(2) + 'px');
+    });
+  }
+  function requestDepth() {
+    if (depthTicking) return;
+    depthTicking = true;
+    window.requestAnimationFrame(updateDepth);
+  }
+  if (!reduce && parallaxImages.length) {
+    window.addEventListener('scroll', requestDepth, { passive: true });
+    window.addEventListener('resize', requestDepth);
+    updateDepth();
+  }
+
+  /* 3) Page-dot navigator ---------------------------------------- */
+  var nav = document.createElement('div');
+  nav.id = 'navDots';
+  var dots = pages.map(function (p, i) {
+    var d = document.createElement('button');
+    d.type = 'button';
+    d.className = 'dot';
+    d.setAttribute('aria-label', NAMES[i] || p.id);
+    d.innerHTML = '<span class="lbl"></span>';
+    d.querySelector('.lbl').textContent = NAMES[i] || p.id;
+    d.addEventListener('click', function () { goTo(p); });
+    nav.appendChild(d);
+    return d;
+  });
+  document.body.appendChild(nav);
+
+  var pageCue = document.createElement('div');
+  pageCue.id = 'pageCue';
+  document.body.appendChild(pageCue);
+  var cueTimer = 0;
+
+  function showPageCue(idx) {
+    pageCue.textContent = pageLabel(idx);
+    pageCue.classList.add('show');
+    window.clearTimeout(cueTimer);
+    cueTimer = window.setTimeout(function () { pageCue.classList.remove('show'); }, 820);
+  }
+
+  function setCurrentPage(idx, flashCue) {
+    if (idx < 0 || idx >= pages.length) return;
+    currentPageIndex = idx;
+    pages.forEach(function (p, j) { p.classList.toggle('is-current', j === idx); });
+    dots.forEach(function (d, j) { d.classList.toggle('active', j === idx); });
+    if (flashCue) showPageCue(idx);
+  }
+  setCurrentPage(nearestPageIndex(), false);
+
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          var idx = pages.indexOf(e.target);
+          setCurrentPage(idx, false);
+        }
+      });
+    }, { threshold: 0.5 });
+    pages.forEach(function (p) { spy.observe(p); });
+  }
+
+  var pageTicking = false;
+  function requestPageState() {
+    if (pageTicking) return;
+    pageTicking = true;
+    window.requestAnimationFrame(function () {
+      pageTicking = false;
+      setCurrentPage(nearestPageIndex(), false);
+    });
+  }
+  window.addEventListener('scroll', requestPageState, { passive: true });
+  window.addEventListener('resize', requestPageState);
+
+  /* 3b) Contents rows jump to their project page ------------------ */
+  /* Contents lists 00..06 in order → feature pages p.03..p.09       */
+  /* (page index +2: row 0 → pages[2], row 6 → pages[8]).            */
+  var idxRows = document.querySelectorAll('.Idx .it');
+  idxRows.forEach(function (row, j) {
+    var target = pages[j + 2];
+    if (!target) return;
+    row.addEventListener('click', function () { goTo(target); });
+  });
+
+  /* 4) Lightbox --------------------------------------------------- */
+  var lb = document.createElement('div');
+  lb.id = 'lightbox';
+  lb.innerHTML = '<button class="close" type="button" aria-label="Close">×</button>' +
+                 '<button class="nav-btn prev" type="button" aria-label="Previous image">&#8249;</button>' +
+                 '<button class="nav-btn next" type="button" aria-label="Next image">&#8250;</button>' +
+                 '<figure><img alt=""><figcaption></figcaption></figure>';
+  document.body.appendChild(lb);
+  var lbImg = lb.querySelector('img');
+  var lbCap = lb.querySelector('figcaption');
+  var lbFigure = lb.querySelector('figure');
+  var lbPrev = lb.querySelector('.prev');
+  var lbNext = lb.querySelector('.next');
+  var lbClose = lb.querySelector('.close');
+  var lbItems = [];
+  var lbIndex = 0;
+
+  function setLightboxOrigin(origin) {
+    lbFigure.style.setProperty('--lb-origin-x', '50%');
+    lbFigure.style.setProperty('--lb-origin-y', '50%');
+    if (reduce || !origin) return;
+    window.requestAnimationFrame(function () {
+      var o = origin.getBoundingClientRect();
+      var f = lbFigure.getBoundingClientRect();
+      if (!f.width || !f.height) return;
+      lbFigure.style.setProperty('--lb-origin-x', (o.left + o.width / 2 - f.left).toFixed(1) + 'px');
+      lbFigure.style.setProperty('--lb-origin-y', (o.top + o.height / 2 - f.top).toFixed(1) + 'px');
+    });
+  }
+
+  function collectLightboxItems(startPh) {
+    var scope = startPh.closest('.pg') || document;
+    var phs = Array.prototype.slice.call(scope.querySelectorAll('.ph.has-img'));
+    var items = phs.filter(function (ph) {
+      return !ph.closest('.Idx .it') && !!ph.querySelector('img');
+    }).map(function (ph) {
+      var img = ph.querySelector('img');
+      return {
+        ph: ph,
+        src: img.currentSrc || img.src,
+        cap: ph.getAttribute('data-label') || ''
+      };
+    });
+    if (!items.length && startPh.querySelector('img')) {
+      var fallbackImg = startPh.querySelector('img');
+      items.push({
+        ph: startPh,
+        src: fallbackImg.currentSrc || fallbackImg.src,
+        cap: startPh.getAttribute('data-label') || ''
+      });
+    }
+    return items;
+  }
+
+  function renderLB(index, origin) {
+    if (!lbItems.length) return;
+    lbIndex = (index + lbItems.length) % lbItems.length;
+    var item = lbItems[lbIndex];
+    lbImg.src = item.src;
+    var counter = lbItems.length > 1 ? ' · ' + (lbIndex + 1) + '/' + lbItems.length : '';
+    if (item.cap) { lbCap.textContent = item.cap + counter; lbCap.style.display = ''; }
+    else if (counter) { lbCap.textContent = counter.slice(3); lbCap.style.display = ''; }
+    else { lbCap.style.display = 'none'; }
+    lb.classList.toggle('single', lbItems.length < 2);
+    setLightboxOrigin(origin || item.ph);
+  }
+
+  function openLB(src, cap, origin) {
+    lbItems = origin ? collectLightboxItems(origin) : [{ ph: null, src: src, cap: cap || '' }];
+    lbIndex = Math.max(0, lbItems.findIndex(function (item) { return item.ph === origin; }));
+    renderLB(lbIndex, origin);
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLB() {
+    lb.classList.remove('open');
+    lb.classList.remove('switching');
+    document.body.style.overflow = '';
+  }
+  function switchLB(delta) {
+    if (!lb.classList.contains('open') || lbItems.length < 2) return;
+    lb.style.setProperty('--lb-step-x', (delta > 0 ? '-14px' : '14px'));
+    lb.classList.add('switching');
+    window.setTimeout(function () {
+      renderLB(lbIndex + delta, null);
+      window.requestAnimationFrame(function () {
+        lb.classList.remove('switching');
+        lb.style.setProperty('--lb-step-x', '0px');
+      });
+    }, reduce ? 0 : 90);
+  }
+
+  document.addEventListener('click', function (ev) {
+    if (!ev.target.closest) return;
+    var ph = ev.target.closest('.ph.has-img');
+    if (!ph) return;
+    if (ph.closest('.Idx .it')) return;   /* contents thumb → row navigation handles it */
+    var img = ph.querySelector('img');
+    if (!img) return;
+    openLB(img.currentSrc || img.src, ph.getAttribute('data-label') || '', ph);
+  });
+  lb.addEventListener('click', closeLB);     /* click anywhere on overlay closes */
+  lbPrev.addEventListener('click', function (ev) { ev.stopPropagation(); switchLB(-1); });
+  lbNext.addEventListener('click', function (ev) { ev.stopPropagation(); switchLB(1); });
+  lbClose.addEventListener('click', function (ev) { ev.stopPropagation(); closeLB(); });
+
+  function isEditableTarget(target) {
+    if (!target) return false;
+    var tag = target.tagName ? target.tagName.toLowerCase() : '';
+    return tag === 'input' || tag === 'textarea' || tag === 'select' || target.isContentEditable;
+  }
+
+  document.addEventListener('keydown', function (ev) {
+    if (lb.classList.contains('open')) {
+      if (ev.key === 'Escape') { ev.preventDefault(); closeLB(); }
+      else if (ev.key === 'ArrowLeft') { ev.preventDefault(); switchLB(-1); }
+      else if (ev.key === 'ArrowRight') { ev.preventDefault(); switchLB(1); }
+      return;
+    }
+    if (isEditableTarget(ev.target) || ev.altKey || ev.ctrlKey || ev.metaKey) return;
+
+    var targetIdx = null;
+    if (ev.key === 'ArrowDown' || ev.key === 'PageDown' ||
+        ((ev.key === ' ' || ev.key === 'Spacebar' || ev.code === 'Space') && !ev.shiftKey)) {
+      targetIdx = nearestPageIndex() + 1;
+    } else if (ev.key === 'ArrowUp' || ev.key === 'PageUp' ||
+        ((ev.key === ' ' || ev.key === 'Spacebar' || ev.code === 'Space') && ev.shiftKey)) {
+      targetIdx = nearestPageIndex() - 1;
+    } else if (ev.key === 'Home') {
+      targetIdx = 0;
+    } else if (ev.key === 'End') {
+      targetIdx = pages.length - 1;
+    }
+
+    if (targetIdx !== null) {
+      ev.preventDefault();
+      goTo(targetIdx);
+    }
+  });
+})();
+</script>
+</body>
+</html>
